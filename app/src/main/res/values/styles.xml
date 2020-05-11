@@ -1,0 +1,108 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="TextLabelSNA" parent="Widget.Design.TextInputLayout">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/accent</item>
+        <item name="android:textSize">16sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/accent_material_dark</item>
+        <item name="colorControlNormal">@color/abc_search_url_text_normal</item>
+        <item name="colorControlActivated">@color/colorprincipalamarillo</item>
+    </style>
+    <style name="StyleTheme" parent="Theme.AppCompat">
+        <item name="bs_bottomSheetStyle">@style/BottomSheet.StyleDialog</item>
+    </style>
+
+    <style name="BottomSheet.StyleDialog" parent="BottomSheet.Dialog">
+        <item name="android:backgroundDimAmount">0.5</item>
+        <item name="android:windowAnimationStyle">@style/BottomSheet.Animation</item>
+        <item name="android:textColorPrimary">#2196F3</item>
+        <item name="android:textColorSecondary">#E91E63</item>
+        <item name="android:textColorHint">#8BC34A</item>
+        <item name="bs_dialogBackground">@color/abc_search_url_text_normal</item>
+        <item name="bs_dividerColor">@color/abc_search_url_text_pressed</item>
+        <item name="bs_numColumns">4</item>
+        <item name="bs_listStyle">@style/BottomSheet.Animation</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <!-- Base application theme. -->
+    <!-- changing it to no actionbar -->
+    <style name="Base.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary" tools:ignore="PrivateResource">@color/abc_search_url_text_normal</item>
+        <item name="colorPrimaryDark" tools:ignore="PrivateResource">@color/abc_search_url_text_normal</item>
+        <item name="colorAccent">@color/accent</item>
+    </style>
+
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--designs for login and register-->
+    <style name="parent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="loginParent" parent="parent">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/loginBkColor</item>
+        <item name="android:focusableInTouchMode">true</item>
+    </style>
+
+    <style name="headerText" parent="parent">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/whiteTextColor</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="loginCard" parent="parent"></style>
+
+    <style name="linearParent" parent="parent">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="headerTextPrimary" parent="headerText">
+        <item name="android:textColor">@color/primaryTextColor</item>
+    </style>
+
+    <style name="modifiedEditText" parent="parent">
+        <item name="android:textSize">22sp</item>
+        <item name="android:backgroundTint">@color/primaryTextColor</item>
+    </style>
+
+    <style name="viewParent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="loginButton" parent="viewParent">
+        <item name="android:background">@drawable/login_button_bk</item>
+        <item name="android:textColor">@color/whiteTextColor</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <!--onboarding designs-->
+
+
+
+</resources>

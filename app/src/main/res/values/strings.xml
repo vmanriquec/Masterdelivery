@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Masterdelivery</string>
+    <string name="title_activity_miou">Map</string>
+
+
+
+
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+
+    <string name="login_signup_hint">d</string>
+    <string name="title_comida_list">comida</string>
+    <string name="title_comida_detail">comida Detail</string>
+    <string name="comidalist_dialog_title">titulo dialog</string>
+    <string name="comidalist_dialog_ok">ok</string>
+    <string name="title_activity_navegador">Navegador</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_tabsitos">tabsitos</string>
+    <string name="title_activity_tab">tab</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="title_section1">Teléfonos</string>
+    <string name="Estoyaqui">Aqui estoy</string>
+    <string name="title_section2">Tablets</string>
+    <string name="title_section3">Portátiles</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_shop">Carrito De Compras</string>
+    <string name="precios">$ Precio</string>
+    <string name="google_maps_key">AIzaSyAYIXXSBIluQAhJoB6_LDXHh1Jc-o5JvRo</string>
+
+</resources>

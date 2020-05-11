@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:paddingLeft="3dp"
+    android:paddingTop="6dp"
+    android:paddingRight="3dp"
+    android:paddingBottom="3dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardproductos"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+
+        android:layout_alignParentTop="true"
+        android:background="@drawable/bordes"
+        android:paddingBottom="5dp"
+        android:pointerIcon="hand"
+        card_view:cardBackgroundColor="@android:color/transparent"
+        card_view:cardCornerRadius="20dp"
+        card_view:cardElevation="8dp"
+        card_view:cardMaxElevation="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+
+                <LinearLayout
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="250dp"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/idproductop"
+                            android:layout_width="3dp"
+                            android:layout_height="2dp"
+                            android:inputType="textNoSuggestions"
+
+
+                            />
+
+                        <TextView
+                            android:id="@+id/stockp1"
+                            android:layout_width="228dp"
+                            android:layout_height="40dp"
+                            android:layout_alignTop="@+id/view"
+                            android:layout_gravity="center_horizontal|center_vertical"
+
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/botoncajaredondeada"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:inputType="textNoSuggestions"
+                            android:text="xxxx"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="0.15"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/botonmas1"
+                        android:layout_width="40dp"
+                        android:layout_height="28dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:background="@drawable/tabcirculoverdecara"
+                        android:elevation="1dp"
+                        android:text="+"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/botonmenos"
+                        android:layout_width="42dp"
+                        android:layout_height="29dp"
+
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:background="@drawable/fondoobservaciones"
+                        android:minHeight="40dp"
+                        android:text="--"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/inventario"
+                        android:layout_width="35dp"
+                        android:layout_height="33dp"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/fondototalsoles"
+                        android:gravity="center"
+                        android:inputType="textNoSuggestions"
+                        android:text="0"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
