@@ -278,8 +278,10 @@ int idusuario;
                     //  texto.setLayoutParams(param);
                     texto.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                     texto.setTypeface(null, Typeface.BOLD);
+
                     texto.setShadowLayer(2, 1, 1, R.color.accent);
-                    texto.setTextColor(getApplication().getResources().getColor(R.color.colortres));
+
+                    texto.setTextColor(getApplication().getResources().getColor(R.color.accent));
 
                     TableRow.LayoutParams textoenlayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
                     my_layout.addView(texto, textoenlayout);
@@ -473,7 +475,7 @@ int idusuario;
                     texto.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                     texto.setTypeface(null, Typeface.BOLD);
                     texto.setShadowLayer(2, 1, 1, R.color.accent);
-                    texto.setTextColor(getApplication().getResources().getColor(R.color.colortres));
+                    texto.setTextColor(getApplication().getResources().getColor(R.color.accent));
 
 
                     TableRow.LayoutParams textoenlayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);

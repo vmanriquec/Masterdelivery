@@ -110,21 +110,27 @@
 
         <MultiAutoCompleteTextView
             android:id="@+id/multiAutoCompleteTextView"
-            android:layout_width="285dp"
-            android:layout_height="wrap_content"
+            android:layout_width="322dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
             android:hint="Busca un producto"
             tools:ignore="LabelFor" />
 
         <Button
             android:id="@+id/todos"
-            android:layout_width="45dp"
+            android:layout_width="25dp"
             android:layout_height="33dp"
             android:layout_gravity="right|center_horizontal|center_vertical"
             android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:background="@drawable/soda" />
+            android:background="@drawable/soda"
+            android:gravity="center_horizontal|center_vertical" />
     </LinearLayout>
 
     <LinearLayout
