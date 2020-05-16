@@ -43,7 +43,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
-
+import com.google.android.gms.maps.SupportMapFragment;
 import static android.Manifest.permission;
 import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
 
@@ -128,7 +128,7 @@ checkPermissions();
             mapa = googleMap;
             mapa.setMapType(GoogleMap.MAP_TYPE_NORMAL);
             mapa.getUiSettings().setZoomControlsEnabled(true);
-            mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(Sopdapop, 21));
+            mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(Sopdapop, 13));
             //  mapa.setMyLocationEnabled(true);
             // mapa.getUiSettings().setCompassEnabled(true);
 
@@ -237,7 +237,7 @@ checkPermissions();
         mapa.clear();
         ;
 
-        mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 21));
+        mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
         // mapa.setMyLocationEnabled(true);
         //mapa.getUiSettings().setCompassEnabled(true);
 

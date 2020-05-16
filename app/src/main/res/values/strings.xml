@@ -3,8 +3,6 @@
     <string name="title_activity_miou">Map</string>
 
 
-
-
     <string name="login">Login</string>
     <string name="forgot_password">Forgot Password?</string>
 
@@ -35,5 +33,6 @@
     <string name="action_shop">Carrito De Compras</string>
     <string name="precios">$ Precio</string>
     <string name="google_maps_key">AIzaSyAYIXXSBIluQAhJoB6_LDXHh1Jc-o5JvRo</string>
+    <string name="title_activity_miausote">Map</string>
 
 </resources>

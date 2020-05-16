@@ -7,17 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".Mapa">
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mapa"
         class="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="404dp"
-        android:layout_height="622dp"
+        android:layout_width="0dp"
+        android:layout_height="532dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintVertical_bias="0.37"
+        tools:layout="@layout/activity_mapa" />
 
     <RelativeLayout
         android:id="@+id/relLayout10"
@@ -39,11 +44,15 @@
             android:id="@+id/referencia"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+
+
             android:layout_marginLeft="5dp"
-            android:layout_marginEnd="0dp"
-
-
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
             android:background="@android:color/transparent"
             android:gravity="center_horizontal|center_vertical"
             android:hint="Alguna Referencia por favor."
@@ -63,24 +72,24 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.988"
+        app:layout_constraintHorizontal_bias="0.893"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.589" />
+        app:layout_constraintVertical_bias="0.749" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Estoy aqui"
+        android:text="Mi Ubicacion"
         android:textColor="@color/accent"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.971"
+        app:layout_constraintHorizontal_bias="0.92"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.641" />
+        app:layout_constraintVertical_bias="0.792" />
 
     <Button
         android:id="@+id/aregistro"
@@ -101,6 +110,10 @@
         android:layout_width="375dp"
         android:layout_height="50dp"
 
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/fondoparabuscar"
         android:gravity="center_horizontal|center_vertical"
         android:hint="Tu direccion"

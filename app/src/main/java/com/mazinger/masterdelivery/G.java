@@ -278,36 +278,26 @@ int idusuario;
                     //  texto.setLayoutParams(param);
                     texto.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                     texto.setTypeface(null, Typeface.BOLD);
-
                     texto.setShadowLayer(2, 1, 1, R.color.accent);
-
                     texto.setTextColor(getApplication().getResources().getColor(R.color.accent));
-
                     TableRow.LayoutParams textoenlayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
                     my_layout.addView(texto, textoenlayout);
-
                     for( numerodeadiciones= 0; numerodeadiciones < peopleadicional.size(); numerodeadiciones++) {
                         CheckBox cb = new CheckBox(getApplication());
                         cb.setText("   "+peopleadicional.get(numerodeadiciones).getNombreadicional()+ "               S/. "+String.valueOf(peopleadicional.get(numerodeadiciones).getPrecioadicional()));
-            Double ffff=peopleadicional.get(numerodeadiciones).getPrecioadicional();
+                        cb.setTextColor(getApplication().getResources().getColor(R.color.colorPrimary));
+                        Double ffff=peopleadicional.get(numerodeadiciones).getPrecioadicional();
                         String q=peopleadicional.get(numerodeadiciones).getNombreadicional();
                         Double l=peopleadicional.get(numerodeadiciones).getPrecioadicional();
-
-
-
                         cb.setId(numerodeadiciones);
                         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
                             @Override
                             public void onCheckedChanged(CompoundButton buttonView,
                                                          final boolean isChecked) {
                                 CharSequence options[];
                                 if (isChecked) {
                                     //String preciodeadicional=String.valueOf(peopleadicional.get(numerodeadiciones).getPrecioadicional());
-
                                     realmgrabaradicional( q,l,Integer.parseInt(idproductoseleccionado));
-
-
                                     TextView totalapaga=(TextView)findViewById(R.id.totalapagar);
                                     TextView cantidadapedir=(TextView)findViewById(R.id.cantidadapedir);
                                     String ct=cantidadapedir.getText().toString();
@@ -489,7 +479,7 @@ int idusuario;
                         CheckBox cbc = new CheckBox(getApplication());
                         cbc.setText("   "+peoplecrema.get(numerodecrema).getNombrecrema());
                         cbc.setId(numerodecrema+1);
-
+                        cbc.setTextColor(getApplication().getResources().getColor(R.color.colorPrimary));
 
 
                         int idcremita=peoplecrema.get(numerodecrema).getIdcrema();

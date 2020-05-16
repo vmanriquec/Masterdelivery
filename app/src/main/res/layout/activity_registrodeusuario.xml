@@ -26,8 +26,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout7"
-        android:layout_width="410dp"
-        android:layout_height="480dp"
+        android:layout_width="0dp"
+        android:layout_height="499dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
@@ -35,14 +35,15 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cabecera"
-        app:layout_constraintVertical_bias="0.222">
+        app:layout_constraintVertical_bias="0.144">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:background="@color/semiTransparentWhite"
             android:orientation="vertical">
 
@@ -135,8 +136,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
             android:background="@drawable/white_rightcorner_bkg"
             android:orientation="vertical">
 
@@ -245,14 +247,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/dire"
-                    android:layout_width="312dp"
-                    android:layout_height="68dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_marginBottom="5dp"
                     android:gravity="center_horizontal|left|center_vertical"
                     android:hint="Tu direccion Verificada"
                     android:paddingLeft="10dp"
@@ -279,15 +282,15 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.783" />
+        app:layout_constraintVertical_bias="0.885" />
 
     <Spinner
         android:id="@+id/spinnerio2"
-        android:layout_width="165dp"
-        android:layout_height="33dp"
+        android:layout_width="178dp"
+        android:layout_height="27dp"
         android:layout_below="@+id/materialTextField2"
         android:layout_alignEnd="@+id/materialTextField2"
         android:layout_marginLeft="5dp"
@@ -297,10 +300,10 @@
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.898"
+        app:layout_constraintHorizontal_bias="0.882"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.78"
+        app:layout_constraintVertical_bias="0.879"
         tools:ignore="UnknownId" />
 
     <Button
