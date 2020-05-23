@@ -11,18 +11,20 @@
         android:id="@+id/mapa"
         class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="0dp"
-        android:layout_height="532dp"
+        android:layout_height="529dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.37"
-        tools:layout="@layout/activity_mapa" />
+        app:layout_constraintVertical_bias="0.416"
+        tools:layout="@layout/activity_mapa">
+
+    </androidx.fragment.app.FragmentContainerView>
 
     <RelativeLayout
         android:id="@+id/relLayout10"
@@ -63,20 +65,6 @@
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/listo"
-        android:layout_width="72dp"
-        android:layout_height="64dp"
-        android:background="@drawable/gps"
-        android:textColor="@color/accent"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.893"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.749" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -86,10 +74,10 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.792" />
+        app:layout_constraintVertical_bias="0.667" />
 
     <Button
         android:id="@+id/aregistro"
@@ -126,6 +114,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
+
+    <Button
+        android:id="@+id/listo"
+        android:layout_width="72dp"
+        android:layout_height="64dp"
+        android:background="@drawable/gps"
+        android:textColor="@color/accent"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.596" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

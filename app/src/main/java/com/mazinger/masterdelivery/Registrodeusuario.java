@@ -419,4 +419,8 @@ Toast.makeText(getApplication(),"Las contraseas no son iguales",Toast.LENGTH_LON
         Pattern pattern = Patterns.EMAIL_ADDRESS;
         return pattern.matcher(email).matches();
     }
+    @Override
+    public void onBackPressed() {
+
+    }
 }

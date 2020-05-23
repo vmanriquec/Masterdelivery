@@ -54,20 +54,9 @@ public class Adaptadorpedidos extends RecyclerView.Adapter<Adaptadorpedidos.Adap
     public void onBindViewHolder(final Adaptadorpedidos.AdaptadorViewHolder viewHolder, final int position) {
         final Ventas item = items.get(position);
         viewHolder.itemView.setTag(item);
-
-
-
     viewHolder.mesapedido.setText(String.valueOf(item.getIdmesa()));
     viewHolder.totalpedido.setText(String.valueOf(item.getTotalpedido()));
-
-
-
-
-
-
-
-
-    }
+}
 
     @Override
     public int getItemCount() {

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fondoparabuscar">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fondoparabuscar"
+        android:paddingLeft="5dp"
+        android:paddingTop="15dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        app:cardElevation="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+
+            android:background="@drawable/bordecuadradosuave"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="142dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/colortres"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/telefono"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textColor="@color/fbutton_color_nephritis" />
+
+                    <TextView
+                        android:id="@+id/nombrecliente"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:text="Nombre de Cliente"
+                        android:textColor="@color/coloruno" />
+
+                    <Button
+                        android:id="@+id/muestrapedido"
+                        android:layout_width="6dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/burger" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/direccion"
+                        android:layout_width="249dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:gravity="left|center_vertical"
+                        android:text="esta es la dire del cliente"
+                        android:textColor="@color/coloruno" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/referencias"
+                        android:layout_width="270dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:gravity="left|center_vertical"
+                        android:text="referencias de donde vive"
+                        android:textColor="@color/coloruno" />
+
+                    <TextView
+                        android:id="@+id/idpedido"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@color/colortres"
+                        android:gravity="center_vertical"
+                        android:text="Total: " />
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="6dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="S/."
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/totalapagar1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="0000"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtd"
+                        android:layout_width="23dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="left|center_vertical"
+                        android:paddingLeft="3dp"
+                        android:text="Paga: " />
+
+                    <TextView
+                        android:id="@+id/cuantopaga"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:gravity="left|center_vertical"
+                        android:text="0000"
+                        android:textColor="@color/coloruno" />
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="right|center_vertical"
+                        android:text="vuelto" />
+
+                    <TextView
+                        android:id="@+id/vuelto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:gravity="left|center_vertical"
+                        android:text="0000"
+                        android:textColor="@color/coloruno" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.mazinger.masterdelivery;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -7,12 +8,16 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.MultiAutoCompleteTextView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +30,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mazinger.masterdelivery.Realm.Crudpedido;
 import com.mazinger.masterdelivery.Realm.Detallepedidorealm;
 import com.mazinger.masterdelivery.Realm.PedidoRealm;
+import com.mazinger.masterdelivery.Realm.PedidoRealmFirebase;
 import com.mazinger.masterdelivery.adapter.Adaptadorproductos;
+import com.mazinger.masterdelivery.adapter.Adaptadorrecibepedidos;
 import com.mazinger.masterdelivery.modelo.Productos;
 
 import org.json.JSONArray;
@@ -56,6 +63,7 @@ import static com.mazinger.masterdelivery.Login.READ_TIMEOUT;
 public class Listaparaseleccionar extends AppCompatActivity {
     String[] strArrDataventaso = {"No Suggestions"};
 
+    public ArrayList<PedidoRealmFirebase> todoslospedidos = new ArrayList<>();
 
     String session, nombreususrio, almacenactivo, idalmacenactivo;
     String FileName = "myfile";
@@ -84,7 +92,6 @@ public class Listaparaseleccionar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listaparaseleccionar);
         cargarbarradeabajo();
-
         TextView fechadehoy = (TextView) findViewById(R.id.tres);
         TextView usuariotxt = (TextView) findViewById(R.id.uno);
         TextView almacentxt = (TextView) findViewById(R.id.dos);
@@ -103,6 +110,55 @@ public class Listaparaseleccionar extends AppCompatActivity {
         recycler.setHasFixedSize(true);
         lManager = new LinearLayoutManager(Listaparaseleccionar.this);
         recycler.setLayoutManager(lManager);
+
+        Button llamadai=(Button)findViewById(R.id.llamada);
+
+        llamadai.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+
+
+
+        PopupMenu popup=new PopupMenu(getApplication(),llamadai);
+
+        popup.getMenuInflater().inflate(R.menu.menucito,popup.getMenu());
+         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                if(item.getTitle().equals("Historial de Pedidos")){
+
+TextView uno=(TextView)findViewById(R.id.uno);
+String rer=uno.getText().toString();
+new traertodoslospedidosporcliente().execute(rer);
+
+
+                }
+                if(item.getTitle().equals("whatsapp")){
+                    try {
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+"51910260813"+"&text="+"Hola, ..."));
+                        startActivity(intent);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+
+
+                }
+
+   return true;
+            }
+
+
+        });
+popup.show();
+
+
+
+    }
+});
+
 
         myMultiAutoCompleteTextView.setOnItemClickListener((parent, view, position, id) -> {
 
@@ -329,7 +385,7 @@ public class Listaparaseleccionar extends AppCompatActivity {
                     }
                     strArrDataproducto = dataListproducto.toArray(new String[dataListproducto.size()]);
                     adapterproducto = new Adaptadorproductos(peopleproducto, getApplicationContext());
-                    recyclerproducto.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1));
+                    recyclerproducto.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
                     recyclerproducto.setAdapter(adapterproducto);
                 } catch (JSONException e) {
                     Log.d("erroro",e.toString());
@@ -496,7 +552,7 @@ cargarbarradeabajo();
                     recycler.removeAllViews();
                     recycler.setAdapter(null);
                     adapter = new Adaptadorproductos(people,Listaparaseleccionar.this.getApplicationContext());
-                    recycler.setLayoutManager(new GridLayoutManager(Listaparaseleccionar.this.getApplicationContext(), 1));
+                    recycler.setLayoutManager(new GridLayoutManager(Listaparaseleccionar.this.getApplicationContext(), 2));
                     recycler.setAdapter(adapter);
                 } catch (JSONException e) {
 
@@ -626,7 +682,7 @@ cargarbarradeabajo();
 
 
                     adapter = new Adaptadorproductos(people,Listaparaseleccionar.this.getApplicationContext());
-                    recycler.setLayoutManager(new GridLayoutManager(Listaparaseleccionar.this.getApplicationContext(), 1));
+                    recycler.setLayoutManager(new GridLayoutManager(Listaparaseleccionar.this.getApplicationContext(), 2));
 
                     recycler.setAdapter(adapter);
 
@@ -782,4 +838,148 @@ cargarbarradeabajo();
 
     }
 
+
+
+
+    public class traertodoslospedidosporcliente extends AsyncTask<String, String, String> {
+
+        HttpURLConnection conne;
+        URL url = null;
+        ProgressDialog pdLoading = new ProgressDialog(Listaparaseleccionar.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pdLoading.setMessage("\tCargando pedidos");
+            pdLoading.setCancelable(false);
+            pdLoading.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            try {
+                url = new URL("https://sodapop.pe/sugest/traerpedidosporcliente.php");
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return e.toString();
+            }
+            try {
+                conne = (HttpURLConnection) url.openConnection();
+                conne.setReadTimeout(READ_TIMEOUT);
+                conne.setConnectTimeout(CONNECTION_TIMEOUT);
+                conne.setRequestMethod("POST");
+                conne.setDoInput(true);
+                conne.setDoOutput(true);
+                // Append parameters to URL
+                Uri.Builder builder = new Uri.Builder()
+                        .appendQueryParameter("nombreusuario", params[0]);
+                String query = builder.build().getEncodedQuery();
+
+                // Open connection for sending data
+                OutputStream os = conne.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(query);
+                writer.flush();
+                writer.close();
+                os.close();
+                conne.connect();
+
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+                Log.d("wiwo",e1.toString());
+                return e1.toString();
+            }
+            try {
+                int response_code = conne.getResponseCode();
+
+                if (response_code == HttpURLConnection.HTTP_OK) {
+
+                    InputStream input = conne.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);
+
+                    }
+                    Log.d("waaaaaaa",result.toString());
+                    return (result.toString());
+
+                } else {
+
+                    return("Connection error");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return e.toString();
+            } finally {
+                conne.disconnect();
+            }
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            todoslospedidos.clear();
+            try {
+                JSONArray jArray = new JSONArray(result);
+                for (int i = 0; i < jArray.length(); i++) {
+                    JSONObject json_data = jArray.getJSONObject(i);
+                    PedidoRealmFirebase pedidofirebase = new PedidoRealmFirebase
+                            (json_data.getInt("idpedido"),json_data.getInt("idcliente"),json_data.getInt("idmesa")
+                            ,json_data.getDouble("totalpedido"),json_data.getString("estadopedido"),json_data.getString("fechapedido")
+                            ,json_data.getInt("idusuario"),json_data.getInt("idalmacen"),json_data.getString("idfacebook"),
+                                    json_data.getString("observaciones"),json_data.getString("llevar"),json_data.getString("direccionllevar")
+                            ,json_data.getString("idfirebase"),json_data.getString("monbredescuento"),json_data.getString("montodescuento")
+                            ,json_data.getString("nombrecosto"),json_data.getString("montocosto"),json_data.getString("longitud"),
+                                    json_data.getString("latitud"),json_data.getString("pagocliente"),json_data.getString("vuelto"),
+                                    json_data.getString("telefono"),json_data.getString("refrencias"),json_data.getString("nombreusuariof"));
+                    todoslospedidos.add(pedidofirebase);
+
+
+                }
+                pdLoading.dismiss();
+
+                final Dialog dialog = new Dialog(Listaparaseleccionar.this);
+                dialog.setContentView(R.layout.dialogopedidos);
+                DisplayMetrics metrics = getResources().getDisplayMetrics();
+                int width = metrics.widthPixels;
+                int height = metrics.heightPixels;
+
+                dialog.getWindow().setLayout((7 * width) / 7, LinearLayout.LayoutParams.WRAP_CONTENT);
+                TextView clie=(TextView) dialog.findViewById(R.id.nombredialog);
+                clie.setText(todoslospedidos.get(0).getNombreusuario());
+
+                final RecyclerView pedidose= dialog.findViewById(R.id.listadepedidos);
+
+                Adaptadorrecibepedidos adaptadore = new Adaptadorrecibepedidos( todoslospedidos,dialog.getContext());
+                pedidose.setLayoutManager(new GridLayoutManager(Listaparaseleccionar.this.getApplicationContext(), 1));
+
+                pedidose.setAdapter(adaptadore);
+                adaptadore.notifyDataSetChanged();
+                dialog.show();
+
+
+
+
+
+
+            } catch (JSONException e) {
+
+
+                Log.d("erororor",e.toString());
+            }
+
+
+        }
+
+    }
+    @Override
+    public void onBackPressed() {
+
+    }
 }

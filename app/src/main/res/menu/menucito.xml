@@ -1,26 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/ventasio"
+        android:id="@+id/pedidos"
         android:icon="@drawable/burger"
-        android:title="Ventas"/>
+        android:title="Historial de Pedidos"/>
 
 
-    <item android:id="@+id/inicioo"
+    <item android:id="@+id/whatsapp"
         android:icon="@drawable/cestavacia"
-        android:title="inicio"/>
-    <item
-        android:id="@+id/ventasiop"
-        android:icon="@drawable/burger"
-        android:title="Ventas"/>
+        android:title="whatsapp"/>
 
-
-    <item android:id="@+id/iniciopo"
-        android:icon="@drawable/cestavacia"
-        android:title="inicio"/>
-
-
-    <item android:id="@+id/finalio"
-    android:icon="@drawable/cremas"
-    android:title="Final"/>
 </menu>

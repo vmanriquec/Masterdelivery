@@ -970,14 +970,8 @@ int g=todaslascremas.size();
 
             ///////////////////////////////////////////////////////
             det = new DetallepedidoRealmFirebase(1,1  , subtotal, fodat, cantidad, precvente, nombreproducto, fodata, Integer.parseInt(almacen), idproductorealm, comentariococina);
-
-
-
-
-
             todoslosdetalles.add(det);
             RecyclerView.Adapter adapterventas = new Adaptadorparaverenviarpedidos(todoslosdetalles,this);
-
             lista.setLayoutManager(new LinearLayoutManager(this));
             lista.setAdapter(adapterventas);
 

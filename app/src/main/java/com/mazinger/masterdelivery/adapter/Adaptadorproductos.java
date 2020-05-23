@@ -84,7 +84,7 @@ viewHolder.productoingredientes.setText(String.valueOf(item.getIngredientes()));
         viewHolder.precio.setText("S/. " + String.valueOf(item.getPrecventa()));
         viewHolder.inventario.setText((String.valueOf(item.getEstadoproducto())));
         foto = item.getDescripcion().toString();
-        Picasso.get().load(foto).transform(new CropSquareTransformation()).resize(80, 80)
+        Picasso.get().load(foto).transform(new CropSquareTransformation()).resize(200, 200)
                 .into(viewHolder.imagen);
         // viewHolder.mas.setVisibility(View.GONE);
         //viewHolder.menos.setVisibility(View.GONE);
@@ -129,7 +129,7 @@ viewHolder.productoingredientes.setText(String.valueOf(item.getIngredientes()));
                 ImageToast.setDuration(Toast.LENGTH_LONG);
                 ImageToast.show();
                 ImageToast.getView().setPadding( 20, 20, 20, 20);
-                Picasso.get().load(foto).transform(new CropSquareTransformation()).resize(80, 80)
+                Picasso.get().load(foto).transform(new CropSquareTransformation()).resize(200, 200)
                         .into(viewHolder.imagen);
 
             }
