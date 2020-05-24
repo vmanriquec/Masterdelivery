@@ -933,6 +933,7 @@ cargarbarradeabajo();
         @Override
         protected void onPostExecute(String result) {
             todoslospedidos.clear();
+            pdLoading.dismiss();
             try {
                 JSONArray jArray = new JSONArray(result);
                 for (int i = 0; i < jArray.length(); i++) {
@@ -950,7 +951,7 @@ cargarbarradeabajo();
 
 
                 }
-                pdLoading.dismiss();
+
 
                 final Dialog dialog = new Dialog(Listaparaseleccionar.this);
                 dialog.setContentView(R.layout.dialogopedidos);
