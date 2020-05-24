@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -65,6 +66,8 @@ TextView nombre,direccion,referencia,total,cunatopaga,vueltoc;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enviarpedido);
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.hide();
         Realm.init(getApplicationContext());
 
         prefs = getApplication().getSharedPreferences(FileName, Context.MODE_PRIVATE);

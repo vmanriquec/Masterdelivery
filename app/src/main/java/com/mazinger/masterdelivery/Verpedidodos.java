@@ -15,6 +15,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -65,6 +66,8 @@ public class Verpedidodos extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verpedido);
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.hide();
      frito =(TextView) findViewById(R.id.num);
         tio=(TextView) findViewById(R.id.miavion);
 pidelo=(Button) findViewById(R.id.irafirebase);

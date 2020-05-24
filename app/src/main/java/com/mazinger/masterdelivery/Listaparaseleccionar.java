@@ -21,6 +21,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -91,6 +92,10 @@ public class Listaparaseleccionar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listaparaseleccionar);
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.hide();
+
+
         cargarbarradeabajo();
         TextView fechadehoy = (TextView) findViewById(R.id.tres);
         TextView usuariotxt = (TextView) findViewById(R.id.uno);
@@ -385,8 +390,9 @@ popup.show();
                     }
                     strArrDataproducto = dataListproducto.toArray(new String[dataListproducto.size()]);
                     adapterproducto = new Adaptadorproductos(peopleproducto, getApplicationContext());
-                    recyclerproducto.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
+                    recyclerproducto.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
                     recyclerproducto.setAdapter(adapterproducto);
+                    adapterproducto.notifyDataSetChanged();
                 } catch (JSONException e) {
                     Log.d("erroro",e.toString());
                 }
@@ -454,7 +460,7 @@ cargarbarradeabajo();
         protected String doInBackground(String... params) {
 
             try {
-                url = new URL("https://sodapop.pe/sugest/apitraerproductospornombredeappsolounalmacen.php");
+                url = new URL("https://sodapop.pe/sugest/apitraerproductospornombre.php");
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -464,7 +470,7 @@ cargarbarradeabajo();
                 conne = (HttpURLConnection) url.openConnection();
                 conne.setReadTimeout(READ_TIMEOUT);
                 conne.setConnectTimeout(CONNECTION_TIMEOUT);
-                conne.setRequestMethod("POST");
+                conne.setRequestMethod("GET");
                 conne.setDoInput(true);
                 conne.setDoOutput(true);
 
@@ -552,8 +558,10 @@ cargarbarradeabajo();
                     recycler.removeAllViews();
                     recycler.setAdapter(null);
                     adapter = new Adaptadorproductos(people,Listaparaseleccionar.this.getApplicationContext());
-                    recycler.setLayoutManager(new GridLayoutManager(Listaparaseleccionar.this.getApplicationContext(), 2));
+                    recycler.setLayoutManager(new GridLayoutManager(Listaparaseleccionar.this.getApplicationContext(), 1));
                     recycler.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+
                 } catch (JSONException e) {
 
                 }
@@ -682,10 +690,10 @@ cargarbarradeabajo();
 
 
                     adapter = new Adaptadorproductos(people,Listaparaseleccionar.this.getApplicationContext());
-                    recycler.setLayoutManager(new GridLayoutManager(Listaparaseleccionar.this.getApplicationContext(), 2));
+                    recycler.setLayoutManager(new GridLayoutManager(Listaparaseleccionar.this.getApplicationContext(), 3));
 
                     recycler.setAdapter(adapter);
-
+                    adapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {
 
@@ -957,7 +965,7 @@ cargarbarradeabajo();
                 final RecyclerView pedidose= dialog.findViewById(R.id.listadepedidos);
 
                 Adaptadorrecibepedidos adaptadore = new Adaptadorrecibepedidos( todoslospedidos,dialog.getContext());
-                pedidose.setLayoutManager(new GridLayoutManager(Listaparaseleccionar.this.getApplicationContext(), 1));
+                pedidose.setLayoutManager(new GridLayoutManager(Listaparaseleccionar.this.getApplicationContext(),1 ));
 
                 pedidose.setAdapter(adaptadore);
                 adaptadore.notifyDataSetChanged();

@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -75,7 +76,8 @@ int idusuario;
         setContentView(R.layout.activity_g);
         totalapagar=(TextView)findViewById(R.id.totalapagar);
 
-
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.hide();
 
 
         //datos desde atras
