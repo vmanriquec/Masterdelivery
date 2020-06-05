@@ -4,6 +4,7 @@ package com.mazinger.masterdelivery.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,8 +37,8 @@ public class Adaptadorpedidos extends RecyclerView.Adapter<Adaptadorpedidos.Adap
 
         public AdaptadorViewHolder(View v){
             super(v);
-            this.mesapedido=(TextView) v.findViewById(R.id.txtmesa);
-            this.totalpedido=(TextView) v.findViewById(R.id.txttotalpedido);
+            //this.mesapedido=(TextView) v.findViewById(R.id.txtmesa);
+            //this.totalpedido=(TextView) v.findViewById(R.id.txttotalpedido);
 
         }
     }
@@ -53,9 +54,12 @@ public class Adaptadorpedidos extends RecyclerView.Adapter<Adaptadorpedidos.Adap
     @Override
     public void onBindViewHolder(final Adaptadorpedidos.AdaptadorViewHolder viewHolder, final int position) {
         final Ventas item = items.get(position);
-        viewHolder.itemView.setTag(item);
-    viewHolder.mesapedido.setText(String.valueOf(item.getIdmesa()));
-    viewHolder.totalpedido.setText(String.valueOf(item.getTotalpedido()));
+//        viewHolder.itemView.setTag(item);
+  //  viewHolder.mesapedido.setText(String.valueOf(item.getIdmesa()));
+    //viewHolder.totalpedido.setText(String.valueOf(item.getTotalpedido()));
+      //  viewHolder.totalpedido.setPaintFlags(viewHolder.totalpedido.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
+
 }
 
     @Override

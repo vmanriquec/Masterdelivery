@@ -40,6 +40,10 @@
             android:name=".Miausote">
 
         </activity>
+        <activity
+            android:name=".Muestartodaslasempresas">
+
+        </activity>
         <activity android:name=".Enviarpedido" />
         <activity android:name=".Splash">
 

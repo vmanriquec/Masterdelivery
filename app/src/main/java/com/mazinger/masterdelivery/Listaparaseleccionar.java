@@ -21,13 +21,16 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mazinger.masterdelivery.Realm.Crudpedido;
 import com.mazinger.masterdelivery.Realm.Detallepedidorealm;
 import com.mazinger.masterdelivery.Realm.PedidoRealm;
@@ -84,7 +87,7 @@ public class Listaparaseleccionar extends AppCompatActivity {
     Productos mesoproducto;
     private RecyclerView recyclerproducto;
     ArrayList<Productos> peopleproducto = new ArrayList<>();
-
+    private ActionBar toolbar;
     ArrayList<String> dataListventitas = new ArrayList<String>();
  String idalmacen;
  Button todos;
@@ -95,6 +98,11 @@ public class Listaparaseleccionar extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.hide();
 
+        toolbar = getSupportActionBar();
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setItemIconTintList(null);
 
         cargarbarradeabajo();
         TextView fechadehoy = (TextView) findViewById(R.id.tres);
@@ -990,5 +998,151 @@ cargarbarradeabajo();
     @Override
     public void onBackPressed() {
 
+    }
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment;
+            switch (item.getItemId()) {
+                case R.id.ropaopcion:
+
+                   new  traerproductosporfamilia().execute("19");
+                    return true;
+                case R.id.comidaopcion:
+
+                    new  traerproductosporfamilia().execute("3");
+                    return true;
+                case R.id.abarroteopcion:
+
+                    new  traerproductosporfamilia().execute("14");
+                    return true;
+                case R.id.serviciosopcion:
+
+                    new  traerproductosporfamilia().execute("20");
+                    return true;
+            }
+            return false;
+        }
+    };
+    private class traerproductosporfamilia extends AsyncTask<String, String, String> {
+
+        HttpURLConnection conne;
+        URL url = null;
+        ArrayList<Productos> listaalmaceno = new ArrayList<Productos>();
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.recyclerlistado);
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            try {
+                url = new URL("https://sodapop.pe/sugest/apitraerproductosporfamilia.php");
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return e.toString();
+            }
+            try {
+                conne = (HttpURLConnection) url.openConnection();
+                conne.setReadTimeout(READ_TIMEOUT);
+                conne.setConnectTimeout(CONNECTION_TIMEOUT);
+                conne.setRequestMethod("GET");
+                conne.setDoInput(true);
+                conne.setDoOutput(true);
+                // Append parameters to URL
+                Uri.Builder builder = new Uri.Builder()
+                        .appendQueryParameter("idfamilia", params[0])
+                        ;
+                String query = builder.build().getEncodedQuery();
+
+                // Open connection for sending data
+                OutputStream os = conne.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(query);
+                writer.flush();
+                writer.close();
+                os.close();
+                conne.connect();
+
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+                return e1.toString();
+            }
+            try {
+                int response_code = conne.getResponseCode();
+                if (response_code == HttpURLConnection.HTTP_OK) {
+                    InputStream input = conne.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);
+
+                    }
+                    return (
+
+                            result.toString()
+
+
+                    );
+
+                } else {
+                    return("Connection error");
+                }
+            } catch (IOException e) {
+                e.printStackTrace()                ;
+
+                return e.toString();
+            } finally {
+                conne.disconnect();
+            }
+        }
+
+
+        @Override
+        protected void onPostExecute(String result) {
+            ArrayList<Productos> people=new ArrayList<>();
+            String[] strArrData = {"No Suggestions"};
+
+            people.clear();
+            RecyclerView.Adapter adapter;
+
+
+            ArrayList<String> dataList = new ArrayList<String>();
+            Productos meso;
+            if(result.equals("no rows")) {
+                Toast.makeText(Listaparaseleccionar.this,"no existen datos a mostrar",Toast.LENGTH_LONG).show();
+
+            }else{
+                try {
+                    JSONArray jArray = new JSONArray(result);
+                    for (int i = 0; i < jArray.length(); i++) {
+                        JSONObject json_data = jArray.optJSONObject(i);
+                        meso = new Productos(json_data.getInt("idproducto"), json_data.getString("nombreproducto"), json_data.getString("estadoproducto"), json_data.getString("ingredientes"),json_data.getDouble(("precventa")),json_data.getString("descripcion"));
+                        people.add(meso);
+                    }
+                    strArrData = dataList.toArray(new String[dataList.size()]);
+                    recycler.removeAllViews();
+                    recycler.setAdapter(null);
+                    adapter = new Adaptadorproductos(people,Listaparaseleccionar.this.getApplicationContext());
+                    recycler.setLayoutManager(new GridLayoutManager(Listaparaseleccionar.this.getApplicationContext(), 1));
+                    recycler.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+
+                } catch (JSONException e) {
+
+                }
+            }
+        }
     }
 }

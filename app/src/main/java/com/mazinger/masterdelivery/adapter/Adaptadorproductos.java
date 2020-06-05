@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,26 +50,31 @@ public class Adaptadorproductos extends RecyclerView.Adapter<Adaptadorproductos.
         protected TextView precio;
         protected TextView cantidadpedida;
         protected ImageView imagen;
-        protected TextView productoingredientes, inventario;
+        protected TextView productoingredientes, inventario,preciodescuento;
         protected Button mas;
 
         public AdaptadorViewHolder(View v){
             super(v);
-            this.idproducto=(TextView) v.findViewById(R.id.idproductop2);
-            this.productonombre=(TextView) v.findViewById(R.id.nombre);
-            this.mas=(Button)v.findViewById(R.id.botonmas1);
+            this.idproducto=(TextView) v.findViewById(R.id.idproductop22);
+            this.productonombre=(TextView) v.findViewById(R.id.nombre2);
+            this.mas=(Button)v.findViewById(R.id.botonmas12);
 
-            this.precio=(TextView) v.findViewById(R.id.precio);
-            this.productoingredientes=(TextView)v.findViewById(R.id.ingredientes);
-            this.inventario=(TextView)v.findViewById(R.id.inventario);
-            this.imagen=(ImageView)v.findViewById(R.id.imagen);
-            this.inventario=(TextView)v.findViewById(R.id.inventario);
+            this.precio=(TextView) v.findViewById(R.id.precio2);
+
+
+
+            this.productoingredientes=(TextView)v.findViewById(R.id.ingredientes2);
+            this.inventario=(TextView)v.findViewById(R.id.inventario2);
+            this.imagen=(ImageView)v.findViewById(R.id.imagen2);
+
+            this.preciodescuento=(TextView)v.findViewById(R.id.precio2descuento);
+
         }
     }
     @Override
     public Adaptadorproductos.AdaptadorViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View v= LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.tarjetamuestraproducto,viewGroup,false);
+                .inflate(R.layout.tarjetaproductos,viewGroup,false);
         return new Adaptadorproductos.AdaptadorViewHolder(v);
     }
     @Override
@@ -82,6 +88,11 @@ public class Adaptadorproductos extends RecyclerView.Adapter<Adaptadorproductos.
         viewHolder.idproducto.setText(String.valueOf(item.getIdproducto()));
 viewHolder.productoingredientes.setText(String.valueOf(item.getIngredientes()));
         viewHolder.precio.setText("S/. " + String.valueOf(item.getPrecventa()));
+        Double porcenta= (0.08*item.getPrecventa());
+
+        viewHolder.preciodescuento.setText(String.valueOf(porcenta+item.getPrecventa()));
+        viewHolder.preciodescuento.setPaintFlags(viewHolder.preciodescuento.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
         viewHolder.inventario.setText((String.valueOf(item.getEstadoproducto())));
         foto = item.getDescripcion().toString();
         Picasso.get().load(foto).transform(new CropSquareTransformation()).resize(200, 200)

@@ -83,16 +83,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="561dp"
-        android:orientation="vertical"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="403dp"
+        android:layout_height="58dp"
+        android:layout_gravity="bottom"
+
+        android:background="?android:attr/windowBackground"
+        android:foreground="?attr/selectableItemBackground"
+        app:itemBackground="@android:color/transparent"
+        app:itemIconSize="44dp"
+
+
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@color/cfdialog_positive_button_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.154"
+        app:menu="@menu/pop_menu"
+        tools:ignore="MissingConstraints" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout14"
+        android:layout_width="403dp"
+        android:layout_height="505dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout13"
-        app:layout_constraintVertical_bias="0.081">
+        app:layout_constraintVertical_bias="0.504">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerlistado"
@@ -101,7 +126,6 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp" />
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/linearLayout13"
@@ -120,7 +144,7 @@
 
         <MultiAutoCompleteTextView
             android:id="@+id/multiAutoCompleteTextView"
-            android:layout_width="313dp"
+            android:layout_width="322dp"
             android:layout_height="43dp"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
@@ -134,14 +158,14 @@
         <Button
             android:id="@+id/todos"
             android:layout_width="25dp"
-            android:layout_height="33dp"
+            android:layout_height="37dp"
             android:layout_gravity="right|center_horizontal|center_vertical"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:background="@drawable/soda"
+            android:background="@drawable/lazo"
             android:gravity="center_horizontal|center_vertical" />
     </LinearLayout>
 
