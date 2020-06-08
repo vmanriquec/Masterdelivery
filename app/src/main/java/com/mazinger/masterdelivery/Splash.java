@@ -35,12 +35,8 @@ public class Splash extends AppCompatActivity {
 
         } else {
 
-                Intent i = new Intent(this, Listaparaseleccionar.class);
+                Intent i = new Intent(this, Muestartodaslasempresas.class);
                 startActivity(i);
-
-
-
-
         }
 
 

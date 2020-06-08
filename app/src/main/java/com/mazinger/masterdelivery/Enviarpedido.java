@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -61,6 +62,7 @@ public class Enviarpedido extends AppCompatActivity {
 Button limpiar,wasap;
 RecyclerView lista;
 TextView nombre,direccion,referencia,total,cunatopaga,vueltoc;
+    String idempresa;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +89,7 @@ limpiar.setOnClickListener(new View.OnClickListener() {
     public void onClick(View v) {
 
         borrartodo();
-        Intent i = new Intent(getApplicationContext(), Listaparaseleccionar.class);
+        Intent i = new Intent(getApplicationContext(), Muestartodaslasempresas.class);
         startActivity(i);
 
     }
@@ -177,6 +179,7 @@ limpiar.setOnClickListener(new View.OnClickListener() {
         String montocosto = prefs.getString("montocosto", "");
         String totalpedido = prefs.getString("totalpedido", "");
         String nombreusuariof = prefs.getString("nombreusuariof", "");
+        idempresa = prefs.getString("idempresa", "");
         pagocliente = prefs.getString("cuantopagacliente", "");
         vuelto = prefs.getString("vuelto", "");
         nombre.setText(nombreusuariof);
@@ -227,7 +230,7 @@ limpiar.setOnClickListener(new View.OnClickListener() {
                     vuelto,
                     telefonoguardado,
                     referencias,
-                    nombreusuariof);
+                    nombreusuariof,idempresa);
 
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference reference = database.getReference(FPEDIDOS);
@@ -477,10 +480,8 @@ int ido =Crudpedido.calculateIndex();
                 // Append parameters to URL
 
 
-                Log.d("valor",String.valueOf(ped.getLongitud()));
+                Log.d("valor",ped.toString().trim());
                 Uri.Builder builder = new Uri.Builder()
-
-
                         .appendQueryParameter("idcliente",String.valueOf(ped.getIdusuario()))
                         .appendQueryParameter("idmesa",String.valueOf(ped.getIdmesa()))
                         .appendQueryParameter("totalpedido",String.valueOf(ped.getTotalpedido()))
@@ -508,6 +509,7 @@ int ido =Crudpedido.calculateIndex();
                     .appendQueryParameter("telefonoguardado", String.valueOf(ped.getTelefono()))
                         .appendQueryParameter("refrencias", String.valueOf(ped.getReferencias()))
                         .appendQueryParameter("nombreusuariof", String.valueOf(ped.getNombreusuario()))
+                        .appendQueryParameter("idempresa", String.valueOf(ped.getIdempresa()))
                         ;
 
 
@@ -981,6 +983,12 @@ int g=todaslascremas.size();
         }
 
 
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
 
 
     }

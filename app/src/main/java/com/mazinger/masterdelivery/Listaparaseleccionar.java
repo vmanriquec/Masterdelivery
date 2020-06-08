@@ -24,6 +24,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -73,6 +74,7 @@ public class Listaparaseleccionar extends AppCompatActivity {
     String FileName = "myfile";
     SharedPreferences prefs;
 
+
     private String[] strArrData = {"No Suggestions"};
     private String[] strArrDataventas = {"No Suggestions"};
     private String[] strArrDataproducto = {"No Suggestions"};
@@ -100,11 +102,21 @@ public class Listaparaseleccionar extends AppCompatActivity {
 
         toolbar = getSupportActionBar();
 
+
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setItemIconTintList(null);
 
+
+        Intent myIntent = getIntent();
+        String idempresa = myIntent.getStringExtra("idempresa"); // will return "FirstKeyValue"
+        String nombreempresa = myIntent.getStringExtra("nombreempresa"); // will return "FirstKeyValue"
+        String telefonoempresa = myIntent.getStringExtra("telefonoempresa"); // will return "FirstKeyValue"
+
         cargarbarradeabajo();
+        TextView idempresalis = (TextView) findViewById(R.id.idempresalis);
+
         TextView fechadehoy = (TextView) findViewById(R.id.tres);
         TextView usuariotxt = (TextView) findViewById(R.id.uno);
         TextView almacentxt = (TextView) findViewById(R.id.dos);
@@ -148,9 +160,11 @@ new traertodoslospedidosporcliente().execute(rer);
 
                 }
                 if(item.getTitle().equals("whatsapp")){
+
                     try {
+
                         Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+"51910260813"+"&text="+"Hola, ..."));
+                        intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+"51"+telefonoempresa+"&text="+"Hola, ..."));
                         startActivity(intent);
                     }catch (Exception e){
                         e.printStackTrace();
@@ -184,7 +198,9 @@ popup.show();
 
         todos.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+
+            {
                 new traerproductosporidalmacenidfamilia().execute("1");
             }
         });
@@ -203,7 +219,8 @@ popup.show();
 
 
         usuariotxt.setText(usuarior);
-        almacentxt.setText(almacennombre);
+        almacentxt.setText(nombreempresa);
+        idempresalis.setText(idempresa);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String currentDateandTime = sdf.format(new Date());
         fechadehoy.setText(currentDateandTime);
@@ -954,7 +971,8 @@ cargarbarradeabajo();
                             ,json_data.getString("idfirebase"),json_data.getString("monbredescuento"),json_data.getString("montodescuento")
                             ,json_data.getString("nombrecosto"),json_data.getString("montocosto"),json_data.getString("longitud"),
                                     json_data.getString("latitud"),json_data.getString("pagocliente"),json_data.getString("vuelto"),
-                                    json_data.getString("telefono"),json_data.getString("refrencias"),json_data.getString("nombreusuariof"));
+                                    json_data.getString("telefono"),json_data.getString("refrencias"),json_data.getString("nombreusuariof")
+                                    ,json_data.getString("idempresa"));
                     todoslospedidos.add(pedidofirebase);
 
 
@@ -997,7 +1015,9 @@ cargarbarradeabajo();
     }
     @Override
     public void onBackPressed() {
-
+        Intent pi;
+        pi = new Intent(this,Muestartodaslasempresas.class);
+        startActivity(pi);
     }
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {

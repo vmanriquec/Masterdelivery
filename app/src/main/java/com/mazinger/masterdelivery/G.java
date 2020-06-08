@@ -127,7 +127,21 @@ int idusuario;
                     actualizarcomentarioparacadaproducto(idsupremodedetalle, come);
                     }
                actualizartotalenpedido();
-                Intent i= new Intent(getApplicationContext(),Listaparaseleccionar.class);
+                prefs = getApplication().getSharedPreferences(FileName, Context.MODE_PRIVATE);
+                String idempresa11=prefs.getString("idempresa","");
+                String nombreempresa11=prefs.getString("nombreempresa","");
+                String telefonoempresa11=prefs.getString("telefonoempresa","");
+                String tiempodemora11=prefs.getString("tiempodemora","");
+                String montominimo11=prefs.getString("montominimo","");
+
+
+                Intent i= new Intent(getApplicationContext(),Muestraproductosporempresa.class);
+                i.putExtra("idempresa",idempresa11);
+                i.putExtra("nombreempresa",nombreempresa11);
+                i.putExtra("telefonoempresa",telefonoempresa11);
+                i.putExtra("tiempodemora",tiempodemora11);
+                i.putExtra("montominimo",montominimo11);
+
                 startActivity(i);
             }
         });
@@ -273,15 +287,15 @@ int idusuario;
 
 
                     TextView texto = new TextView(getApplication());
-                    texto.setText("        AGREGA ALGUN ADICIONAL        ");
-                    texto.setBackgroundDrawable(getApplication().getResources().getDrawable(R.drawable.blue_leftcorner_bkg));
+                    texto.setText("        Elije tu Adicional        ");
+                    texto.setBackgroundDrawable(getApplication().getResources().getDrawable(R.drawable.abc_btn_colored_material));
                     texto.setGravity(Gravity.CENTER);
 
                     //  texto.setLayoutParams(param);
                     texto.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-                    texto.setTypeface(null, Typeface.BOLD);
-                    texto.setShadowLayer(2, 1, 1, R.color.accent);
-                    texto.setTextColor(getApplication().getResources().getColor(R.color.accent));
+                    texto.setTypeface(null, Typeface.NORMAL);
+                    texto.setShadowLayer(2, 1, 1, R.color.colorPrimary);
+                    texto.setTextColor(getApplication().getResources().getColor(R.color.coloruno));
                     TableRow.LayoutParams textoenlayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
                     my_layout.addView(texto, textoenlayout);
                     for( numerodeadiciones= 0; numerodeadiciones < peopleadicional.size(); numerodeadiciones++) {
@@ -459,15 +473,19 @@ int idusuario;
                     LinearLayout my_layout = (LinearLayout)findViewById(R.id.my_layout);
                     strcrema = datalistcrema.toArray(new String[datalistcrema.size()]);
                     TextView texto = new TextView(getApplication());
-                    texto.setText("        ESCOGE TUS CREMAS        ");
-                    texto.setBackgroundDrawable(getApplication().getResources().getDrawable(R.drawable.blue_leftcorner_bkg));
+
+
+
+
+                    texto.setText("        Elije tus Cremas        ");
+                   // texto.setBackgroundDrawable(getApplication().getResources().getDrawable(R.drawable.blue_leftcorner_bkg));
                     texto.setGravity(Gravity.CENTER);
 
                   //  texto.setLayoutParams(param);
                     texto.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
-                    texto.setTypeface(null, Typeface.BOLD);
-                    texto.setShadowLayer(2, 1, 1, R.color.accent);
-                    texto.setTextColor(getApplication().getResources().getColor(R.color.accent));
+                    texto.setTypeface(null, Typeface.NORMAL);
+                    texto.setShadowLayer(2, 1, 1, R.color.colorPrimary);
+                    texto.setTextColor(getApplication().getResources().getColor(R.color.coloruno));
 
 
                     TableRow.LayoutParams textoenlayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);

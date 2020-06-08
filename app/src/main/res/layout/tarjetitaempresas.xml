@@ -3,16 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/tarjetaempresa"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="3dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginRight="3dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -26,8 +29,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="160dp"
+                android:id="@+id/imagenempresa1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_marginLeft="3dp"
@@ -60,8 +63,8 @@
 
                     <RatingBar
                         android:id="@+id/ratingBar"
-                        android:layout_width="28dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="4dp"
+                        android:layout_height="43dp"
                         android:layout_weight="1" />
                 </LinearLayout>
 
@@ -96,14 +99,14 @@
                             android:layout_marginLeft="3dp"
                             android:layout_marginRight="3dp"
                             android:text="S/. 40"
-                            android:textSize="30sp"
+                            android:textSize="24sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
                     <ImageView
                         android:id="@+id/imageView2"
-                        android:layout_width="28dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="22dp"
                         android:layout_weight="1"
                         app:srcCompat="@drawable/crono" />
 
@@ -113,39 +116,48 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView6"
-                            android:layout_width="75dp"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/tiempodeesperal"
+                            android:layout_width="92dp"
+                            android:layout_height="match_parent"
                             android:layout_marginRight="3dp"
+                            android:gravity="left"
                             android:text="30 min"
-                            android:textSize="24sp" />
+                            android:textSize="18sp" />
                     </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="234dp"
+                    android:layout_height="31dp"
                     android:layout_marginLeft="3dp"
                     android:layout_marginRight="3dp"
                     android:orientation="horizontal">
 
+                    <TextView
+                        android:id="@+id/idempresal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/trans"
+                        android:textSize="8sp" />
+
                     <ImageView
-                        android:id="@+id/imageView3"
+                        android:id="@+id/imagenefectivol"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         app:srcCompat="@drawable/efectivoimagen" />
 
                     <ImageView
-                        android:id="@+id/imageView4"
+                        android:id="@+id/imagenvisal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         app:srcCompat="@drawable/visaimagen" />
 
                     <ImageView
-                        android:id="@+id/imageView5"
+                        android:id="@+id/imastercardl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

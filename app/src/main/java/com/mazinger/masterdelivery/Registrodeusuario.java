@@ -151,7 +151,7 @@ Toast.makeText(getApplication(),"Las contraseas no son iguales",Toast.LENGTH_LON
     }
     private void irapedir() {
         Intent pi;
-        pi = new Intent(this,Listaparaseleccionar.class);
+        pi = new Intent(this,Muestartodaslasempresas.class);
         startActivity(pi);
     }
 

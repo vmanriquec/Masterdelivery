@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="410dp"
-        android:layout_height="415dp"
+        android:layout_width="351dp"
+        android:layout_height="380dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
@@ -53,12 +53,12 @@
 
     <LinearLayout
         android:id="@+id/linearLayout8"
-        android:layout_width="388dp"
-        android:layout_height="47dp"
+        android:layout_width="315dp"
+        android:layout_height="37dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/botondegradado"
+        android:background="@drawable/fondototalsoles"
         android:foregroundGravity="center_horizontal"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,7 +69,7 @@
 
         <ImageView
             android:id="@+id/imageView8"
-            android:layout_width="wrap_content"
+            android:layout_width="45dp"
             android:layout_height="wrap_content"
             android:background="@color/trans"
             app:srcCompat="@drawable/common_full_open_on_phone" />
@@ -82,7 +82,7 @@
             android:background="@color/trans"
             android:gravity="left|center_vertical"
             android:text="Con tu numero de celular"
-            android:textColor="@color/colortres"
+            android:textColor="@color/coloruno"
             android:textSize="18sp" />
     </LinearLayout>
 

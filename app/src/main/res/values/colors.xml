@@ -170,6 +170,7 @@
 
     <color name="custom_theme_color">#fffe7f00</color>
 
-
+    <color name="colorinicio">#E8D599</color>
+    <color name="colorfinal">#FFA726</color>
 
 </resources>

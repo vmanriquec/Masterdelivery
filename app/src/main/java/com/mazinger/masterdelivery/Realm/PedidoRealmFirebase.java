@@ -17,6 +17,7 @@ public class PedidoRealmFirebase {
     private String nombredescuento;
     private String cuantopagaecliente;
     private String vuelto,referencias,nombreusuario;
+    private String idempresa;
 
     public String getReferencias() {
         return referencias;
@@ -63,13 +64,20 @@ public class PedidoRealmFirebase {
     }
 
 
+    public String getIdempresa() {
+        return idempresa;
+    }
+
+    public void setIdempresa(String idempresa) {
+        this.idempresa = idempresa;
+    }
 
     public PedidoRealmFirebase(int idpedido, int idcliente, int idmesa,
                                Double totalpedido, String estadopedido, String fechapedido,
                                int idusuario, int idalmacen, String idfacebook, String descripcionpedido,
                                String llevar, String direccionallevar, String idfirebase, String nombredescuento,
-                               String montodescuento, String nombrecosto, String montocosto,String longitud,
-                               String latitud,String cuantopagaecliente,String vuelto,String telefono,String referencias,String nombreusuario) {
+                               String montodescuento, String nombrecosto, String montocosto, String longitud,
+                               String latitud, String cuantopagaecliente, String vuelto, String telefono, String referencias, String nombreusuario, String idempresa) {
         this.idpedido = idpedido;
         this.idcliente = idcliente;
         this.idmesa = idmesa;
@@ -94,6 +102,7 @@ public class PedidoRealmFirebase {
         this.telefono=telefono;
         this.referencias=referencias;
         this.nombreusuario=nombreusuario;
+        this.idempresa=idempresa;
     }
 
     public String getLongitud() {

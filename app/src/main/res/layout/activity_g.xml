@@ -10,7 +10,7 @@
         android:id="@+id/cabeceralayoutadicional"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:background="@color/accent"
+        android:background="@drawable/ic_bg_topheader"
         android:text="Producto"
         android:textAlignment="center"
         android:textColor="@color/background_material_light"
@@ -24,8 +24,9 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ScrollView
-        android:layout_width="412dp"
-        android:layout_height="507dp"
+        android:layout_width="0dp"
+        android:layout_height="491dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -51,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.819">
+        app:layout_constraintVertical_bias="0.793">
 
         <Button
             android:id="@+id/botonmenos"
@@ -59,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left|center_vertical"
             android:layout_weight="1"
-            android:background="@drawable/circulofondonaranja"
+            android:background="@drawable/blue_btn_bkg"
             android:text="-"
             android:textSize="36sp"
             android:textStyle="bold" />
@@ -82,7 +83,7 @@
             android:layout_width="5dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/circulofondonaranja"
+            android:background="@drawable/blue_btn_bkg"
             android:text="+"
             android:textSize="36sp" />
 
@@ -99,7 +100,7 @@
         app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.866" />
+        app:layout_constraintVertical_bias="0.849" />
 
     <EditText
         android:id="@+id/editText2e"
@@ -111,15 +112,16 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.911" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.177" />
 
     <LinearLayout
         android:id="@+id/linearLayout11"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:background="@drawable/blue_leftcorner_bkg"
+        android:background="@drawable/fondototalsoles"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,7 +135,7 @@
             android:layout_width="273dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/blue_leftcorner_bkg"
+            android:background="@color/trans"
             android:text="LISTO!  A LA CANASTA"
             android:textSize="18sp"
             android:textStyle="bold" />

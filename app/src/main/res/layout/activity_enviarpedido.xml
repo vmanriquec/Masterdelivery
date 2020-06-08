@@ -61,14 +61,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Monto que pagaras:" />
+                android:text="Pagas: " />
 
             <TextView
                 android:id="@+id/cuantopagacliente"
@@ -97,13 +98,13 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="73dp"
+        android:layout_width="385dp"
+        android:layout_height="60dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/bordecuadradosuave"
+        android:background="@drawable/fondototalsoles"
         android:orientation="horizontal"
         android:paddingLeft="5dp"
         android:paddingTop="5dp"
@@ -121,7 +122,8 @@
             android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:layout_gravity="left|center_vertical"
-            android:layout_marginRight="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="40dp"
             android:background="@color/trans"
             android:text="Nuevo Pedido"
             android:textSize="24sp" />
@@ -132,22 +134,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="escribeme" />
+            android:gravity="bottom"
+            android:text="Escribele al local" />
 
         <Button
             android:id="@+id/wasap"
-            android:layout_width="67dp"
-            android:layout_height="57dp"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/wasap"
             android:gravity="right" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/detalle"
-        android:layout_width="369dp"
-        android:layout_height="423dp"
+        android:layout_width="365dp"
+        android:layout_height="463dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
@@ -157,18 +160,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.627" />
+        app:layout_constraintVertical_bias="0.602" />
 
     <LinearLayout
-        android:layout_width="365dp"
+        android:layout_width="0dp"
         android:layout_height="47dp"
+        android:background="@drawable/ic_bg_topheader"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.913"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023">
+        app:layout_constraintVertical_bias="0.002">
 
         <TextView
             android:id="@+id/cabecera2"
@@ -176,7 +180,6 @@
             android:layout_height="35dp"
             android:layout_gravity="center_vertical"
 
-            android:background="@drawable/button_background"
             android:gravity="center_vertical"
             android:text="Pedido en camino"
             android:textAlignment="center"

@@ -85,7 +85,7 @@ public class Nuevologin extends AppCompatActivity {
         else{
 
 
-            Intent i= new Intent(this,Listaparaseleccionar.class);
+            Intent i= new Intent(this,Muestartodaslasempresas.class);
             startActivity(i);
         }
 
@@ -166,7 +166,7 @@ logincelu.setOnClickListener(new View.OnClickListener() {
     }
     private void veapedir() {
         Intent pi;
-        pi = new Intent(this,Listaparaseleccionar.class);
+        pi = new Intent(this,Muestraproductosporempresa.class);
         startActivity(pi);
     }
     private void registrodenuevousuario() {

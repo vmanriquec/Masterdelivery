@@ -71,6 +71,7 @@ public class Verpedidodos extends AppCompatActivity  {
      frito =(TextView) findViewById(R.id.num);
         tio=(TextView) findViewById(R.id.miavion);
 pidelo=(Button) findViewById(R.id.irafirebase);
+Button cancelartodo=(Button)findViewById(R.id.cancelarpe);
         totalpedidoapedir=(TextView) findViewById(R.id.totalpedidoapedir);
          deliverycosto=(TextView) findViewById(R.id.montodelvery);
          descuento=(TextView) findViewById(R.id.montodescuento);
@@ -91,7 +92,14 @@ pidelo=(Button) findViewById(R.id.irafirebase);
         TextView yy=(TextView) findViewById(R.id.txtdireccion);
         Switch pago=(Switch)findViewById(R.id.dinero);
 
-
+cancelartodo.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        borrartodo();
+        Intent i = new Intent(getApplicationContext(), Muestartodaslasempresas.class);
+        startActivity(i);
+    }
+});
         yy.setText(di);
         new traerdescuentosycosodedelivery().execute(idfirebase);
               recargartotalesisisomos();
@@ -402,5 +410,20 @@ pidelo=(Button) findViewById(R.id.irafirebase);
         Intent pi;
         pi = new Intent(this,Enviarpedido.class);
         startActivity(pi);
+    }
+    private void borrartodo() {
+
+
+            Realm pedido = Realm.getDefaultInstance();
+
+
+
+            pedido.beginTransaction();
+            pedido.deleteAll();
+            pedido.commitTransaction();
+
+
+
+
     }
 }
