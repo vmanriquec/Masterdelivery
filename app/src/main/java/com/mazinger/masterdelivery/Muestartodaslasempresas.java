@@ -12,7 +12,10 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mazinger.masterdelivery.adapter.Adaptadorempresa;
 import com.mazinger.masterdelivery.modelo.Empresa;
@@ -55,6 +58,11 @@ public class Muestartodaslasempresas extends AppCompatActivity {
         TextView nomusu=(TextView) findViewById(R.id.nomusu);
         TextView direusu=(TextView) findViewById(R.id.direusu);
         TextView fechausu=(TextView) findViewById(R.id.fechausu);
+
+        TextView abuscarbu=(TextView) findViewById(R.id.abuscarbu);
+        Button abuscarbuboton=(Button) findViewById(R.id.abuscarbuboton);
+
+
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String currentDateandTime = sdf.format(new Date());
         fechausu.setText(currentDateandTime);
@@ -62,6 +70,19 @@ public class Muestartodaslasempresas extends AppCompatActivity {
         nomusu.setText(nombre);
         direusu.setText(direccion);
         new mostrartodaslasempresas().execute("w");
+
+        abuscarbuboton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(abuscarbu.getText().toString().equals(""))
+                {
+                    Toast.makeText(Muestartodaslasempresas.this,"Debes ecribir algo a buscar",Toast.LENGTH_LONG).show();
+                }else{
+
+                    new mostratodaslaasempresasporbusqueda().execute(abuscarbu.getText().toString());
+                }
+            }
+        });
     }
 
 
@@ -203,6 +224,142 @@ public class Muestartodaslasempresas extends AppCompatActivity {
 
     }
 
+    public class mostratodaslaasempresasporbusqueda extends AsyncTask<String, String, String> {
+
+        HttpURLConnection conne;
+        URL url = null;
+        ProgressDialog pdLoading = new ProgressDialog(Muestartodaslasempresas.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pdLoading.setMessage("\tMostrando todas las empresas que tengan el producto");
+            pdLoading.setCancelable(false);
+            pdLoading.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            try {
+                //  url = new URL("https://sodapop.pe/sugest/apitraertodoslostiposdepago.php");
+                url = new URL("https://sodapop.pe/sugest/apitraerempresasporproducto.php");
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return e.toString();
+            }
+            try {
+                conne = (HttpURLConnection) url.openConnection();
+                conne.setReadTimeout(READ_TIMEOUT);
+                conne.setConnectTimeout(CONNECTION_TIMEOUT);
+                conne.setRequestMethod("POST");
+                conne.setDoInput(true);
+                conne.setDoOutput(true);
+                // Append parameters to URL
+                Uri.Builder builder = new Uri.Builder()
+                        .appendQueryParameter("nombreproducto", params[0]);
+                String query = builder.build().getEncodedQuery();
+
+                // Open connection for sending data
+                OutputStream os = conne.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(query);
+                writer.flush();
+                writer.close();
+                os.close();
+                conne.connect();
+
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+                Log.d("wiwo", e1.toString());
+                return e1.toString();
+            }
+            try {
+                int response_code = conne.getResponseCode();
+
+                if (response_code == HttpURLConnection.HTTP_OK) {
+
+                    InputStream input = conne.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);
+
+                    }
+                    Log.d("waaaaaaa", result.toString());
+                    return (result.toString());
+
+                } else {
+
+                    return ("Connection error");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return e.toString();
+            } finally {
+                conne.disconnect();
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            ArrayList<Empresa> todaslasempresas = new ArrayList<>();
+            todaslasempresas.clear();
+            pdLoading.dismiss();
+            try {
+
+
+
+                JSONArray jArray = new JSONArray(result);
+                for (int i = 0; i < jArray.length(); i++) {
+                    JSONObject json_data = jArray.getJSONObject(i);
+
+                    Empresa pedidofirebase = new Empresa(
+                            (
+                                    json_data.getInt("idempresa")),
+                            json_data.getString("razonsocialempresa"),
+                            json_data.getString("direccionempresa"),
+                            json_data.getString("telefonoempresa"),
+                            json_data.getString("emailempresa"),
+                            json_data.getString("paginawebempresa"),
+                            json_data.getString("estadoempresa"),
+                            json_data.getString("sloganempresa"),
+                            json_data.getString("nombreadministrador"),
+                            json_data.getString("telefonoadministrador"),
+                            json_data.getString("logotipoempresa"),
+                            json_data.getString("idrubroempresa"),
+                            json_data.getString("montominimodeventa"),
+                            json_data.getString("tiempodedemoraempresa"),
+                            json_data.getString("nombreadministrador")
+
+
+                    );
+                    todaslasempresas.add(pedidofirebase);
+
+
+                }
+
+                final RecyclerView pedidose = findViewById(R.id.recydeempresasl);
+
+                Adaptadorempresa adaptadore = new Adaptadorempresa(todaslasempresas, Muestartodaslasempresas.this);
+                pedidose.setLayoutManager(new GridLayoutManager(Muestartodaslasempresas.this.getApplicationContext(), 1));
+
+                pedidose.setAdapter(adaptadore);
+
+                adaptadore.notifyDataSetChanged();
+
+            } catch (JSONException e) {
+                Log.d("erororor", e.toString());
+            }
+        }
+
+    }
 
 }
 

@@ -155,8 +155,14 @@ int idusuario;
                  c=c+1;
                  cantidadapedir.setText( String.valueOf(c));
                  String va=totalapagar.getText().toString();
-                    Double totalitoinicial=Double.parseDouble(va);
-                    totalitoinicial=totalitoinicial+(totalitoinicial/(c-1));
+                    Double f=Double.parseDouble(va);
+
+                    Double totalitoinicial =   Math.round(f*100.0)/100.0;
+                   // Double totalitoinicial = round(f,1);
+                  //Double totalitoinicial=  (double)Math.round(f * 100d) / 100d;
+
+
+                  totalitoinicial=totalitoinicial+(totalitoinicial/(c-1));
                     totalapagar.setText(String.valueOf(totalitoinicial));
                     totalapagar.clearAnimation();
                     totalapagar.startAnimation(a);
@@ -173,7 +179,14 @@ int idusuario;
                     c = c - 1;
                     cantidadapedir.setText(String.valueOf(c));
                     String va = totalapagar.getText().toString();
-                    Double totalitoinicial = Double.parseDouble(va);
+
+                    Double f=Double.parseDouble(va);
+
+                    Double totalitoinicial =   Math.round(f*100.0)/100.0;
+                  //  = round(f,1);
+                    //Double totalitoinicial=  (double)Math.round(f * 100d) / 100d;
+
+
                     totalitoinicial=totalitoinicial-(totalitoinicial/(c+1));
                     totalapagar.setText(String.valueOf(totalitoinicial));
                     totalapagar.clearAnimation();
@@ -882,7 +895,14 @@ int ff = 0;
 
 
 
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
 
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
+    }
 }
 
 
