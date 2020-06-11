@@ -8,8 +8,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout12"
-        android:layout_width="374dp"
-        android:layout_height="102dp"
+        android:layout_width="319dp"
+        android:layout_height="112dp"
         android:background="@drawable/bordecuadradosuave"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -98,7 +98,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="385dp"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
@@ -112,10 +112,10 @@
         android:paddingBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.952">
+        app:layout_constraintVertical_bias="1.0">
 
         <Button
             android:id="@+id/limpiartodo"
@@ -123,7 +123,7 @@
             android:layout_height="32dp"
             android:layout_gravity="left|center_vertical"
             android:layout_marginLeft="5dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginRight="0dp"
             android:background="@color/trans"
             android:text="Nuevo Pedido"
             android:textSize="24sp" />
@@ -149,8 +149,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/detalle"
-        android:layout_width="365dp"
-        android:layout_height="463dp"
+        android:layout_width="0dp"
+        android:layout_height="242dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
@@ -160,11 +160,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.602" />
+        app:layout_constraintVertical_bias="0.675" />
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="47dp"
+        android:layout_width="319dp"
+        android:layout_height="35dp"
         android:background="@drawable/ic_bg_topheader"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -176,7 +176,7 @@
 
         <TextView
             android:id="@+id/cabecera2"
-            android:layout_width="308dp"
+            android:layout_width="254dp"
             android:layout_height="35dp"
             android:layout_gravity="center_vertical"
 
@@ -189,7 +189,7 @@
 
         <ImageView
             android:id="@+id/imageView9"
-            android:layout_width="55dp"
+            android:layout_width="45dp"
             android:layout_height="42dp"
             app:srcCompat="@drawable/motodelivery" />
 

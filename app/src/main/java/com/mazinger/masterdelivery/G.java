@@ -199,6 +199,7 @@ int idusuario;
 
         new traeradicional().execute(idproductoseleccionado);
         new traercremas().execute(idproductoseleccionado);
+        actualizartotalenpedido();
     }
     private class traeradicional extends AsyncTask<String, String, String> {
         HttpURLConnection conne;

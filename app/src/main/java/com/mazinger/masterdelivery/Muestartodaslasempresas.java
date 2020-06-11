@@ -1,10 +1,5 @@
 package com.mazinger.masterdelivery;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -16,6 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mazinger.masterdelivery.adapter.Adaptadorempresa;
 import com.mazinger.masterdelivery.modelo.Empresa;
@@ -43,11 +44,15 @@ public class Muestartodaslasempresas extends AppCompatActivity {
     SharedPreferences prefs;
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;
-
+    private ActionBar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitymuestratodaslasempresas);
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.hide();
+
+        toolbar = getSupportActionBar();
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         prefs = getApplication().getSharedPreferences(FileName, Context.MODE_PRIVATE);
@@ -55,20 +60,17 @@ public class Muestartodaslasempresas extends AppCompatActivity {
         String nombre = prefs.getString("nombreusuariof", "");
         String direccion = prefs.getString("direccion", "");
 
-        TextView nomusu=(TextView) findViewById(R.id.nomusu);
-        TextView direusu=(TextView) findViewById(R.id.direusu);
+
         TextView fechausu=(TextView) findViewById(R.id.fechausu);
 
         TextView abuscarbu=(TextView) findViewById(R.id.abuscarbu);
         Button abuscarbuboton=(Button) findViewById(R.id.abuscarbuboton);
 
-
+abuscarbu.setHint("Hola "+ nombre+ ", busca un producto...");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String currentDateandTime = sdf.format(new Date());
         fechausu.setText(currentDateandTime);
 
-        nomusu.setText(nombre);
-        direusu.setText(direccion);
         new mostrartodaslasempresas().execute("w");
 
         abuscarbuboton.setOnClickListener(new View.OnClickListener() {

@@ -1,14 +1,12 @@
 package com.mazinger.masterdelivery;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -22,15 +20,18 @@ import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mazinger.masterdelivery.Realm.Crudpedido;
 import com.mazinger.masterdelivery.Realm.Detallepedidorealm;
 import com.mazinger.masterdelivery.Realm.PedidoRealm;
 import com.mazinger.masterdelivery.Realm.PedidoRealmFirebase;
-import com.mazinger.masterdelivery.adapter.Adaptadorempresa;
 import com.mazinger.masterdelivery.adapter.Adaptadorproductoempresa;
-
 import com.mazinger.masterdelivery.adapter.Adaptadorrecibepedidos;
-import com.mazinger.masterdelivery.modelo.Empresa;
 import com.mazinger.masterdelivery.modelo.Productos;
 
 import org.json.JSONArray;
@@ -54,26 +55,27 @@ import java.util.Date;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-import static com.mazinger.masterdelivery.Login.CONNECTION_TIMEOUT;
-import static com.mazinger.masterdelivery.Login.READ_TIMEOUT;
-
 public class Muestraproductosporempresa extends AppCompatActivity {
     String FileName = "myfile";
     SharedPreferences prefs;
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;
     private ActionBar toolbar;
-
+    FloatingActionButton fab;
+    TextView fabi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_muestraproductosporempresa);
         ActionBar actionbar = getSupportActionBar();
         actionbar.hide();
+fab=(FloatingActionButton)findViewById(R.id.fab);
+fabi=(TextView)findViewById(R.id.fabi);
 
         toolbar = getSupportActionBar();
 
         prefs = getApplication().getSharedPreferences(FileName, Context.MODE_PRIVATE);
+
         cargarbarradeabajo();
         MultiAutoCompleteTextView myMultiAutoCompleteTextView
                 = (MultiAutoCompleteTextView) findViewById(
@@ -100,13 +102,12 @@ public class Muestraproductosporempresa extends AppCompatActivity {
         TextView costodelivery = (TextView) findViewById(R.id.costodelivery);
         TextView tiempodemorae = (TextView) findViewById(R.id.tiempodemora);
         TextView nombreep = (TextView) findViewById(R.id.nombreep);
-        TextView botonlisto = (TextView) findViewById(R.id.cinco1);
 
 
         Button wasap = (Button) findViewById(R.id.wasapep);
         Button todos1 = (Button) findViewById(R.id.todos1);
         Button mispedidos = (Button) findViewById(R.id.mispedidosep);
-        TextView tot = (TextView) findViewById(R.id.seis1);
+        //TextView tot = (TextView) findViewById(R.id.seis1);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String currentDateandTime = sdf.format(new Date());
 
@@ -116,7 +117,7 @@ public class Muestraproductosporempresa extends AppCompatActivity {
         tiempodemorae.setText(tiempodemora);
         costodelivery.setText(montominimo);
         nombreep.setText(nombreempresa);
-        TextView cantidadfragment = (TextView) findViewById(R.id.cuatro1);
+       // TextView cantidadfragment = (TextView) findViewById(R.id.cuatro1);
 
 
         new traerproductospe().execute(idempresa);
@@ -179,7 +180,10 @@ public class Muestraproductosporempresa extends AppCompatActivity {
                 pedido.where(Detallepedidorealm.class)
                         .findAll();
         int w = results.size();
-        cantidadfragment.setText(String.valueOf(w));
+       // cantidadfragment.setText(String.valueOf(w));
+
+        //fab.setImageBitmap(textAsBitmap(String.valueOf(w), 40, Color.WHITE));
+        fabi.setText(String.valueOf(w));
         Double tt = 0.0;
         for (int i = 0; i < w; i++) {
             int gg = results.get(i).getCantidadrealm();
@@ -189,18 +193,16 @@ public class Muestraproductosporempresa extends AppCompatActivity {
             tt = tt + jjj;
 
         }
-        tot.setText("S/. " + String.valueOf(tt));
+       // tot.setText("S/. " + String.valueOf(tt));
 
+fabi.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
 
-        botonlisto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        iraverpedidos();
+    }
+});
 
-                iraverpedidos();
-
-
-            }
-        });
 
         new llenarautocomplete().execute(idempresa);
     }
@@ -336,7 +338,7 @@ public class Muestraproductosporempresa extends AppCompatActivity {
 
     private void cargarbarradeabajo() {
         TextView tot = (TextView) findViewById(R.id.seis1);
-        TextView cantidadfragment = (TextView) findViewById(R.id.cuatro1);
+       // TextView cantidadfragment = (TextView) findViewById(R.id.cuatro1);
 
         Realm.init(getApplicationContext());
         Realm pedido = Realm.getDefaultInstance();
@@ -344,7 +346,10 @@ public class Muestraproductosporempresa extends AppCompatActivity {
                 pedido.where(Detallepedidorealm.class)
                         .findAll();
         int w = results.size();
-        cantidadfragment.setText(String.valueOf(w));
+       // cantidadfragment.setText(String.valueOf(w));
+
+        //fab.setImageBitmap(textAsBitmap(String.valueOf(w), 40, Color.WHITE));
+fabi.setText(String.valueOf(w));
         Double tt = 0.0;
         for (int i = 0; i < w; i++) {
             int gg = results.get(i).getCantidadrealm();
@@ -354,7 +359,7 @@ public class Muestraproductosporempresa extends AppCompatActivity {
             tt = tt + jjj;
 
         }
-        tot.setText("S/. " + String.valueOf(tt));
+       // tot.setText("S/. " + String.valueOf(tt));
 
 
     }
@@ -909,10 +914,19 @@ public class Muestraproductosporempresa extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        try {
+
+        } catch (Exception ex) {
+        }
+    }
     @Override
     public void onBackPressed() {
-        TextView cuatro1=(TextView)findViewById(R.id.cuatro1);
-        if (cuatro1.getText().toString().equals("0"))
+        TextView fabi=(TextView)findViewById(R.id.fabi);
+        if (fabi.getText().toString().equals("0"))
         {
 
             Intent pi;
@@ -920,8 +934,18 @@ public class Muestraproductosporempresa extends AppCompatActivity {
             startActivity(pi);
         }else
         {
-Toast.makeText(Muestraproductosporempresa.this,"Tienes un producto de esta tienda en canasta",Toast.LENGTH_LONG).show();
-        }
+            BottomSheetFragment bottomSheetDialog = BottomSheetFragment.newInstance();
+
+            String nombre = prefs.getString("nombreusuariof", "");
+
+            Bundle bundle = new Bundle();
+            bundle.putString("test", "Hey aun tienes productos en canasta, anula para avanzar");
+            bundle.putString("nombreusuario", nombre);
+
+            bottomSheetDialog.setArguments(bundle);
+            bottomSheetDialog.show(getSupportFragmentManager(), "Bottom Sheet Dialog Fragment");
+
+    }
 
     }
     @Override
@@ -962,5 +986,30 @@ Toast.makeText(Muestraproductosporempresa.this,"Tienes un producto de esta tiend
         editor.commit();
 
     }
+    public static Bitmap textAsBitmap(String text, float textSize, int textColor) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setTextSize(textSize);
+        paint.setColor(textColor);
+        paint.setTextAlign(Paint.Align.LEFT);
+        float baseline = -paint.ascent(); // ascent() is negative
+        int width = (int) (paint.measureText(text) + 0.0f); // round
+        int height = (int) (baseline + paint.descent() + 0.0f);
+        Bitmap image = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 
+        Canvas canvas;
+        canvas = new Canvas(image);
+        canvas.drawText(text, 0, baseline, paint);
+        return image;
+    }
+    public void   Eliminartotalcremas() {
+        Realm pedido = Realm.getDefaultInstance();
+
+
+
+        pedido.beginTransaction();
+        pedido.deleteAll();
+        pedido.commitTransaction();
+
+
+    }
 }

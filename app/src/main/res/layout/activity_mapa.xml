@@ -11,25 +11,25 @@
         android:id="@+id/mapa"
         class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="0dp"
-        android:layout_height="529dp"
+        android:layout_height="302dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.416"
+        app:layout_constraintVertical_bias="0.357"
         tools:layout="@layout/activity_mapa">
 
     </androidx.fragment.app.FragmentContainerView>
 
     <RelativeLayout
         android:id="@+id/relLayout10"
-        android:layout_width="0dp"
-        android:layout_height="54dp"
+        android:layout_width="309dp"
+        android:layout_height="46dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
@@ -38,9 +38,10 @@
         android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.929">
+        app:layout_constraintVertical_bias="0.875">
 
         <EditText
             android:id="@+id/referencia"
@@ -69,7 +70,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mi Ubicacion"
+        android:text="Tu Ubicacion"
         android:textColor="@color/accent"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -95,7 +96,7 @@
 
     <TextView
         android:id="@+id/direc"
-        android:layout_width="375dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
 
         android:layout_marginLeft="5dp"
@@ -110,15 +111,14 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/listo"
-        android:layout_width="72dp"
-        android:layout_height="64dp"
+        android:layout_width="49dp"
+        android:layout_height="45dp"
         android:background="@drawable/gps"
         android:textColor="@color/accent"
         android:textSize="18sp"

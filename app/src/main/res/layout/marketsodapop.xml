@@ -2,15 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="5dp" >
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/info_window_imagen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="8dp"
         android:scaleType="centerCrop"
         android:src="@drawable/soda"
         app:srcCompat="@drawable/soda" />
@@ -20,11 +19,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="9dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="27dp"
         android:layout_toRightOf="@id/info_window_imagen"
         android:paddingLeft="5dp"
         android:text="nombre de local"
+        android:textColor="@color/colorPrimary"
         android:textSize="12sp" />
 
     <TextView
@@ -36,6 +36,7 @@
         android:layout_toRightOf="@id/info_window_imagen"
         android:paddingLeft="5dp"
         android:text="Placas: SX5487"
+        android:textColor="@color/accent"
         android:textSize="14sp"
         android:textStyle="bold" />
 
@@ -45,10 +46,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/sloganlocal"
         android:layout_marginLeft="13dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="2dp"
         android:layout_toRightOf="@id/info_window_imagen"
         android:paddingLeft="5dp"
         android:text="Estado: Activo"
+        android:textColor="@color/colorPrimary"
         android:textSize="12sp" />
 
 </RelativeLayout>

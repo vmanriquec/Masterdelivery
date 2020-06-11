@@ -24,8 +24,8 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="491dp"
+        android:layout_width="320dp"
+        android:layout_height="239dp"
         android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout11"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.793">
+        app:layout_constraintVertical_bias="0.676">
 
         <Button
             android:id="@+id/botonmenos"
@@ -97,14 +97,14 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.849" />
+        app:layout_constraintVertical_bias="0.748" />
 
     <EditText
         android:id="@+id/editText2e"
-        android:layout_width="373dp"
+        android:layout_width="0dp"
         android:layout_height="33dp"
         android:background="@drawable/button_background"
         android:gravity="center_horizontal|center_vertical"
@@ -132,7 +132,7 @@
 
         <Button
             android:id="@+id/acanasta"
-            android:layout_width="273dp"
+            android:layout_width="209dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/trans"

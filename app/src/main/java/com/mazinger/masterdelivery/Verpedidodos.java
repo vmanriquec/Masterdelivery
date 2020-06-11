@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -126,13 +125,37 @@ cancelartodo.setOnClickListener(new View.OnClickListener() {
 
                           if(apagar.getText().toString().equals("")){
 
-                              Toast.makeText(getApplication(),"Debes pagar con algo",Toast.LENGTH_LONG).show();
+
+                              BottomSheetFragment bottomSheetDialog = BottomSheetFragment.newInstance();
+
+                              String nombre = prefs.getString("nombreusuariof", "");
+
+                              Bundle bundle = new Bundle();
+                              bundle.putString("test", "Debes pagar con algo");
+                              bundle.putString("nombreusuario", nombre);
+
+                              bottomSheetDialog.setArguments(bundle);
+                              bottomSheetDialog.show(getSupportFragmentManager(), "Bottom Sheet Dialog Fragment");
+
+                              //Toast.makeText(getApplication(),"Debes pagar con algo",Toast.LENGTH_LONG).show();
                           }else{
                               Double g=Double.parseDouble(apagar.getText().toString());
 
                               if (g<gi){
 
-                                  Toast.makeText(getApplication(),"Estas pagando menos del pedido",Toast.LENGTH_LONG).show();
+
+                                  BottomSheetFragment bottomSheetDialog = BottomSheetFragment.newInstance();
+
+                                  String nombre = prefs.getString("nombreusuariof", "");
+
+                                  Bundle bundle = new Bundle();
+                                  bundle.putString("test", "Estas pagando menos del Monto pedido");
+                                  bundle.putString("nombreusuario", nombre);
+
+                                  bottomSheetDialog.setArguments(bundle);
+                                  bottomSheetDialog.show(getSupportFragmentManager(), "Bottom Sheet Dialog Fragment");
+
+//                                  Toast.makeText(getApplication(),"Estas pagando menos del pedido",Toast.LENGTH_LONG).show();
                                   apagar.setText("");
                               }
                               else{

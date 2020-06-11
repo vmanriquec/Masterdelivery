@@ -24,8 +24,8 @@ android {
         applicationId "com.mazinger.masterdelivery"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 16
-        versionName "16.0"
+        versionCode 18
+        versionName "18.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -121,7 +121,7 @@ dependencies {
     // implementation 'com.github.f0ris.sweetalert:library:1.5.1'
     //implementation 'com.github.Leogiroux:sweet-alert-dialog:'
     implementation 'com.roughike:bottom-bar:2.3.1'
-
+    implementation 'xyz.sahildave:arclayout:1.0.0'
 
     implementation 'com.cocosw:bottomsheet:1.5.0@aar'
     implementation 'androidx.cardview:cardview:1.0.0'

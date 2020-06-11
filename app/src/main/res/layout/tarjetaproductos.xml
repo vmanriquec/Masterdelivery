@@ -5,7 +5,7 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/trans"
+    android:background="@drawable/fondotarjeta"
     android:paddingLeft="8dp"
     android:paddingTop="8dp"
     android:paddingRight="8dp"
@@ -16,7 +16,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
-        android:background="@drawable/bordedetarjetaproductos"
+        android:background="@drawable/fondotarjeta"
         android:paddingBottom="5dp"
         android:pointerIcon="hand"
         card_view:cardBackgroundColor="#fff"
@@ -63,8 +63,7 @@
                         android:layout_height="30dp"
                         android:layout_gravity="left|center_vertical"
                         android:gravity="left|center_vertical"
-                        android:text="TextView"
-                         />
+                        android:text="TextView" />
 
                     <TextView
                         android:id="@+id/inventario2"
@@ -92,13 +91,13 @@
 
             <ImageView
                 android:id="@+id/imagen2"
-                android:layout_width="match_parent"
-                android:layout_height="153dp"
+                android:layout_width="284dp"
+                android:layout_height="242dp"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:scaleType="fitCenter"
-                card_view:srcCompat="@drawable/portatil_latitude_12_rugged" />
+                android:scaleType="fitXY"
+                card_view:srcCompat="@drawable/user" />
 
             <TextView
                 android:id="@+id/nombre2"
@@ -114,7 +113,7 @@
 
             <TextView
                 android:id="@+id/ingredientes2"
-                android:layout_width="match_parent"
+                android:layout_width="284dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="3dp"
@@ -129,11 +128,15 @@
 
                 <Button
                     android:id="@+id/botonmas12"
-                    android:layout_width="match_parent"
-                    android:layout_height="31dp"
+                    android:layout_width="287dp"
+                    android:layout_height="39dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
-                    android:background="@color/design_textinput_error_color_light"
-                    android:text="Lo quiero"
+                    android:background="@drawable/botondegradado"
+                    android:text="A canasta"
                     android:textColor="@color/colortres"
                     android:textSize="18sp"
                     android:textStyle="bold" />
