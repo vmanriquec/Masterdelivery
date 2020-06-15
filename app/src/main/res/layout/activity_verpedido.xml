@@ -338,7 +338,7 @@
         android:layout_weight="1"
         android:background="@drawable/botondegradado"
         android:paddingBottom="5dp"
-        android:text="Cancelar"
+        android:text="Anular"
         android:textColor="@color/colortres"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"

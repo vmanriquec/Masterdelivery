@@ -2,6 +2,7 @@ package com.mazinger.masterdelivery;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -18,6 +19,8 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.mazinger.masterdelivery.Realm.Detallepedidorealm;
 import com.mazinger.masterdelivery.adapter.Adaptadorempresa;
 import com.mazinger.masterdelivery.modelo.Empresa;
 
@@ -39,18 +42,27 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import io.realm.Realm;
+import io.realm.RealmResults;
+
 public class Muestartodaslasempresas extends AppCompatActivity {
     String FileName = "myfile";
     SharedPreferences prefs;
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;
     private ActionBar toolbar;
+    FloatingActionButton fab;
+    TextView fabi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitymuestratodaslasempresas);
         ActionBar actionbar = getSupportActionBar();
         actionbar.hide();
+        Realm.init(getApplicationContext());
+
+        fab=(FloatingActionButton)findViewById(R.id.fab);
+        fabi=(TextView)findViewById(R.id.fabi);
 
         toolbar = getSupportActionBar();
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -85,6 +97,33 @@ abuscarbu.setHint("Hola "+ nombre+ ", busca un producto...");
                 }
             }
         });
+        Realm pedido = Realm.getDefaultInstance();
+        RealmResults<Detallepedidorealm> results =
+                pedido.where(Detallepedidorealm.class)
+                        .findAll();
+        int w = results.size();
+        fabi.setText(String.valueOf(w));
+        Double tt = 0.0;
+        for (int i = 0; i < w; i++) {
+            int gg = results.get(i).getCantidadrealm();
+            int popo = results.get(i).getIdpedido();
+            String lll = results.get(i).getNombreproductorealm();
+            Double jjj = Double.parseDouble(results.get(i).getSubtotal());
+            tt = tt + jjj;
+
+        }
+        // tot.setText("S/. " + String.valueOf(tt));
+
+        fabi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                iraverpedidos();
+            }
+        });
+
+
+//        borrartodo();
     }
 
 
@@ -201,8 +240,8 @@ abuscarbu.setHint("Hola "+ nombre+ ", busca un producto...");
 
                             json_data.getString("montominimodeventa"),
                             json_data.getString("tiempodedemoraempresa"),
-                            json_data.getString("nombrerubro")
-
+                            json_data.getString("nombrerubro"),
+                            json_data.getString("costodelivery")
 
                     );
                     todaslasempresas.add(pedidofirebase);
@@ -338,8 +377,8 @@ abuscarbu.setHint("Hola "+ nombre+ ", busca un producto...");
                             json_data.getString("idrubroempresa"),
                             json_data.getString("montominimodeventa"),
                             json_data.getString("tiempodedemoraempresa"),
-                            json_data.getString("nombreadministrador")
-
+                            json_data.getString("nombreadministrador"),
+                            json_data.getString("costodelivery")
 
                     );
                     todaslasempresas.add(pedidofirebase);
@@ -362,6 +401,21 @@ abuscarbu.setHint("Hola "+ nombre+ ", busca un producto...");
         }
 
     }
+    private void borrartodo() {
 
+
+        Realm pedido = Realm.getDefaultInstance();
+        pedido.beginTransaction();
+        pedido.deleteAll();
+        pedido.commitTransaction();
+
+
+
+
+    }
+    private void iraverpedidos() {
+        Intent i = new Intent(getApplication(), Verpedidodos.class);
+        startActivity(i);
+    }
 }
 

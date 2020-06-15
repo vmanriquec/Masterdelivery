@@ -314,7 +314,7 @@ int idusuario;
                     my_layout.addView(texto, textoenlayout);
                     for( numerodeadiciones= 0; numerodeadiciones < peopleadicional.size(); numerodeadiciones++) {
                         CheckBox cb = new CheckBox(getApplication());
-                        cb.setText("   "+peopleadicional.get(numerodeadiciones).getNombreadicional()+ "               S/. "+String.valueOf(peopleadicional.get(numerodeadiciones).getPrecioadicional()));
+                        cb.setText("   "+peopleadicional.get(numerodeadiciones).getNombreadicional()+ "      S/. "+String.valueOf(peopleadicional.get(numerodeadiciones).getPrecioadicional()));
                         cb.setTextColor(getApplication().getResources().getColor(R.color.colorPrimary));
                         Double ffff=peopleadicional.get(numerodeadiciones).getPrecioadicional();
                         String q=peopleadicional.get(numerodeadiciones).getNombreadicional();
@@ -406,7 +406,7 @@ int idusuario;
                 conne = (HttpURLConnection) url.openConnection();
                 conne.setReadTimeout(READ_TIMEOUT);
                 conne.setConnectTimeout(CONNECTION_TIMEOUT);
-                conne.setRequestMethod("POST");
+                conne.setRequestMethod("GET");
                 conne.setDoInput(true);
                 conne.setDoOutput(true);
 
@@ -693,6 +693,17 @@ int tu=Crudpedido.calculateIndex()-1;
         PedidoRealm pedidoRealm = pedido.where(PedidoRealm.class)
                 .equalTo("idpedido", tu)
                 .findFirst();
+
+
+        if (tu==-1){
+            borrartodo();
+
+
+
+
+
+
+        }
       pedidoRealm.setTotalpedido(Double.parseDouble(pp));
         pedido.insertOrUpdate(pedidoRealm);
         pedido.commitTransaction();
@@ -903,6 +914,18 @@ int ff = 0;
         value = value * factor;
         long tmp = Math.round(value);
         return (double) tmp / factor;
+    }
+    private static void borrartodo() {
+
+
+        Realm pedido = Realm.getDefaultInstance();
+        pedido.beginTransaction();
+        pedido.deleteAll();
+        pedido.commitTransaction();
+
+
+
+
     }
 }
 

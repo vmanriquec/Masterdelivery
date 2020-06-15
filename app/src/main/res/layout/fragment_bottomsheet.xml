@@ -23,31 +23,26 @@
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="93dp"
             app:srcCompat="@drawable/chef" />
 
         <TextView
             android:id="@+id/cabecerashet"
-            android:layout_width="219dp"
-            android:layout_height="55dp"
+            android:layout_width="174dp"
+            android:layout_height="47dp"
             android:layout_below="@+id/cuerposhet"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="19dp"
             android:layout_toEndOf="@+id/imageView4"
             android:text="TextView"
             android:textColor="@color/colortres" />
 
         <TextView
             android:id="@+id/cuerposhet"
-            android:layout_width="61dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_alignParentTop="true"
-
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="164dp"
+            android:layout_marginStart="13dp"
             android:layout_toEndOf="@+id/imageView4"
             android:text="Hola "
             android:textColor="@color/colortres"
@@ -55,13 +50,13 @@
 
         <TextView
             android:id="@+id/nombreusuarioshet"
-            android:layout_width="wrap_content"
-            android:layout_height="34dp"
+            android:layout_width="110dp"
+            android:layout_height="30dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="115dp"
+            android:layout_marginStart="83dp"
             android:layout_marginTop="2dp"
-            android:layout_marginEnd="25dp"
+            android:layout_marginEnd="10dp"
             android:layout_toEndOf="@+id/imageView4"
             android:gravity="center_vertical"
             android:text="TextView"

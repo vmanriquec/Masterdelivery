@@ -7,52 +7,65 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout17"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/fechausu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="TextView"
+            android:textColor="@color/trans"
+            android:textSize="8sp" />
+
         <LinearLayout
+            android:id="@+id/linearLayout13"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:background="@drawable/ic_bg_topheader"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/colorAccent"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+            app:layout_constraintVertical_bias="0.003">
 
-            <LinearLayout
-                android:layout_width="206dp"
-                android:layout_height="match_parent"
+            <EditText
+                android:id="@+id/abuscarbu"
+                android:layout_width="263dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/fondoparabuscar"
+                android:hint="Busca un producto o servicio"
+                android:paddingLeft="10dp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/abuscarbuboton"
+                android:layout_width="25dp"
+                android:layout_height="47dp"
+                android:layout_gravity="right|center_horizontal|center_vertical"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/nomusu"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical"
-                    android:text="TextView"
-                    android:textColor="@color/coloruno"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/direusu"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="15dp"
-                    android:gravity="center_vertical"
-                    android:text="TextView" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/fechausu"
-                android:layout_width="135dp"
-                android:layout_height="match_parent"
+                android:background="@drawable/ic_search"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="TextView"
-                android:textSize="18sp" />
+                android:textColor="@color/chatotro" />
 
         </LinearLayout>
 
@@ -60,21 +73,61 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recydeempresasl"
             android:layout_width="match_parent"
-            android:layout_height="518dp"
-            android:layout_marginTop="10dp" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="112dp"
-            android:orientation="vertical">
+        </androidx.recyclerview.widget.RecyclerView>
 
-            <ImageView
-                android:id="@+id/imageView16"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/bannerbajo" />
-        </LinearLayout>
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="89dp"
+        android:layout_height="102dp"
+        android:layout_gravity="right|end"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="102dp">
+
+
+            <TextView
+                android:id="@+id/fabi"
+                android:layout_width="49dp"
+                android:layout_height="41dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="22dp"
+                android:layout_marginLeft="-67dp"
+                android:layout_toRightOf="@+id/fab"
+                android:background="@drawable/fondotarjeta"
+                android:elevation="7dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="0"
+                android:textColor="@color/colortres"
+                android:textSize="18sp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:baselineAlignBottom="false"
+                android:cropToPadding="false"
+                android:elevation="0dp"
+                android:src="@drawable/src_files_payment"
+                app:backgroundTint="@color/trans"
+                app:fabCustomSize="60dp"
+                app:fabSize="auto"
+                app:maxImageSize="64dp" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

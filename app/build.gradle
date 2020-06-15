@@ -24,8 +24,8 @@ android {
         applicationId "com.mazinger.masterdelivery"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 18
-        versionName "18.0"
+        versionCode 21
+        versionName "21"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true

@@ -4,27 +4,16 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.LinearLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -74,21 +63,6 @@ public class Nuevologin extends AppCompatActivity {
 
 //
 
-        if (nombre.equals("")){
-            YoYo.with(Techniques.SlideInLeft)
-                    .duration(1700)
-                    .repeat(2)
-                    .playOn(findViewById(R.id.imageView7));
-
-
-        }
-        else{
-
-
-            Intent i= new Intent(this,Muestartodaslasempresas.class);
-            startActivity(i);
-        }
-
 
 
 
@@ -99,7 +73,23 @@ public class Nuevologin extends AppCompatActivity {
 logincelu.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-     iraregistrarusuarionuevo();
+
+        if (nombre.equals("")){
+            YoYo.with(Techniques.SlideInLeft)
+                    .duration(1700)
+                    .repeat(2)
+                    .playOn(findViewById(R.id.imageView7));
+
+            iraregistrarusuarionuevo();
+        }
+        else{
+
+
+            Intent i= new Intent(Nuevologin.this,Muestartodaslasempresas.class);
+            startActivity(i);
+        }
+
+
     }
 
 

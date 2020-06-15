@@ -7,13 +7,13 @@
     android:layout_marginLeft="5dp"
     android:layout_marginTop="5dp"
     android:layout_marginRight="5dp"
-    android:background="@drawable/fondotarjeta"
+    android:elevation="25dp"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/tarjetaempresa"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="395dp"
+        android:layout_height="234dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
@@ -27,149 +27,147 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.013">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView20"
+                android:layout_width="70dp"
+                android:layout_height="57dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="-2dp"
+                android:layout_marginTop="190dp"
+                android:src="@drawable/corazon" />
+
+            <TextView
+                android:id="@+id/costodeliverycard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="346dp"
+                android:layout_marginTop="206dp"
+                android:text="00"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/idempresal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/trans"
+                android:textSize="8sp" />
+
+            <TextView
+                android:id="@+id/tiempodeesperal"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="129dp"
+                android:layout_marginTop="147dp"
+                android:layout_marginRight="3dp"
+                android:gravity="left"
+                android:text="30 min"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView19"
+                android:layout_width="55dp"
+                android:layout_height="36dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="289dp"
+                android:layout_marginTop="198dp"
+                android:src="@drawable/ic_bicycle" />
+
+            <TextView
+                android:id="@+id/txtvaloracion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="62dp"
+                android:layout_marginTop="202dp"
+                android:text="00"
+                android:textSize="18sp" />
 
             <ImageView
                 android:id="@+id/imagenempresa1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="392dp"
+                android:layout_height="194dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginStart="3dp"
                 android:layout_marginLeft="3dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginRight="3dp"
                 android:layout_marginBottom="3dp"
+                android:scaleType="fitXY"
                 tools:srcCompat="@tools:sample/avatars" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/nombreempresa"
+                android:layout_width="374dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginEnd="9dp"
+                android:layout_marginRight="3dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="nombre empresa"
+                android:textColor="@color/colortres"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/rubroempresa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="73dp"
+                android:layout_marginRight="3dp"
+                android:gravity="center_horizontal"
+                android:text="rubroempresa"
+                android:textColor="@color/colortres" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+            <TextView
+                android:id="@+id/montominimodeventa"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="198dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="149dp"
+                android:layout_marginRight="3dp"
+                android:text="S/. 40"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/nombreempresa"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="3dp"
-                        android:layout_marginRight="3dp"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="nombre empresa"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <RatingBar
-                        android:id="@+id/ratingBar"
-                        android:layout_width="4dp"
-                        android:layout_height="43dp"
-                        android:layout_weight="1" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/rubroempresa"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="3dp"
-                    android:text="rubroempresa" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="125dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView5"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="monto minimo" />
-
-                        <TextView
-                            android:id="@+id/montominimodeventa"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="3dp"
-                            android:layout_marginRight="3dp"
-                            android:text="S/. 40"
-                            android:textSize="24sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <ImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="22dp"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/crono" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/tiempodeesperal"
-                            android:layout_width="92dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginRight="3dp"
-                            android:gravity="left"
-                            android:text="30 min"
-                            android:textSize="18sp" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="234dp"
-                    android:layout_height="31dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="3dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/idempresal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textColor="@color/trans"
-                        android:textSize="8sp" />
-
-                    <ImageView
-                        android:id="@+id/imagenefectivol"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/efectivoimagen" />
-
-                    <ImageView
-                        android:id="@+id/imagenvisal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/visaimagen" />
-
-                    <ImageView
-                        android:id="@+id/imastercardl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/mastercardimagen" />
-                </LinearLayout>
-
-            </LinearLayout>
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="150dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/crono" />
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

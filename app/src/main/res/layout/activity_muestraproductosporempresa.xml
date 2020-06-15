@@ -6,163 +6,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/linearLayout15"
+        <ImageView
+            android:id="@+id/imageView16"
             android:layout_width="match_parent"
-            android:layout_height="87dp"
-            android:background="@drawable/ic_bg_topheader"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="206dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/nomusu1"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical"
-                    android:text="TextView"
-                    android:textColor="@color/coloruno"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/direusu1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="15dp"
-                    android:gravity="center_vertical"
-                    android:text="TextView" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="111dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/nombreep"
-                    android:layout_width="match_parent"
-                    android:layout_height="46dp"
-                    android:text="TextView" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/wasapep"
-                        android:layout_width="14dp"
-                        android:layout_height="23dp"
-                        android:layout_marginRight="60dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/wasap" />
-
-                    <Button
-                        android:id="@+id/mispedidosep"
-                        android:layout_width="3dp"
-                        android:layout_height="22dp"
-                        android:layout_weight="1"
-                        android:background="@android:drawable/ic_popup_reminder" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/fechausu1"
-                    android:layout_width="6dp"
-                    android:layout_height="8dp"
-                    android:gravity="left|center_vertical"
-                    android:text="TextView"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/imageView14"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:srcCompat="@android:drawable/ic_menu_myplaces" />
-
-            <TextView
-                android:id="@+id/costodelivery2"
-                android:layout_width="62dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Monto minimo "
-                android:textColor="@color/quantum_amber300" />
-
-            <TextView
-                android:id="@+id/costodelivery"
-                android:layout_width="2dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="00" />
-
-            <ImageView
-                android:id="@+id/imageView13"
-                android:layout_width="4dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right|center_vertical"
-                android:layout_weight="1"
-                app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
-
-            <TextView
-                android:id="@+id/tiempodemora2"
-                android:layout_width="9dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:text="En "
-                android:textColor="@color/quantum_amber300" />
-
-            <TextView
-                android:id="@+id/tiempodemora"
-                android:layout_width="2dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="00" />
-
-            <TextView
-                android:id="@+id/tiempodemora3"
-                android:layout_width="12dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="minutos"
-                android:textColor="@color/quantum_amber300" />
-
-        </LinearLayout>
+            android:layout_height="107dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/fondpng" />
 
         <LinearLayout
             android:id="@+id/linearLayout13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="22dp"
             android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="21dp"
             android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="3dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -173,112 +50,293 @@
 
             <MultiAutoCompleteTextView
                 android:id="@+id/multiAutoCompleteTextView1"
-                android:layout_width="337dp"
-                android:layout_height="43dp"
+                android:layout_width="302dp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
-                android:background="@drawable/bordecuadradosuave"
+                android:background="@drawable/fondoparabuscar"
                 android:hint="Busca un producto"
                 android:paddingLeft="10dp"
+                android:textSize="18sp"
                 tools:ignore="LabelFor" />
 
             <Button
                 android:id="@+id/todos1"
-                android:layout_width="25dp"
-                android:layout_height="37dp"
-                android:layout_gravity="right|center_horizontal|center_vertical"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_width="49dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/lazo"
+                android:background="@color/trans"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="Todo"
-                android:textColor="@color/chatotro" />
+                android:text="Todos"
+                android:textColor="@color/colortres" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="362dp"
+            android:layout_height="99dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="49dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/buttonmesasquenoexistenbackground"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nomusu1"
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
+                    android:gravity="bottom"
+                    android:text="TextView"
+                    android:textColor="@color/coloruno"
+                    android:textSize="1dp" />
+
+                <TextView
+                    android:id="@+id/direusu1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textColor="@color/trans"
+                    android:textSize="1dp" />
+
+                <LinearLayout
+                    android:layout_width="315dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/nombreep"
+                        android:layout_width="match_parent"
+                        android:layout_height="29dp"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="TextView"
+                        android:textColor="@color/abc_search_url_text_selected"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginRight="3dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/wasapep"
+                            android:layout_width="1dp"
+                            android:layout_height="1dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/wasap" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/fechausu1"
+                        android:layout_width="6dp"
+                        android:layout_height="8dp"
+                        android:gravity="left|center_vertical"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="360dp"
+                android:layout_height="64dp">
+
+                <Button
+                    android:id="@+id/mispedidosep"
+                    android:layout_width="30dp"
+                    android:layout_height="33dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="283dp"
+                    android:layout_marginTop="-6dp"
+                    android:layout_marginEnd="47dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_basket" />
+
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="41dp"
+                    android:layout_height="28dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="42dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/src_files_cash" />
+
+                <TextView
+                    android:id="@+id/costodelivery2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:text="Monto minimo "
+                    android:textColor="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/costodelivery"
+                    android:layout_width="28dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_marginStart="42dp"
+                    android:layout_marginTop="38dp"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:text="00"
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:id="@+id/imageView13"
+                    android:layout_width="21dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_marginStart="179dp"
+                    android:layout_marginEnd="158dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/crono" />
+
+                <TextView
+                    android:id="@+id/tiempodemora"
+                    android:layout_width="22dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="185dp"
+                    android:layout_marginTop="37dp"
+                    android:layout_marginEnd="151dp"
+                    android:layout_weight="1"
+                    android:text="00"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tiempodemora3"
+                    android:layout_width="67dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="136dp"
+                    android:layout_weight="1"
+                    android:text="Estimado"
+                    android:textColor="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tiempodemora4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_weight="1"
+                    android:text="Tus pedidos"
+                    android:textColor="@color/colorPrimary" />
+            </RelativeLayout>
 
         </LinearLayout>
 
         <ScrollView
             android:id="@+id/scrollView2"
-            android:layout_width="match_parent"
-            android:layout_height="432dp">
+            android:layout_width="400dp"
+            android:layout_height="582dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="150dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyprodpe"
                     android:layout_width="match_parent"
-                    android:layout_height="439dp" />
+                    android:layout_height="match_parent" />
             </LinearLayout>
         </ScrollView>
 
-        <LinearLayout
-            android:id="@+id/linearLayout6"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="@drawable/fondototalsoles"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0">
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="89dp"
+        android:layout_height="102dp"
+        android:layout_gravity="right|end"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="102dp">
+
 
             <TextView
-                android:id="@+id/cuatro1"
-                android:layout_width="12dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginLeft="4dp"
-                android:layout_weight="1"
-                android:background="@drawable/buttonmesasquenoexistenbackground"
-                android:gravity="center_horizontal|center_vertical"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/cinco1"
+                android:id="@+id/fabi"
                 android:layout_width="wrap_content"
-                android:layout_height="41dp"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_weight="1"
-                android:background="@color/trans"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="22dp"
+                android:layout_marginLeft="-67dp"
+                android:layout_toRightOf="@+id/fab"
+                android:background="@drawable/fondotarjeta"
+                android:elevation="7dp"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="Pedido Activo"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:text="0"
+                android:textColor="@color/colortres"
+                android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/seis1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|left|center_vertical"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="000.00"
-                android:textSize="24sp" />
-        </LinearLayout>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:baselineAlignBottom="false"
+                android:cropToPadding="false"
+                android:elevation="0dp"
+                android:src="@drawable/src_files_payment"
+                app:backgroundTint="@color/trans"
+                app:fabCustomSize="60dp"
+                app:fabSize="auto"
+                app:maxImageSize="64dp" />
 
-            <ImageView
-                android:id="@+id/imageView15"
-                android:layout_width="496dp"
-                android:layout_height="88dp"
-                android:layout_weight="1"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/bannerbajo" />
-        </LinearLayout>
-    </LinearLayout>
+        </RelativeLayout>
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

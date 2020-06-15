@@ -3,23 +3,15 @@ package com.mazinger.masterdelivery.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mazinger.masterdelivery.G;
-import com.mazinger.masterdelivery.Listaparaseleccionar;
 import com.mazinger.masterdelivery.Muestraproductosporempresa;
 import com.mazinger.masterdelivery.R;
 import com.mazinger.masterdelivery.modelo.Empresa;
@@ -49,7 +41,7 @@ static class AdaptadorViewHolder extends RecyclerView.ViewHolder{
     protected TextView nombreempresa,idempresal;
     protected TextView nombrerubro;
     //protected TextView precio;
-    protected TextView montominimodeventa;
+    protected TextView montominimodeventa,costodelivery;
     protected ImageView imagenempresa1;
     protected TextView tiempodeesperal;
     protected ImageView imagenefectivol,
@@ -64,12 +56,8 @@ static class AdaptadorViewHolder extends RecyclerView.ViewHolder{
         this.montominimodeventa=(TextView) v.findViewById(R.id.montominimodeventa);
         this.imagenempresa1=(ImageView) v.findViewById(R.id.imagenempresa1);
         this.tiempodeesperal=(TextView) v.findViewById(R.id.tiempodeesperal);
-
+        this.costodelivery=(TextView) v.findViewById(R.id.costodeliverycard);
 this.tarjetaempresa=(CardView)v.findViewById(R.id.tarjetaempresa);
-        this.imagenefectivol=(ImageView) v.findViewById(R.id.imagenefectivol);
-        this.imagenvisal=(ImageView) v.findViewById(R.id.imagenvisal);
-        this.imastercardl=(ImageView) v.findViewById(R.id.imastercardl);
-
 
 
 
@@ -90,6 +78,7 @@ this.tarjetaempresa=(CardView)v.findViewById(R.id.tarjetaempresa);
         viewHolder.nombreempresa.setText(item.getRazonsocialempresa());
         viewHolder.nombrerubro.setText(String.valueOf(item.getNombrerubro()));
         viewHolder.montominimodeventa.setText("S/. " + String.valueOf(item.getMontominimodeventa()));
+        viewHolder.costodelivery.setText( "S/. " +String.valueOf(item.getCostodelivery()));
         foto = item.getLogotipoempresa().toString();
         Picasso.get().load(foto).transform(new CropSquareTransformation()).resize(200, 200)
                 .into(viewHolder.imagenempresa1);

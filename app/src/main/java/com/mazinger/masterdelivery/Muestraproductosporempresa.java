@@ -337,7 +337,7 @@ fabi.setOnClickListener(new View.OnClickListener() {
     }
 
     private void cargarbarradeabajo() {
-        TextView tot = (TextView) findViewById(R.id.seis1);
+     //   TextView tot = (TextView) findViewById(R.id.seis1);
        // TextView cantidadfragment = (TextView) findViewById(R.id.cuatro1);
 
         Realm.init(getApplicationContext());

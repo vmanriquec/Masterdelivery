@@ -34,5 +34,9 @@
     <string name="precios">$ Precio</string>
     <string name="google_maps_key">AIzaSyAYIXXSBIluQAhJoB6_LDXHh1Jc-o5JvRo</string>
     <string name="title_activity_miausote">Map</string>
+    <string name="gifconejo">"https://www.sodapop.pe/ii.gif"</string>
+    <string name="gifgps">"https://www.sodapop.pe/aqui.gif"</string>
+    <string name="gifadmiracion">"https://www.sodapop.pe/hey.gif"</string>
+
 
 </resources>

@@ -18,6 +18,7 @@ public class Empresa {
     String logotipoempresa;
     String idrubroempresa;
     String nombrerubro;
+    String costodelivery;
 
 
     public int getIdempresa() {
@@ -155,11 +156,19 @@ public class Empresa {
         this.nombrerubro = nombrerubro;
     }
 
+    public String getCostodelivery() {
+        return costodelivery;
+    }
+
+    public void setCostodelivery(String costodelivery) {
+        this.costodelivery = costodelivery;
+    }
+
     public Empresa(int idempresa, String razonsocialempresa, String direccionempresa,
                    String telefonoempresa, String emailempresa, String paginawebempresa,
                    String estadoempresa, String sloganempresa, String nombreadministrador,
                    String telefonoadministrador, String logotipoempresa, String idrubroempresa,
-                   String montominimodeventa, String tiempodedemoraempresa, String nombrerubro) {
+                   String montominimodeventa, String tiempodedemoraempresa, String nombrerubro, String costodelivery) {
         this.idempresa = idempresa;
         this.razonsocialempresa = razonsocialempresa;
         this.direccionempresa = direccionempresa;
@@ -175,6 +184,7 @@ public class Empresa {
         this.montominimodeventa = montominimodeventa;
         this.tiempodedemoraempresa = tiempodedemoraempresa;
         this.nombrerubro = nombrerubro;
+        this.costodelivery = costodelivery;
 
     }
 
