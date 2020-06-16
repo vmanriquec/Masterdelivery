@@ -95,7 +95,7 @@ viewHolder.tarjetaempresa.setOnClickListener(new View.OnClickListener() {
         intent.putExtra("telefonoempresa",String.valueOf(item.getTelefonoempresa()));
         intent.putExtra("tiempodemora",String.valueOf(item.getTiempodedemoraempresa()));
         intent.putExtra("montominimo",String.valueOf(item.getMontominimodeventa()));
-
+        intent.putExtra("imagen",String.valueOf(item.getLogotipoempresa()));
         //intent.putExtra("idproductoseleccionado",String.valueOf(item.getIdproducto()));
         v.getContext().startActivity(intent);
     }

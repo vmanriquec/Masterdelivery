@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
@@ -33,6 +34,7 @@ import com.mazinger.masterdelivery.Realm.PedidoRealmFirebase;
 import com.mazinger.masterdelivery.adapter.Adaptadorproductoempresa;
 import com.mazinger.masterdelivery.adapter.Adaptadorrecibepedidos;
 import com.mazinger.masterdelivery.modelo.Productos;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,6 +56,7 @@ import java.util.Date;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+import jp.wasabeef.picasso.transformations.CropSquareTransformation;
 
 public class Muestraproductosporempresa extends AppCompatActivity {
     String FileName = "myfile";
@@ -89,7 +92,11 @@ fabi=(TextView)findViewById(R.id.fabi);
         String telefonoempresa = myIntent.getStringExtra("telefonoempresa"); // will return "FirstKeyValue"
         String tiempodemora = myIntent.getStringExtra("tiempodemora"); // will return "FirstKeyValue"
         String montominimo = myIntent.getStringExtra("montominimo"); // will return "FirstKeyValue"
+        String imagenempresa = myIntent.getStringExtra("imagen"); // will return "FirstKeyValue"
+        ImageView imagenempresas=(ImageView)findViewById(R.id.imageView16);
 
+        Picasso.get().load(imagenempresa).transform(new CropSquareTransformation()).resize(700, 500)
+                .into(imagenempresas);
         guardarenshareempresaseleccionada(idempresa,nombreempresa,telefonoempresa,tiempodemora,montominimo);
 
         String nombre = prefs.getString("nombreusuariof", "");
