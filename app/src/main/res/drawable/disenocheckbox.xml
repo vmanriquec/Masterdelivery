@@ -4,6 +4,6 @@
 
         android:drawable="@drawable/user" />
     <item android:state_checked="false"
-        android:drawable="@drawable/beeliveryicon" />
+        android:drawable="@drawable/usercomanda" />
 
 </selector>

@@ -1,4 +1,5 @@
 package com.mazinger.masterdelivery;
+
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -27,13 +28,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.mazinger.masterdelivery.Realm.Crudpedido;
+import com.hsalf.smileyrating.SmileyRating;
 import com.mazinger.masterdelivery.Realm.Detallepedidorealm;
-import com.mazinger.masterdelivery.Realm.PedidoRealm;
 import com.mazinger.masterdelivery.Realm.PedidoRealmFirebase;
 import com.mazinger.masterdelivery.adapter.Adaptadorproductoempresa;
 import com.mazinger.masterdelivery.adapter.Adaptadorrecibepedidos;
 import com.mazinger.masterdelivery.modelo.Productos;
+import com.mazinger.masterdelivery.modelo.Valoracionempresa;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -66,14 +67,22 @@ public class Muestraproductosporempresa extends AppCompatActivity {
     private ActionBar toolbar;
     FloatingActionButton fab;
     TextView fabi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_muestraproductosporempresa);
         ActionBar actionbar = getSupportActionBar();
         actionbar.hide();
-fab=(FloatingActionButton)findViewById(R.id.fab);
-fabi=(TextView)findViewById(R.id.fabi);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fabi = (TextView) findViewById(R.id.fabi);
+
+        Realm.init(getApplicationContext());
+        Realm pedido = Realm.getDefaultInstance();
+        RealmResults<Detallepedidorealm> results =
+                pedido.where(Detallepedidorealm.class)
+                        .findAll();
+        int w = results.size();
 
         toolbar = getSupportActionBar();
 
@@ -93,11 +102,11 @@ fabi=(TextView)findViewById(R.id.fabi);
         String tiempodemora = myIntent.getStringExtra("tiempodemora"); // will return "FirstKeyValue"
         String montominimo = myIntent.getStringExtra("montominimo"); // will return "FirstKeyValue"
         String imagenempresa = myIntent.getStringExtra("imagen"); // will return "FirstKeyValue"
-        ImageView imagenempresas=(ImageView)findViewById(R.id.imageView16);
+        ImageView imagenempresas = (ImageView) findViewById(R.id.imageView16);
 
         Picasso.get().load(imagenempresa).transform(new CropSquareTransformation()).resize(700, 500)
                 .into(imagenempresas);
-        guardarenshareempresaseleccionada(idempresa,nombreempresa,telefonoempresa,tiempodemora,montominimo);
+        guardarenshareempresaseleccionada(idempresa, nombreempresa, telefonoempresa, tiempodemora, montominimo);
 
         String nombre = prefs.getString("nombreusuariof", "");
         String direccion = prefs.getString("direccion", "");
@@ -124,11 +133,16 @@ fabi=(TextView)findViewById(R.id.fabi);
         tiempodemorae.setText(tiempodemora);
         costodelivery.setText(montominimo);
         nombreep.setText(nombreempresa);
-       // TextView cantidadfragment = (TextView) findViewById(R.id.cuatro1);
+        // TextView cantidadfragment = (TextView) findViewById(R.id.cuatro1);
 
 
         new traerproductospe().execute(idempresa);
         cargarbarradeabajo();
+
+
+
+
+
         wasap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,24 +184,8 @@ fabi=(TextView)findViewById(R.id.fabi);
                 new traerproductosporidalmacenidfamiliaempresa().execute(idempresa);
             }
         });
-        try {
-          //  String idi = myIntent.getStringExtra("idempresa"); // will return "FirstKeyValue"
 
-            //String idalmacen = prefs.getString("idalmacenactivosf", "");
-            String idi = prefs.getString("idempresa", "");
-
-            crearpedidoinicial(1, 0.0, currentDateandTime, Integer.parseInt(idi));
-
-        } catch (NumberFormatException e) {
-            Log.i("tallo", e.toString());
-        }
-
-        Realm pedido = Realm.getDefaultInstance();
-        RealmResults<Detallepedidorealm> results =
-                pedido.where(Detallepedidorealm.class)
-                        .findAll();
-        int w = results.size();
-       // cantidadfragment.setText(String.valueOf(w));
+// cantidadfragment.setText(String.valueOf(w));
 
         //fab.setImageBitmap(textAsBitmap(String.valueOf(w), 40, Color.WHITE));
         fabi.setText(String.valueOf(w));
@@ -200,15 +198,15 @@ fabi=(TextView)findViewById(R.id.fabi);
             tt = tt + jjj;
 
         }
-       // tot.setText("S/. " + String.valueOf(tt));
+        // tot.setText("S/. " + String.valueOf(tt));
 
-fabi.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
+        fabi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        iraverpedidos();
-    }
-});
+                iraverpedidos();
+            }
+        });
 
 
         new llenarautocomplete().execute(idempresa);
@@ -344,8 +342,8 @@ fabi.setOnClickListener(new View.OnClickListener() {
     }
 
     private void cargarbarradeabajo() {
-     //   TextView tot = (TextView) findViewById(R.id.seis1);
-       // TextView cantidadfragment = (TextView) findViewById(R.id.cuatro1);
+        //   TextView tot = (TextView) findViewById(R.id.seis1);
+        // TextView cantidadfragment = (TextView) findViewById(R.id.cuatro1);
 
         Realm.init(getApplicationContext());
         Realm pedido = Realm.getDefaultInstance();
@@ -353,10 +351,10 @@ fabi.setOnClickListener(new View.OnClickListener() {
                 pedido.where(Detallepedidorealm.class)
                         .findAll();
         int w = results.size();
-       // cantidadfragment.setText(String.valueOf(w));
+        // cantidadfragment.setText(String.valueOf(w));
 
         //fab.setImageBitmap(textAsBitmap(String.valueOf(w), 40, Color.WHITE));
-fabi.setText(String.valueOf(w));
+        fabi.setText(String.valueOf(w));
         Double tt = 0.0;
         for (int i = 0; i < w; i++) {
             int gg = results.get(i).getCantidadrealm();
@@ -366,7 +364,7 @@ fabi.setText(String.valueOf(w));
             tt = tt + jjj;
 
         }
-       // tot.setText("S/. " + String.valueOf(tt));
+        // tot.setText("S/. " + String.valueOf(tt));
 
 
     }
@@ -489,6 +487,8 @@ fabi.setText(String.valueOf(w));
                 dialog.getWindow().setLayout((7 * width) / 7, LinearLayout.LayoutParams.WRAP_CONTENT);
                 TextView clie = (TextView) dialog.findViewById(R.id.nombredialog);
                 clie.setText(todoslospedidos.get(0).getNombreusuario());
+                String idempresa = todoslospedidos.get(0).getIdempresa();
+                String idfirebase = todoslospedidos.get(0).getIdfirebase();
 
                 final RecyclerView pedidose = dialog.findViewById(R.id.listadepedidos);
 
@@ -497,6 +497,42 @@ fabi.setText(String.valueOf(w));
 
                 pedidose.setAdapter(adaptadore);
                 adaptadore.notifyDataSetChanged();
+
+
+                SmileyRating smileyRating = (SmileyRating) dialog.findViewById(R.id.smile_rating);
+                smileyRating.setSmileySelectedListener(new SmileyRating.OnSmileySelectedListener() {
+                    @Override
+                    public void onSmileySelected(SmileyRating.Type type) {
+                        // You can compare it with rating Type
+
+
+                        if (SmileyRating.Type.TERRIBLE == type) {
+                            Valoracionempresa vali = new Valoracionempresa(1, Integer.parseInt(idempresa), Integer.parseInt("1"), idfirebase);
+                            new grabarvaloracion().execute(vali);
+                        }
+                        if (SmileyRating.Type.BAD == type) {
+                            Valoracionempresa vali = new Valoracionempresa(1, Integer.parseInt(idempresa), Integer.parseInt("2"), idfirebase);
+                            new grabarvaloracion().execute(vali);
+                        }
+                        if (SmileyRating.Type.OKAY == type) {
+                            Valoracionempresa vali = new Valoracionempresa(1, Integer.parseInt(idempresa), Integer.parseInt("3"), idfirebase);
+                            new grabarvaloracion().execute(vali);
+                        }
+                        if (SmileyRating.Type.GOOD == type) {
+                            Valoracionempresa vali = new Valoracionempresa(1, Integer.parseInt(idempresa), Integer.parseInt("4"), idfirebase);
+                            new grabarvaloracion().execute(vali);
+                        }
+                        if (SmileyRating.Type.GREAT == type) {
+                            Valoracionempresa vali = new Valoracionempresa(1, Integer.parseInt(idempresa), Integer.parseInt("5"), idfirebase);
+                            new grabarvaloracion().execute(vali);
+                        }
+                        // You can get the user rating too
+                        // rating will between 1 to 5
+                        int rating = type.getRating();
+                    }
+                });
+
+                //ratingbar.setRating(3.67f);
                 dialog.show();
 
 
@@ -772,20 +808,7 @@ fabi.setText(String.valueOf(w));
 
     }
 
-    public final static void crearpedidoinicial(int idusuario, Double totalpedido, String fechapedido, int idalmacen) {
-        Realm pedido = Realm.getDefaultInstance();
-        pedido.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm pedido) {
-                int index = Crudpedido.calculateIndex();
-                PedidoRealm realmDetallepedidorealm = pedido.createObject(PedidoRealm.class, index);
-                realmDetallepedidorealm.setIdusuario(idusuario);
-                realmDetallepedidorealm.setTotalpedido(totalpedido);
-                realmDetallepedidorealm.setFechapedido(fechapedido);
-                realmDetallepedidorealm.setIdalmacen(idalmacen);
-            }
-        });
-    }
+
 
     private class llenarautocomplete extends AsyncTask<String, String, String> {
         ArrayList<Productos> people = new ArrayList<>();
@@ -923,24 +946,23 @@ fabi.setText(String.valueOf(w));
     }
 
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         super.onDestroy();
         try {
 
         } catch (Exception ex) {
         }
     }
+
     @Override
     public void onBackPressed() {
-        TextView fabi=(TextView)findViewById(R.id.fabi);
-        if (fabi.getText().toString().equals("0"))
-        {
+        TextView fabi = (TextView) findViewById(R.id.fabi);
+        if (fabi.getText().toString().equals("0")) {
 
             Intent pi;
-            pi = new Intent(this,Muestartodaslasempresas.class);
+            pi = new Intent(this, Muestartodaslasempresas.class);
             startActivity(pi);
-        }else
-        {
+        } else {
             BottomSheetFragment bottomSheetDialog = BottomSheetFragment.newInstance();
 
             String nombre = prefs.getString("nombreusuariof", "");
@@ -952,22 +974,25 @@ fabi.setText(String.valueOf(w));
             bottomSheetDialog.setArguments(bundle);
             bottomSheetDialog.show(getSupportFragmentManager(), "Bottom Sheet Dialog Fragment");
 
-    }
+        }
 
     }
+
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
 //        Toast.makeText(getApplication(),"estas onresume",Toast.LENGTH_LONG).show();
         cargarbarradeabajo();
     }
+
     @Override
-    public void onStop(){
+    public void onStop() {
         super.onStop();
         cargarbarradeabajo();
         //      Toast.makeText(getApplication(),"onstop  ",Toast.LENGTH_LONG).show();
 
     }
+
     @Override
     public void onPause() {
         super.onPause();
@@ -980,19 +1005,20 @@ fabi.setText(String.valueOf(w));
     }
 
 
-    public   void guardarenshareempresaseleccionada(String idempresa,String nombreempresa,String telefonoempresa,String tiempodemora,
-                                                    String montominimo){
-        SharedPreferences sharedPreferences =getSharedPreferences(FileName, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor=sharedPreferences.edit();
-        editor.putString("idempresa",idempresa);
-        editor.putString("nombreempresa",nombreempresa);
-        editor.putString("telefonoempresa",telefonoempresa);
-        editor.putString("tiempodemora",tiempodemora);
-        editor.putString("montominimo",montominimo);
+    public void guardarenshareempresaseleccionada(String idempresa, String nombreempresa, String telefonoempresa, String tiempodemora,
+                                                  String montominimo) {
+        SharedPreferences sharedPreferences = getSharedPreferences(FileName, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("idempresa", idempresa);
+        editor.putString("nombreempresa", nombreempresa);
+        editor.putString("telefonoempresa", telefonoempresa);
+        editor.putString("tiempodemora", tiempodemora);
+        editor.putString("montominimo", montominimo);
 
         editor.commit();
 
     }
+
     public static Bitmap textAsBitmap(String text, float textSize, int textColor) {
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setTextSize(textSize);
@@ -1008,9 +1034,9 @@ fabi.setText(String.valueOf(w));
         canvas.drawText(text, 0, baseline, paint);
         return image;
     }
-    public void   Eliminartotalcremas() {
-        Realm pedido = Realm.getDefaultInstance();
 
+    public void Eliminartotalcremas() {
+        Realm pedido = Realm.getDefaultInstance();
 
 
         pedido.beginTransaction();
@@ -1018,5 +1044,114 @@ fabi.setText(String.valueOf(w));
         pedido.commitTransaction();
 
 
+    }
+
+
+
+    private class grabarvaloracion extends AsyncTask<Valoracionempresa, Void, String> {
+        String resultado;
+        HttpURLConnection conne;
+        URL url = null;
+        Valoracionempresa ped;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+
+        }
+
+        @Override
+        protected String doInBackground(Valoracionempresa... params) {
+            ped = params[0];
+            try {
+                url = new URL("https://sodapop.pe/sugest/apigrabarvaloracion.php");
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return null;
+            }
+            try {
+                conne = (HttpURLConnection) url.openConnection();
+                conne.setReadTimeout(READ_TIMEOUT);
+                conne.setConnectTimeout(CONNECTION_TIMEOUT);
+                conne.setRequestMethod("POST");
+                conne.setDoInput(true);
+                conne.setDoOutput(true);
+
+                // Append parameters to URL
+
+
+                Uri.Builder builder = new Uri.Builder()
+                        .appendQueryParameter("idempresa", String.valueOf(ped.getIdempresa()))
+                        .appendQueryParameter("nivelvaloracion", String.valueOf(ped.getNivelvaloracion()))
+                        .appendQueryParameter("idfirebaseusuario", String.valueOf(ped.getIdfirebaseusuario()));
+
+
+                String query = builder.build().getEncodedQuery();
+
+                // Open connection for sending data
+                OutputStream os = conne.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(query);
+                writer.flush();
+                writer.close();
+                os.close();
+                conne.connect();
+
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+                return null;
+            }
+            try {
+                int response_code = conne.getResponseCode();
+                if (response_code == HttpURLConnection.HTTP_OK) {
+                    InputStream input = conne.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);
+
+                    }
+                    resultado = result.toString();
+                    Log.d("paso", resultado.toString());
+                    return resultado;
+
+                } else {
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.d("valorito", e.toString());
+                return null;
+            } finally {
+                conne.disconnect();
+            }
+            return resultado;
+        }
+
+        @Override
+        protected void onPostExecute(String resultado) {
+
+            super.onPostExecute(resultado);
+
+            if (resultado.equals("true")) {
+                Log.d("ii", resultado);
+
+
+            } else {
+                String ii = resultado.toString();
+                Log.d("jj", "usuario valido");
+
+
+                // lanzarsistema();
+            }
+
+
+        }
     }
 }

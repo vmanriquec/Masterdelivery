@@ -1,342 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/imageView16"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="150dp"
 
-        <ImageView
-            android:id="@+id/imageView16"
-            android:layout_width="match_parent"
-            android:layout_height="107dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/fondpng" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+android:layout_marginBottom="5dp"
+        android:scaleType="fitXY" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout13"
+    <RelativeLayout
+        android:id="@+id/relatidatosdeempresa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-6dp"
+        android:layout_below="@+id/imageView16">
+
+        <TextView
+            android:id="@+id/nomusu1"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:gravity="bottom"
+            android:text="TextView"
+            android:textColor="@color/coloruno"
+            android:textSize="1dp" />
+
+        <TextView
+            android:id="@+id/direusu1"
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="22dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="21dp"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/trans"
+            android:textSize="1dp" />
+
+        <TextView
+            android:id="@+id/fechausu1"
+            android:layout_width="6dp"
+            android:layout_height="8dp"
+            android:gravity="left|center_vertical"
+            android:text="TextView"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/wasapep"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
             android:layout_marginRight="5dp"
-            android:layout_marginBottom="3dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider"
-            app:layout_constraintVertical_bias="0.003">
+            android:layout_weight="1"
+            android:background="@drawable/wasap" />
 
-            <MultiAutoCompleteTextView
-                android:id="@+id/multiAutoCompleteTextView1"
-                android:layout_width="302dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/fondoparabuscar"
-                android:hint="Busca un producto"
-                android:paddingLeft="10dp"
-                android:textSize="18sp"
-                tools:ignore="LabelFor" />
-
-            <Button
-                android:id="@+id/todos1"
-                android:layout_width="49dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:background="@color/trans"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="Todos"
-                android:textColor="@color/colortres" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="362dp"
-            android:layout_height="99dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="24dp"
+        <TextView
+            android:id="@+id/nombreep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="49dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/buttonmesasquenoexistenbackground"
-            android:orientation="vertical">
+            android:text="TextView"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-            <LinearLayout
-                android:id="@+id/linearLayout15"
+
+        <RelativeLayout
+            android:id="@+id/datitosrela"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nombreep"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="23dp"
+                android:layout_height="18dp"
+                android:layout_alignParentLeft="true"
+                app:srcCompat="@drawable/src_files_cash" />
+
+            <TextView
+                android:id="@+id/costodelivery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@+id/imageView14"
+                android:gravity="left"
+                android:text="00"
+                android:textSize="16dp" />
 
-                <TextView
-                    android:id="@+id/nomusu1"
-                    android:layout_width="1dp"
-                    android:layout_height="1dp"
-                    android:gravity="bottom"
-                    android:text="TextView"
-                    android:textColor="@color/coloruno"
-                    android:textSize="1dp" />
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginLeft="11dp"
+                android:layout_marginRight="10dp"
+                android:layout_toRightOf="@+id/costodelivery"
+                app:srcCompat="@drawable/ic_reloj" />
 
-                <TextView
-                    android:id="@+id/direusu1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textColor="@color/trans"
-                    android:textSize="1dp" />
+            <TextView
+                android:id="@+id/tiempodemora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_toRightOf="@+id/imageView13"
+                android:text="00"
+                android:textSize="16dp" />
 
-                <LinearLayout
-                    android:layout_width="315dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+            <Button
+                android:id="@+id/mispedidosep"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/tiempodemora"
+                android:text="Todos tus pedidos"
+                android:textSize="14dp"
+               android:background="@color/trans"
+                android:textColor="@color/primary"/>
 
-                    <TextView
-                        android:id="@+id/nombreep"
-                        android:layout_width="match_parent"
-                        android:layout_height="29dp"
-                        android:gravity="center_horizontal|center_vertical"
-                        android:text="TextView"
-                        android:textColor="@color/abc_search_url_text_selected"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_marginRight="3dp"
-                        android:orientation="horizontal">
+        </RelativeLayout>
 
-                        <Button
-                            android:id="@+id/wasapep"
-                            android:layout_width="1dp"
-                            android:layout_height="1dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/wasap" />
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/fechausu1"
-                        android:layout_width="6dp"
-                        android:layout_height="8dp"
-                        android:gravity="left|center_vertical"
-                        android:text="TextView"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="360dp"
-                android:layout_height="64dp">
-
-                <Button
-                    android:id="@+id/mispedidosep"
-                    android:layout_width="30dp"
-                    android:layout_height="33dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="283dp"
-                    android:layout_marginTop="-6dp"
-                    android:layout_marginEnd="47dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/ic_basket" />
-
-                <ImageView
-                    android:id="@+id/imageView14"
-                    android:layout_width="41dp"
-                    android:layout_height="28dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="42dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/src_files_cash" />
-
-                <TextView
-                    android:id="@+id/costodelivery2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="11dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_weight="1"
-                    android:text="Monto minimo "
-                    android:textColor="@color/colorPrimary" />
-
-                <TextView
-                    android:id="@+id/costodelivery"
-                    android:layout_width="28dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_gravity="left|center_vertical"
-                    android:layout_marginStart="42dp"
-                    android:layout_marginTop="38dp"
-                    android:layout_weight="1"
-                    android:gravity="left"
-                    android:text="00"
-                    android:textSize="16dp" />
-
-                <ImageView
-                    android:id="@+id/imageView13"
-                    android:layout_width="21dp"
-                    android:layout_height="24dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="right|center_vertical"
-                    android:layout_marginStart="179dp"
-                    android:layout_marginEnd="158dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/crono" />
-
-                <TextView
-                    android:id="@+id/tiempodemora"
-                    android:layout_width="22dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="185dp"
-                    android:layout_marginTop="37dp"
-                    android:layout_marginEnd="151dp"
-                    android:layout_weight="1"
-                    android:text="00"
-                    android:textSize="16dp" />
-
-                <TextView
-                    android:id="@+id/tiempodemora3"
-                    android:layout_width="67dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginEnd="136dp"
-                    android:layout_weight="1"
-                    android:text="Estimado"
-                    android:textColor="@color/colorPrimary" />
-
-                <TextView
-                    android:id="@+id/tiempodemora4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="34dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_weight="1"
-                    android:text="Tus pedidos"
-                    android:textColor="@color/colorPrimary" />
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <ScrollView
-            android:id="@+id/scrollView2"
-            android:layout_width="400dp"
-            android:layout_height="582dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="150dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyprodpe"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
-        </ScrollView>
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/relabuscador"
+        android:layout_below="@+id/relatidatosdeempresa"
+
+        >
+
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/multiAutoCompleteTextView1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_toLeftOf="@id/todos1"
+            android:layout_marginTop="5dp"
+            android:hint="Busca un producto "
+            android:paddingLeft="10dp"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorAccent"
+            android:textSize="14sp"
+            android:layout_alignParentLeft="true" />
+
+        <Button
+            android:id="@+id/todos1"
+android:layout_centerVertical="true"
+            android:layout_width="58dp"
+            android:layout_height="31dp"
+            android:layout_alignParentRight="true"
+
+
+            android:background="@drawable/ic_lupa_negro" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/recymito"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/relabuscador"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyprodpe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
+
     <FrameLayout
-        android:layout_width="89dp"
-        android:layout_height="102dp"
-        android:layout_gravity="right|end"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:id="@+id/casira"
+        android:layout_width="77dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+
+
+        android:layout_marginEnd="5dp">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="102dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginBottom="20dp">
 
 
             <TextView
                 android:id="@+id/fabi"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_width="61dp"
+                android:layout_height="100dp"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="22dp"
-                android:layout_marginLeft="-67dp"
-                android:layout_toRightOf="@+id/fab"
-                android:background="@drawable/fondotarjeta"
+                android:layout_marginStart="8dp"
+                android:background="@color/trans"
                 android:elevation="7dp"
                 android:gravity="center_horizontal|center_vertical"
+                android:paddingLeft="25dp"
+                android:paddingBottom="20dp"
                 android:text="0"
                 android:textColor="@color/colortres"
                 android:textSize="18sp" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab"
-                android:layout_width="75dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
-                android:layout_alignParentRight="true"
+
                 android:layout_centerInParent="true"
                 android:baselineAlignBottom="false"
-                android:cropToPadding="false"
-                android:elevation="0dp"
-                android:src="@drawable/src_files_payment"
+                android:src="@drawable/ic_proceso_b_on"
                 app:backgroundTint="@color/trans"
-                app:fabCustomSize="60dp"
-                app:fabSize="auto"
-                app:maxImageSize="64dp" />
+
+                app:maxImageSize="54dp" />
 
         </RelativeLayout>
 
     </FrameLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

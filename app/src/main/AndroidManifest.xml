@@ -45,7 +45,8 @@
 
         </activity>
         <activity android:name=".Enviarpedido" />
-        <activity android:name=".Splash">
+        <activity android:name=".IntroActivity"
+            android:theme="@style/Theme.Intro" >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

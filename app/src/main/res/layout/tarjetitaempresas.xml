@@ -4,42 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="5dp"
-    android:layout_marginTop="5dp"
+android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
+    android:layout_marginBottom="10dp"
     android:elevation="25dp"
+
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/tarjetaempresa"
-        android:layout_width="395dp"
-        android:layout_height="234dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="25dp"
         app:cardElevation="15dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.013">
+          app:layout_constraintVertical_bias="0.013">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
+
+            <ImageView
+                android:id="@+id/imagenempresa1"
+                android:layout_width="match_parent"
+                android:layout_height="154dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:scaleType="fitXY"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <ImageView
+                android:id="@+id/logito"
+                android:layout_width="81dp"
+
+
+                android:layout_height="79dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="121dp"
+                android:layout_marginEnd="5dp"
+                app:srcCompat="@drawable/ic_buscarlupa" />
 
             <ImageView
                 android:id="@+id/imageView20"
-                android:layout_width="70dp"
-                android:layout_height="57dp"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="-2dp"
-                android:layout_marginTop="190dp"
+                android:layout_marginTop="193dp"
                 android:src="@drawable/corazon" />
+
+            <TextView
+                android:id="@+id/txtvaloracion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="33dp"
+                android:layout_marginTop="199dp"
+                android:text="00"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/imageView19"
+                android:layout_width="31dp"
+                android:layout_height="23dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="159dp"
+                android:layout_marginTop="196dp"
+
+                app:srcCompat="@drawable/ic_moto" />
 
             <TextView
                 android:id="@+id/costodeliverycard"
@@ -47,10 +92,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="346dp"
-                android:layout_marginTop="206dp"
+                android:layout_marginStart="192dp"
+                android:layout_marginTop="199dp"
                 android:text="00"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/idempresal"
@@ -62,85 +107,48 @@
 
             <TextView
                 android:id="@+id/tiempodeesperal"
-                android:layout_width="1dp"
-                android:layout_height="1dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="129dp"
-                android:layout_marginTop="147dp"
-                android:layout_marginRight="3dp"
-                android:gravity="left"
-                android:text="30 min"
-                android:textSize="18sp" />
-
-            <ImageView
-                android:id="@+id/imageView19"
-                android:layout_width="55dp"
-                android:layout_height="36dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="289dp"
-                android:layout_marginTop="198dp"
-                android:src="@drawable/ic_bicycle" />
-
-            <TextView
-                android:id="@+id/txtvaloracion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="62dp"
-                android:layout_marginTop="202dp"
-                android:text="00"
-                android:textSize="18sp" />
-
-            <ImageView
-                android:id="@+id/imagenempresa1"
-                android:layout_width="392dp"
-                android:layout_height="194dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginStart="3dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginStart="98dp"
+                android:layout_marginTop="199dp"
                 android:layout_marginRight="3dp"
-                android:layout_marginBottom="3dp"
-                android:scaleType="fitXY"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:gravity="left"
+                android:text="30 min"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/nombreempresa"
-                android:layout_width="374dp"
+                android:layout_width="289dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="14dp"
+                android:layout_marginStart="2dp"
                 android:layout_marginLeft="3dp"
-                android:layout_marginTop="26dp"
-                android:layout_marginEnd="9dp"
+                android:layout_marginTop="156dp"
+                android:layout_marginEnd="111dp"
                 android:layout_marginRight="3dp"
                 android:layout_weight="1"
-                android:gravity="center_horizontal|center_vertical"
+                android:gravity="left|center_vertical"
                 android:text="nombre empresa"
-                android:textColor="@color/colortres"
-                android:textSize="36sp"
-                android:textStyle="bold" />
+                android:textColor="@color/coloruno"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/rubroempresa"
-                android:layout_width="match_parent"
+                android:layout_width="267dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="15dp"
+                android:layout_alignParentLeft="true"
+                 android:layout_alignParentTop="true"
+                android:layout_marginStart="5dp"
                 android:layout_marginLeft="3dp"
-                android:layout_marginTop="73dp"
+                android:layout_marginTop="177dp"
                 android:layout_marginRight="3dp"
-                android:gravity="center_horizontal"
+                android:gravity="left"
                 android:text="rubroempresa"
-                android:textColor="@color/colortres" />
+                android:textColor="@color/coloruno" />
 
             <TextView
                 android:id="@+id/montominimodeventa"
@@ -158,14 +166,14 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="1dp"
-                android:layout_height="1dp"
+                android:layout_width="22dp"
+                android:layout_height="23dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="80dp"
-                android:layout_marginTop="150dp"
+                android:layout_marginStart="77dp"
+                android:layout_marginTop="196dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/crono" />
+                app:srcCompat="@drawable/ic_reloj" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

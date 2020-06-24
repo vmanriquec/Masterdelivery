@@ -8,16 +8,12 @@ import io.realm.Realm;
 import io.realm.RealmResults;
 
 public class Crudpedido {
-
-
-
-
     public final static int calculateIndex(){
         Realm realm = Realm.getDefaultInstance();
         Number currentIdNum = realm.where(PedidoRealm.class).max("idpedido");
         int nextId;
         if(currentIdNum == null){
-            nextId = 0;
+            nextId = 1;
         }else {
             nextId = currentIdNum.intValue()+1;
         }

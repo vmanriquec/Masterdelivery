@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -61,8 +60,8 @@ public class Enviarpedido extends AppCompatActivity {
     public static final int READ_TIMEOUT = 15000;
 Button limpiar,wasap;
 RecyclerView lista;
-TextView nombre,direccion,referencia,total,cunatopaga,vueltoc;
-    String idempresa;
+TextView nombre,direccion,referencia,total,cunatopaga,vueltoc,idrecojera;
+    String idempresa,horaaentregar;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,12 +82,20 @@ nombre=(TextView) findViewById(R.id.usuario);
         total=(TextView) findViewById(R.id.totalapagar);
         cunatopaga=(TextView) findViewById(R.id.cuantopagacliente);
         vueltoc=(TextView) findViewById(R.id.vuelto);
+        idrecojera=(TextView) findViewById(R.id.recojera);
+        Intent intent = this.getIntent();
+        Bundle extra = intent.getExtras();
+
+      horaaentregar= extra.getString("horaaentregar");
+idrecojera.setText(horaaentregar);
 
 limpiar.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
 
         borrartodo();
+
+
         Intent i = new Intent(getApplicationContext(), Muestartodaslasempresas.class);
         startActivity(i);
 
@@ -101,6 +108,10 @@ limpiar.setOnClickListener(new View.OnClickListener() {
         String nombreusuarioff = prefs.getString("nombreusuariof", "");
         String estadipedido = prefs.getString("estadopedido", "");
 
+        escribiren(1);
+        mostrartodo();
+        guardarestadodeunpedido("generadodelivery");
+
 
         nombre.setText(nombreusuarioff);
 
@@ -112,9 +123,6 @@ limpiar.setOnClickListener(new View.OnClickListener() {
                              }
                             });
 
-         escribiren(0);
-         mostrartodo();
-         guardarestadodeunpedido("generadodelivery");
 
 
     }
@@ -196,7 +204,9 @@ limpiar.setOnClickListener(new View.OnClickListener() {
             int idpedidop = resultsp.get(i).getIdpedido();
             int idalmacenp = resultsp.get(i).getIdalmacen();
             int idclientep = resultsp.get(i).getIdcliente();
-            String descripcionpedidop = resultsp.get(i).getDescripcionpedido();
+
+
+            String descripcionpedidop =horaaentregar;
 
             String estadopedidop = "generadodelivery";
             Double totalp = resultsp.get(i).getTotal();
@@ -384,20 +394,11 @@ limpiar.setOnClickListener(new View.OnClickListener() {
     }
 
     private void borrartodo() {
-
-        Eliminartotalcremas();
-
-    }
-    public void   Eliminartotalcremas() {
         Realm pedido = Realm.getDefaultInstance();
-
-
-
         pedido.beginTransaction();
+
         pedido.deleteAll();
         pedido.commitTransaction();
-
-
     }
     public final static List<AdicionalRealm> Eliminartotaladicionals() {
         Realm pedido = Realm.getDefaultInstance();
@@ -582,7 +583,6 @@ int ido =Crudpedido.calculateIndex();
 
         }
     }
-
     public class grabardetalle extends AsyncTask<DetallepedidoRealmFirebase, Void, String> {
         String resultado;
         HttpURLConnection conne;

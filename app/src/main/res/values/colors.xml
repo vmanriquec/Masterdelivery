@@ -172,5 +172,32 @@
 
     <color name="colorinicio">#E8D599</color>
     <color name="colorfinal">#FFA726</color>
+    <color name = "bg_screen1">#20d2bb </color>
+    <color name = "bg_screen2">#3395ff </color>
+    <color name = "bg_screen3">#c873f4 </color>
+    <color name = "introdos">#528ECD </color>
+    <color name = "introuno">#E92435 </color>
 
+
+
+    <color name = "dot_dark_screen1">#14a895 </color>
+    <color name = "dot_dark_screen2">#2278d4 </color>
+    <color name = "dot_dark_screen3">#a854d4 </color>
+
+
+    <color name = "dot_light_screen1">#8cf9eb </color>
+    <color name = "dot_light_screen2">#93c6fd </color>
+    <color name = "dot_light_screen3">#e4b5fc </color>
+
+    <array name = "array_dot_active">
+        <item>dot_light_screen1 </item>
+        <item>dot_light_screen2 </item>
+        <item>dot_light_screen3 </item>
+    </array>
+
+    <array name = "array_dot_inactive">
+        <item>dot_dark_screen1 </item>
+        <item>dot_dark_screen2 </item>
+        <item>dot_dark_screen3 </item>
+    </array>
 </resources>

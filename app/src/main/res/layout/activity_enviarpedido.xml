@@ -1,39 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Enviarpedido">
+    >
 
     <LinearLayout
-        android:id="@+id/linearLayout12"
-        android:layout_width="319dp"
-        android:layout_height="112dp"
-        android:background="@drawable/bordecuadradosuave"
+        android:id="@+id/fintaarriba"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fondotarjeta"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.122">
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true">
 
         <TextView
-            android:id="@+id/usuario"
-            android:layout_width="305dp"
+            android:id="@+id/cabecera3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:paddingTop="5dp"
-            android:paddingRight="5dp"
-            android:paddingBottom="5dp"
-            android:text="nombre" />
+            android:layout_gravity="center_vertical"
+
+            android:gravity="center_vertical"
+            android:text="Pedido  ingresado"
+            android:textAlignment="center"
+            android:textColor="@color/colortres"
+            android:textSize="18sp"
+            tools:ignore="RtlCompat" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="401dp"
+            android:layout_height="39dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/chef" />
+
+        <TextView
+            android:id="@+id/cabecera2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+
+            android:gravity="center_vertical"
+            android:text="Gracias por Confiar en Nosotros"
+            android:textAlignment="center"
+            android:textColor="@color/colortres"
+            android:textSize="18sp"
+            tools:ignore="RtlCompat" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/datosdelcliente"
+        android:layout_marginTop="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="102dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_below="@id/fintaarriba"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bordecuadradosuave"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/usuario"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="nombre" />
+
+            <TextView
+                android:id="@+id/recojera"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/direccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingLeft="5dp"
             android:text="direccion" />
 
         <TextView
@@ -41,6 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingLeft="5dp"
             android:text="referencia" />
 
         <LinearLayout
@@ -53,7 +114,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Cuenta total:" />
+                android:paddingLeft="5dp"
+                android:text="Total:" />
 
             <TextView
                 android:id="@+id/totalapagar"
@@ -98,24 +160,34 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/fondototalsoles"
-        android:orientation="horizontal"
-        android:paddingLeft="5dp"
-        android:paddingTop="5dp"
-        android:paddingRight="5dp"
-        android:paddingBottom="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        android:id="@+id/recyclerf"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/datosdelcliente"
+        android:layout_above="@+id/barradeabajo"
+        android:layout_centerHorizontal="true"
+
+        android:orientation="vertical"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/detalle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/trans" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/barradeabajo"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+
+        android:background="@drawable/fondotarjeta"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/limpiartodo"
@@ -123,75 +195,34 @@
             android:layout_height="32dp"
             android:layout_gravity="left|center_vertical"
             android:layout_marginLeft="5dp"
-            android:layout_marginRight="0dp"
+            android:layout_marginRight="20dp"
             android:background="@color/trans"
             android:text="Nuevo Pedido"
-            android:textSize="24sp" />
+            android:textColor="@color/colortres"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:textSize="14dp"
             android:gravity="bottom"
-            android:text="Escribele al local" />
+            android:textColor="@color/colortres"
+            android:text="Escribele al local"
+            />
 
         <Button
+
             android:id="@+id/wasap"
-            android:layout_width="55dp"
-            android:layout_height="wrap_content"
+            android:layout_width="43dp"
+            android:layout_height="33dp"
             android:layout_gravity="right"
             android:layout_marginRight="10dp"
             android:background="@drawable/wasap"
-            android:gravity="right" />
+            android:gravity="right"
+            />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/detalle"
-        android:layout_width="0dp"
-        android:layout_height="242dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
-        android:background="@color/trans"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.675" />
-
-    <LinearLayout
-        android:layout_width="319dp"
-        android:layout_height="35dp"
-        android:background="@drawable/ic_bg_topheader"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.002">
-
-        <TextView
-            android:id="@+id/cabecera2"
-            android:layout_width="254dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center_vertical"
-
-            android:gravity="center_vertical"
-            android:text="Pedido en camino"
-            android:textAlignment="center"
-            android:textColor="@color/coloruno"
-            android:textSize="18sp"
-            tools:ignore="RtlCompat" />
-
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="45dp"
-            android:layout_height="42dp"
-            app:srcCompat="@drawable/motodelivery" />
-
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

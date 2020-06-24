@@ -9,7 +9,7 @@ import io.realm.RealmResults;
 
 public class Crudiniciodeldia {
   
-  private final static int calculateIndex(){
+  public final static int calculateIndex(){
           Realm realm = Realm.getDefaultInstance();
           Number currentIdNum = realm.where(IniciodeldiaRealm.class).max("idiniciodeldia");
           int nextId;

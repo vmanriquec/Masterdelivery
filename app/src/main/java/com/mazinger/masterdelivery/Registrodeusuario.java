@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -56,6 +57,10 @@ Button registro,mapa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.hide();
+
         Spinner spinerio=(Spinner) findViewById(R.id.spinnerio);
         setContentView(R.layout.activity_registrodeusuario);
 

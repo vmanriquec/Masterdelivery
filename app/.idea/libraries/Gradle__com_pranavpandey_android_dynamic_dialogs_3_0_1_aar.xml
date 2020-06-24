@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.pranavpandey.android:dynamic-dialogs:3.0.1@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d3c775fe61904065d28fd198940bd29e/dynamic-dialogs-3.0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d3c775fe61904065d28fd198940bd29e/dynamic-dialogs-3.0.1/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.pranavpandey.android/dynamic-dialogs/3.0.1/7c1d909ae236510b89607afba1ce8ec7da9ccd61/dynamic-dialogs-3.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.pranavpandey.android/dynamic-dialogs/3.0.1/f0dac9ddba80dc5c3a8dd8d257f0abed65d96287/dynamic-dialogs-3.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

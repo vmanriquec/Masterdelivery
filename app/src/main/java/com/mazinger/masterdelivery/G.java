@@ -25,8 +25,14 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mazinger.masterdelivery.Realm.*;
+import com.mazinger.masterdelivery.Realm.AdicionalRealm;
+import com.mazinger.masterdelivery.Realm.CremaRealm;
+import com.mazinger.masterdelivery.Realm.CrudadicionalRealm;
+import com.mazinger.masterdelivery.Realm.CrudcremaRealm;
 import com.mazinger.masterdelivery.Realm.Crudetallepedido;
+import com.mazinger.masterdelivery.Realm.Crudpedido;
+import com.mazinger.masterdelivery.Realm.Detallepedidorealm;
+import com.mazinger.masterdelivery.Realm.PedidoRealm;
 import com.mazinger.masterdelivery.modelo.Adicional;
 import com.mazinger.masterdelivery.modelo.Crema;
 
@@ -48,7 +54,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 
 import static com.mazinger.masterdelivery.Login.CONNECTION_TIMEOUT;
@@ -58,8 +63,8 @@ public class G extends AppCompatActivity {
     int numerodeadiciones;
     String idproductoseleccionado;
     TextView totalapagar;
-int idsupremodedetalle;
-int idusuario;
+    int idsupremodedetalle;
+    int idusuario;
     String FileName = "myfile";
     SharedPreferences prefs;
     @Override
@@ -68,11 +73,7 @@ int idusuario;
 
 
         Realm.init(getApplication());
-        RealmConfiguration realmConfig = new RealmConfiguration.Builder()
-                .name("pedido.realm")
-                .schemaVersion(0)
-                .build();
-        Realm.setDefaultConfiguration(realmConfig);
+
         setContentView(R.layout.activity_g);
         totalapagar=(TextView)findViewById(R.id.totalapagar);
 
@@ -82,14 +83,14 @@ int idusuario;
 
         //datos desde atras
         prefs = getApplicationContext().getSharedPreferences(FileName, Context.MODE_PRIVATE);
-       Intent myIntent = getIntent();
+        Intent myIntent = getIntent();
         String nombredeproductoseleccionado = myIntent.getStringExtra("nombredeproductoseleccionado"); // will return "FirstKeyValue"
         String preciodeproductoseleccionado= myIntent.getStringExtra("preciodeproductoseleccionado"); // will return "SecondKeyValue"
- idproductoseleccionado= myIntent.getStringExtra("idproductoseleccionado"); // will return "SecondKeyValue"
+        idproductoseleccionado= myIntent.getStringExtra("idproductoseleccionado"); // will return "SecondKeyValue"
 
 
         realmgrbarenbasedatosdetallepedido(Integer.parseInt(idproductoseleccionado),1,nombredeproductoseleccionado,Double.parseDouble(preciodeproductoseleccionado),1,preciodeproductoseleccionado,"no hay comentarios");
-      idsupremodedetalle=Crudetallepedido.calculateIndex();
+        idsupremodedetalle=Crudetallepedido.calculateIndex();
         Animation a = AnimationUtils.loadAnimation(getApplication(), R.anim.dechicoagrande);
         a.reset();
 
@@ -123,10 +124,10 @@ int idusuario;
                 TextView usuario=(TextView)findViewById(R.id.uno);
                 if (come==""){
                     come="no hay comentarios";
-                    }else {
+                }else {
                     actualizarcomentarioparacadaproducto(idsupremodedetalle, come);
-                    }
-               actualizartotalenpedido();
+                }
+                actualizartotalenpedido();
                 prefs = getApplication().getSharedPreferences(FileName, Context.MODE_PRIVATE);
                 String idempresa11=prefs.getString("idempresa","");
                 String nombreempresa11=prefs.getString("nombreempresa","");
@@ -141,6 +142,7 @@ int idusuario;
                 i.putExtra("telefonoempresa",telefonoempresa11);
                 i.putExtra("tiempodemora",tiempodemora11);
                 i.putExtra("montominimo",montominimo11);
+                //String imagenempresa = myIntent.getStringExtra("imagen"); // will return "FirstKeyValue"
 
                 startActivity(i);
             }
@@ -149,20 +151,20 @@ int idusuario;
         mas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 String cantidad=cantidadapedir.getText().toString();
+                String cantidad=cantidadapedir.getText().toString();
                 int c= Integer.parseInt(cantidad);
                 if(c>=1){
-                 c=c+1;
-                 cantidadapedir.setText( String.valueOf(c));
-                 String va=totalapagar.getText().toString();
+                    c=c+1;
+                    cantidadapedir.setText( String.valueOf(c));
+                    String va=totalapagar.getText().toString();
                     Double f=Double.parseDouble(va);
 
                     Double totalitoinicial =   Math.round(f*100.0)/100.0;
-                   // Double totalitoinicial = round(f,1);
-                  //Double totalitoinicial=  (double)Math.round(f * 100d) / 100d;
+                    // Double totalitoinicial = round(f,1);
+                    //Double totalitoinicial=  (double)Math.round(f * 100d) / 100d;
 
 
-                  totalitoinicial=totalitoinicial+(totalitoinicial/(c-1));
+                    totalitoinicial=totalitoinicial+(totalitoinicial/(c-1));
                     totalapagar.setText(String.valueOf(totalitoinicial));
                     totalapagar.clearAnimation();
                     totalapagar.startAnimation(a);
@@ -183,7 +185,7 @@ int idusuario;
                     Double f=Double.parseDouble(va);
 
                     Double totalitoinicial =   Math.round(f*100.0)/100.0;
-                  //  = round(f,1);
+                    //  = round(f,1);
                     //Double totalitoinicial=  (double)Math.round(f * 100d) / 100d;
 
 
@@ -199,7 +201,7 @@ int idusuario;
 
         new traeradicional().execute(idproductoseleccionado);
         new traercremas().execute(idproductoseleccionado);
-        actualizartotalenpedido();
+        //  actualizartotalenpedido();
     }
     private class traeradicional extends AsyncTask<String, String, String> {
         HttpURLConnection conne;
@@ -353,7 +355,7 @@ int idusuario;
                                     totalapagar.clearAnimation();
                                     totalapagar.startAnimation(a);
                                     Masactualizarsubtotaldetallemas( idsupremodedetalle,String.valueOf(totalitoinicial));
-                 eliminaradicional(idsupremodedetalle,Integer.parseInt(idproductoseleccionado),q);
+                                    eliminaradicional(idsupremodedetalle,Integer.parseInt(idproductoseleccionado),q);
                                 }
                             }});
 
@@ -491,11 +493,11 @@ int idusuario;
 
 
 
-                    texto.setText("        Elije tus Cremas        ");
-                   // texto.setBackgroundDrawable(getApplication().getResources().getDrawable(R.drawable.blue_leftcorner_bkg));
+                    texto.setText("    Elije El acompañante    ");
+                    // texto.setBackgroundDrawable(getApplication().getResources().getDrawable(R.drawable.blue_leftcorner_bkg));
                     texto.setGravity(Gravity.CENTER);
 
-                  //  texto.setLayoutParams(param);
+                    //  texto.setLayoutParams(param);
                     texto.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
                     texto.setTypeface(null, Typeface.NORMAL);
                     texto.setShadowLayer(2, 1, 1, R.color.colorPrimary);
@@ -528,11 +530,11 @@ int idusuario;
                                 CharSequence options[];
 
                                 if (isChecked) {
-realgrabarcrema(nombrecremita,Integer.parseInt(idproductoseleccionado));
+                                    realgrabarcrema(nombrecremita,Integer.parseInt(idproductoseleccionado));
 
                                 } else {
                                     eliminaracrema(idsupremodedetalle,Integer.parseInt(idproductoseleccionado),nombrecremita);
-                                  }
+                                }
                             }});
 
 
@@ -561,7 +563,7 @@ realgrabarcrema(nombrecremita,Integer.parseInt(idproductoseleccionado));
             @Override
             public void execute(Realm pedido) {
                 int index = Crudetallepedido.calculateIndex();
-                int intindexpedido= (Crudpedido.calculateIndex()-1);
+                int intindexpedido= Crudpedido.calculateIndex()-1;
                 Detallepedidorealm realmDetallepedidorealm = pedido.createObject(Detallepedidorealm.class, index);
                 realmDetallepedidorealm.setIdproductorealm(idproducto);
                 realmDetallepedidorealm.setCantidadrealm(cantidad);
@@ -618,7 +620,7 @@ realgrabarcrema(nombrecremita,Integer.parseInt(idproductoseleccionado));
 
     public final static List<AdicionalRealm> eliminaradicional(int ido,int idproducto,String nombreadicional) {
         Realm pedido = Realm.getDefaultInstance();
-int y=ido-1;
+        int y=ido-1;
         RealmResults<AdicionalRealm> results =
                 pedido.where(AdicionalRealm.class).
                         equalTo("id", y)
@@ -676,8 +678,8 @@ int y=ido-1;
                 .equalTo("id", tu)
                 .findFirst();
 
-       String r= pedidoRealm.toString().trim();
-                pedidoRealm.setSubtotal(subtotal);
+        String r= pedidoRealm.toString().trim();
+        pedidoRealm.setSubtotal(subtotal);
         pedido.insertOrUpdate(pedidoRealm);
         pedido.commitTransaction();
 
@@ -689,27 +691,14 @@ int y=ido-1;
         String pp=sumarsubtotalesparacolocarenpedido();
         Realm pedido = Realm.getDefaultInstance();
         pedido.beginTransaction();
-int tu=Crudpedido.calculateIndex()-1;
+        int tu=Crudpedido.calculateIndex()-1;
         PedidoRealm pedidoRealm = pedido.where(PedidoRealm.class)
                 .equalTo("idpedido", tu)
                 .findFirst();
 
-
-        if (tu==-1){
-            borrartodo();
-
-
-
-
-
-
-        }
-      pedidoRealm.setTotalpedido(Double.parseDouble(pp));
+        pedidoRealm.setTotalpedido(Double.parseDouble(pp));
         pedido.insertOrUpdate(pedidoRealm);
         pedido.commitTransaction();
-
-
-
     }
 
     public final static void Masactualizarcantidadendetallemas(int id,int cantidad,String  subtotal){
@@ -749,12 +738,12 @@ int tu=Crudpedido.calculateIndex()-1;
 
     public final static String sumarsubtotalesparacolocarenpedido(){
         int tu=Crudpedido.calculateIndex()-1;
-String sum;
+        String sum;
         Realm pedido = Realm.getDefaultInstance();
         pedido.beginTransaction();
         RealmResults<Detallepedidorealm> results = pedido.where(Detallepedidorealm.class).equalTo("idpedido",tu).findAll();
         int w = results.size();
-Double zz,ll=0.0;
+        Double zz,ll=0.0;
         for (int i = 0; i < w; i++){
             zz= Double.parseDouble(results.get(i).getSubtotal());
             ll=ll+zz;
@@ -766,7 +755,7 @@ Double zz,ll=0.0;
 
 
     public final static int capturariddedetalledeprodysubtotal(String producto, String total) {
-int ff = 0;
+        int ff = 0;
         Realm pedido = Realm.getDefaultInstance();
         pedido.beginTransaction();
         Detallepedidorealm pedidoRealm = pedido.where(Detallepedidorealm.class).
@@ -850,7 +839,7 @@ int ff = 0;
 
         RealmResults<Detallepedidorealm> results =
                 pedido.where(Detallepedidorealm.class)
-                                               .findAll();
+                        .findAll();
 
         pedido.beginTransaction();
         results.deleteAllFromRealm();     // App crash
@@ -880,14 +869,14 @@ int ff = 0;
     @Override
     public void onStop(){
         super.onStop();
-  //      Toast.makeText(getApplication(),"onstop  ",Toast.LENGTH_LONG).show();
+        //      Toast.makeText(getApplication(),"onstop  ",Toast.LENGTH_LONG).show();
 
     }
     @Override
     public void onPause(){
         super.onPause();
-    //    Toast.makeText(getApplication(),"onpause full",Toast.LENGTH_LONG).show();
-      //int yi=idsupremodedetalle;
+        //    Toast.makeText(getApplication(),"onpause full",Toast.LENGTH_LONG).show();
+        //int yi=idsupremodedetalle;
         //eliminaraTotalcrema(yi);
         //eliminarTotaladicional(yi);
         //eliminarTOTALdetallepedido(yi);
@@ -896,10 +885,10 @@ int ff = 0;
     @Override
     public void onDestroy(){
         super.onDestroy();
-      // Toast.makeText(getApplication(),"on detroy full",Toast.LENGTH_LONG).show();
-  //      int yi=idsupremodedetalle;
-    //    eliminaraTotalcrema(yi);
-      //  eliminarTotaladicional(yi);
+        // Toast.makeText(getApplication(),"on detroy full",Toast.LENGTH_LONG).show();
+        //      int yi=idsupremodedetalle;
+        //    eliminaraTotalcrema(yi);
+        //  eliminarTotaladicional(yi);
         //eliminarTOTALdetallepedido(yi);
 
 
@@ -915,18 +904,7 @@ int ff = 0;
         long tmp = Math.round(value);
         return (double) tmp / factor;
     }
-    private static void borrartodo() {
 
-
-        Realm pedido = Realm.getDefaultInstance();
-        pedido.beginTransaction();
-        pedido.deleteAll();
-        pedido.commitTransaction();
-
-
-
-
-    }
 }
 
 

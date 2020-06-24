@@ -12,6 +12,9 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+
+
+
     <style name="TextLabelSNA" parent="Widget.Design.TextInputLayout">
         <!-- Hint color and label color in FALSE state -->
         <item name="android:textColorHint">@color/accent</item>
@@ -97,11 +100,7 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="loginButton" parent="viewParent">
-        <item name="android:background">@drawable/login_button_bk</item>
-        <item name="android:textColor">@color/whiteTextColor</item>
-        <item name="android:textStyle">bold</item>
-    </style>
+
 
 
     <!--onboarding designs-->

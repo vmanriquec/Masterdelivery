@@ -50,70 +50,38 @@ public class Nuevologin extends AppCompatActivity {
     SharedPreferences prefs;
     private FirebaseAuth mAuth;
     private static final int RC_SIGN_IN = 101;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_login);
-
         prefs = getApplication().getSharedPreferences(FileName, Context.MODE_PRIVATE);
-
         String nombre=prefs.getString("idfirebase","");
-
-
-//
-
-
-
-
-
-
         Button logincelu=(Button) findViewById(R.id.logincelu);
-
 logincelu.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-
         if (nombre.equals("")){
             YoYo.with(Techniques.SlideInLeft)
                     .duration(1700)
                     .repeat(2)
                     .playOn(findViewById(R.id.imageView7));
-
             iraregistrarusuarionuevo();
         }
         else{
-
-
             Intent i= new Intent(Nuevologin.this,Muestartodaslasempresas.class);
             startActivity(i);
         }
-
-
-    }
-
-
-
-
+}
 });
-
-
     }
-
     private void iraregistrarusuarionuevo() {
-
-
-
         Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
                 .setIsSmartLockEnabled(!com.firebase.ui.auth.BuildConfig.DEBUG)
                 .setAvailableProviders(Collections.singletonList(
                         new AuthUI.IdpConfig.PhoneBuilder().build()))
                 .setLogo(R.mipmap.ic_launcher)
                 .build();
-
         startActivityForResult(intent, RC_SIGN_IN);
-
-
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -136,23 +104,15 @@ logincelu.setOnClickListener(new View.OnClickListener() {
             }
         }
     }
-
     public void showAlertDialog(FirebaseUser user) {
         AlertDialog.Builder mAlertDialog = new AlertDialog.Builder(
                 Nuevologin.this);
-
         mAlertDialog.create();
-
         // Showing Alert Message
         mAlertDialog.show();
-
-
       new   verificarsiusuarioexiste().execute(user.getUid());
-
        guardarsolotelefonoyiddefirebase(user.getPhoneNumber(),user.getUid());
   //      registrodenuevousuario();
-
-
     }
     private void veapedir() {
         Intent pi;
@@ -164,14 +124,12 @@ logincelu.setOnClickListener(new View.OnClickListener() {
         pi = new Intent(this,Mapa.class);
         startActivity(pi);
     }
-
     public   void guardarsolotelefonoyiddefirebase(String telefono,String iddefirebase){
         SharedPreferences sharedPreferences =getSharedPreferences(FileName, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
         editor.putString("telefono",telefono);
         editor.putString("idfirebase",iddefirebase);
         editor.commit();
-
     }
     public   void guardarensharesiyaestaregistrado(String telefono,String iddefirebase,String nombreusuariof,String almacenactivosf,String idalmacenactivosf,String direccion
     ,String latitud,String longitud,String referencia){
@@ -194,7 +152,6 @@ logincelu.setOnClickListener(new View.OnClickListener() {
         editor.commit();
 
     }
-
     private class verificarsiusuarioexiste extends AsyncTask<String, String, String> {
         HttpURLConnection conne;
         ProgressDialog pdLoading = new ProgressDialog(Nuevologin.this);
@@ -323,7 +280,6 @@ logincelu.setOnClickListener(new View.OnClickListener() {
     }
     @Override
     public void onBackPressed() {
-
     }
 }
 

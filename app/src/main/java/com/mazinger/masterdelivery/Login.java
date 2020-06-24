@@ -26,8 +26,6 @@ import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.annotations.Nullable;
-import com.mazinger.masterdelivery.Realm.Crudpedido;
-import com.mazinger.masterdelivery.Realm.PedidoRealm;
 import com.mazinger.masterdelivery.modelo.Almacen;
 import com.mazinger.masterdelivery.modelo.Usuarios;
 
@@ -49,9 +47,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
 
 public class Login extends AppCompatActivity {
 String nombreusuario1;
@@ -80,12 +75,7 @@ Button nuevousuario;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.prueba);
-        Realm.init(getApplicationContext());
-        RealmConfiguration realmConfig = new RealmConfiguration.Builder()
-                .name("pedido.realm")
-                .schemaVersion(0)
-                .build();
-        Realm.setDefaultConfiguration(realmConfig);
+
 
            nombreuser=(TextView) findViewById(R.id.phpnombreusuario);
         clave=(TextView) findViewById(R.id.phpclaveusuario);
@@ -415,31 +405,9 @@ nuevousuario.setOnClickListener(new View.OnClickListener() {
         String almacennombre=prefs.getString("almacenactivosf","");
        String idalmacen=prefs.getString("idalmacenactivosf","");
         String usuariostring   =prefs.getString("idusuario","");
-
-        crearpedidoinicial(Integer.parseInt(usuariostring),0.0,currentDateandTime,Integer.parseInt(idalmacen));
-
-
         Intent i= new Intent(this,Listaparaseleccionar.class);
         startActivity(i);
     }
-    public final static void crearpedidoinicial(int idusuario,Double totalpedido,String fechapedido,int idalmacen){
-
-
-        Realm pedido = Realm.getDefaultInstance();
-        pedido.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm pedido) {
-                int index = Crudpedido.calculateIndex();
-                PedidoRealm realmDetallepedidorealm = pedido.createObject(PedidoRealm.class, index);
-                realmDetallepedidorealm.setIdusuario(idusuario);
-                realmDetallepedidorealm.setTotalpedido(0.0);
-                realmDetallepedidorealm.setFechapedido(fechapedido);
-                realmDetallepedidorealm.setIdalmacen(idalmacen);
-            }
-        });
-    }
-
-
 
 
 

@@ -9,8 +9,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -23,6 +25,8 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 import com.mazinger.masterdelivery.Realm.Detallepedidorealm;
 import com.mazinger.masterdelivery.adapter.Adaptadordialogo;
 import com.mazinger.masterdelivery.modelo.Datostarjetadialogo;
+import com.mazinger.masterdelivery.modelo.Tiposdepago;
+import com.mazinger.masterdelivery.modelo.Tiposdeservicio;
 import com.mazinger.masterdelivery.modelo.Valedescuento;
 
 import org.json.JSONArray;
@@ -42,7 +46,6 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 
 public class Verpedidodos extends AppCompatActivity  {
@@ -59,8 +62,9 @@ public class Verpedidodos extends AppCompatActivity  {
     Valedescuento vale;;
     TextView descuento;
     TextView deliverycosto;
-    TextView nombredescuento,totalpedidoapedir,mivion;
+    TextView nombredescuento,totalpedidoapedir,mivion,horaderecojo;
     Button pidelo;
+    Spinner tipodepago,tipodeservicio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,19 +74,21 @@ public class Verpedidodos extends AppCompatActivity  {
      frito =(TextView) findViewById(R.id.num);
         tio=(TextView) findViewById(R.id.miavion);
 pidelo=(Button) findViewById(R.id.irafirebase);
+horaderecojo=(EditText)findViewById(R.id.horaderecojo);
 Button cancelartodo=(Button)findViewById(R.id.cancelarpe);
         totalpedidoapedir=(TextView) findViewById(R.id.totalpedidoapedir);
          deliverycosto=(TextView) findViewById(R.id.montodelvery);
          descuento=(TextView) findViewById(R.id.montodescuento);
          nombredescuento=(TextView) findViewById(R.id.nombredescuento);
          mivion=(TextView)findViewById(R.id.miavion);
+         tipodepago=(Spinner) findViewById(R.id.spinnertipodepago);
+tipodeservicio=(Spinner) findViewById(R.id.spinnertiposdeservicio);
+
+
+
+
 
         Realm.init(getApplication());
-        RealmConfiguration realmConfig = new RealmConfiguration.Builder()
-                .name("pedido.realm")
-                .schemaVersion(0)
-                .build();
-        Realm.setDefaultConfiguration(realmConfig);
 
         prefs = getApplication().getSharedPreferences(FileName, Context.MODE_PRIVATE);
         String di = prefs.getString("direccion", "");
@@ -99,8 +105,15 @@ cancelartodo.setOnClickListener(new View.OnClickListener() {
         startActivity(i);
     }
 });
+
+
+
+
         yy.setText(di);
        String  idempresa = prefs.getString("idempresa", "");
+
+        new manejartiposdepago().execute(idempresa);
+        new manejartiposdeservicio().execute(idempresa);
         new traerdescuentosycosodedelivery().execute(idfirebase,idempresa);
               recargartotalesisisomos();
 
@@ -379,6 +392,7 @@ cancelartodo.setOnClickListener(new View.OnClickListener() {
 
 
             pdLoading.dismiss();
+
 if (result.toString().equals("no rows\t\t  \t\t  \t\t ")){
     String  idempresa = prefs.getString("idempresa", "");
    new  solotraecosodedelivery().execute(idempresa);
@@ -568,15 +582,25 @@ else{
     private void enviarfirebase() {
         Intent pi;
         pi = new Intent(this,Enviarpedido.class);
+        String typo;
+        if (horaderecojo.getText().toString().equals(""))
+            {
+                typo="o";
+
+            }else{
+            typo="    ira a recojer a las "+horaderecojo.getText().toString();
+
+        }
+
+        pi.putExtra("horaaentregar",typo);
+
+
         startActivity(pi);
     }
     private void borrartodo() {
 
 
             Realm pedido = Realm.getDefaultInstance();
-
-
-
             pedido.beginTransaction();
             pedido.deleteAll();
             pedido.commitTransaction();
@@ -585,4 +609,231 @@ else{
 
 
     }
+
+
+    public class manejartiposdepago extends AsyncTask<String, String, String> {
+
+        HttpURLConnection conne;
+        URL url = null;
+            ProgressDialog pdLoading = new ProgressDialog(Verpedidodos.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pdLoading.setMessage("\tMostrando tipos de pago de la empresa");
+            pdLoading.setCancelable(false);
+            pdLoading.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            try {
+                //  url = new URL("https://sodapop.pe/sugest/apitraertodoslostiposdepago.php");
+                url = new URL("https://sodapop.pe/sugest/apitraertiposdepagoporempresa.php");
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return e.toString();
+            }
+            try {
+                conne = (HttpURLConnection) url.openConnection();
+                conne.setReadTimeout(READ_TIMEOUT);
+                conne.setConnectTimeout(CONNECTION_TIMEOUT);
+                conne.setRequestMethod("POST");
+                conne.setDoInput(true);
+                conne.setDoOutput(true);
+                // Append parameters to URL
+                Uri.Builder builder = new Uri.Builder()
+                        .appendQueryParameter("idempresa", params[0]);
+                String query = builder.build().getEncodedQuery();
+
+                // Open connection for sending data
+                OutputStream os = conne.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(query);
+                writer.flush();
+                writer.close();
+                os.close();
+                conne.connect();
+
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+                Log.d("wiwo", e1.toString());
+                return e1.toString();
+            }
+            try {
+                int response_code = conne.getResponseCode();
+
+                if (response_code == HttpURLConnection.HTTP_OK) {
+
+                    InputStream input = conne.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);
+
+                    }
+                    Log.d("waaaaaaa", result.toString());
+                    return (result.toString());
+
+                } else {
+
+                    return ("Connection error");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return e.toString();
+            } finally {
+                conne.disconnect();
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            ArrayList<Tiposdepago> todoslotiposdepago = new ArrayList<>();
+            tipodepago=(Spinner) findViewById(R.id.spinnertipodepago);
+            todoslotiposdepago.clear();
+            pdLoading.dismiss();
+            try {
+
+
+
+                JSONArray jArray = new JSONArray(result);
+                for (int i = 0; i < jArray.length(); i++) {
+                    JSONObject json_data = jArray.getJSONObject(i);
+                    Tiposdepago pedidofirebase = new Tiposdepago(
+                            (json_data.getInt("idtiposdepago")), json_data.getString("nombretiposdepago"), json_data.getString("estadotiposdepago"));
+                    todoslotiposdepago.add(pedidofirebase);
+
+
+                }
+
+                 ArrayAdapter<Tiposdepago> adaptadorl= new ArrayAdapter<Tiposdepago>(Verpedidodos.this, android.R.layout.simple_spinner_item,todoslotiposdepago );
+                tipodepago.setAdapter(adaptadorl);
+
+            } catch (JSONException e) {
+                Log.d("erororor", e.toString());
+            }
+        }
+
+    }
+    public class manejartiposdeservicio extends AsyncTask<String, String, String> {
+
+        HttpURLConnection conne;
+        URL url = null;
+        ProgressDialog pdLoading = new ProgressDialog(Verpedidodos.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pdLoading.setMessage("\tMostrando tipos de atencion de la empresa");
+            pdLoading.setCancelable(false);
+            pdLoading.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            try {
+                //  url = new URL("https://sodapop.pe/sugest/apitraertodoslostiposdepago.php");
+                url = new URL("https://sodapop.pe/sugest/apitraertiposdeatencionporempresa.php");
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return e.toString();
+            }
+            try {
+                conne = (HttpURLConnection) url.openConnection();
+                conne.setReadTimeout(READ_TIMEOUT);
+                conne.setConnectTimeout(CONNECTION_TIMEOUT);
+                conne.setRequestMethod("POST");
+                conne.setDoInput(true);
+                conne.setDoOutput(true);
+                // Append parameters to URL
+                Uri.Builder builder = new Uri.Builder()
+                        .appendQueryParameter("idempresa", params[0]);
+                String query = builder.build().getEncodedQuery();
+
+                // Open connection for sending data
+                OutputStream os = conne.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(query);
+                writer.flush();
+                writer.close();
+                os.close();
+                conne.connect();
+
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+                Log.d("wiwo", e1.toString());
+                return e1.toString();
+            }
+            try {
+                int response_code = conne.getResponseCode();
+
+                if (response_code == HttpURLConnection.HTTP_OK) {
+
+                    InputStream input = conne.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);
+
+                    }
+                    Log.d("waaaaaaa", result.toString());
+                    return (result.toString());
+
+                } else {
+
+                    return ("Connection error");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return e.toString();
+            } finally {
+                conne.disconnect();
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            ArrayList<Tiposdeservicio> todoslotiposdeservicio = new ArrayList<>();
+            tipodeservicio=(Spinner)findViewById(R.id.spinnertiposdeservicio);
+            todoslotiposdeservicio.clear();
+            pdLoading.dismiss();
+            try {
+                JSONArray jArray = new JSONArray(result);
+                for (int i = 0; i < jArray.length(); i++) {
+                    JSONObject json_data = jArray.getJSONObject(i);
+                    Tiposdeservicio pedidofirebase = new Tiposdeservicio(
+
+                            (json_data.getInt("idtipodeatencion")), json_data.getString("nombretipodeatencion"), json_data.getString("estadotipodeatencion"),
+                            json_data.getString("imagentipoatencion"));
+                    todoslotiposdeservicio.add(pedidofirebase);
+
+
+                }
+
+                ArrayAdapter<Tiposdeservicio> adaptadorl= new ArrayAdapter<Tiposdeservicio>(Verpedidodos.this, android.R.layout.simple_spinner_item,todoslotiposdeservicio );
+                tipodeservicio.setAdapter(adaptadorl);
+
+
+            } catch (JSONException e) {
+                Log.d("erororor", e.toString());
+            }
+        }
+
+    }
+
 }

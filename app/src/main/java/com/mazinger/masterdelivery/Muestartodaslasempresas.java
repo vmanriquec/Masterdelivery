@@ -61,14 +61,23 @@ public class Muestartodaslasempresas extends AppCompatActivity {
         actionbar.hide();
         Realm.init(getApplicationContext());
 
-        fab=(FloatingActionButton)findViewById(R.id.fab);
-        fabi=(TextView)findViewById(R.id.fabi);
 
-        toolbar = getSupportActionBar();
+        Realm pedido = Realm.getDefaultInstance();
+        pedido.beginTransaction();
+        pedido.delete(Detallepedidorealm.class);
+        pedido.deleteAll();
+        pedido.commitTransaction();
+
+        RealmResults<Detallepedidorealm> results =
+                pedido.where(Detallepedidorealm.class)
+                        .findAll();
+        int w = results.size();
+
+
+
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         prefs = getApplication().getSharedPreferences(FileName, Context.MODE_PRIVATE);
-
         String nombre = prefs.getString("nombreusuariof", "");
         String direccion = prefs.getString("direccion", "");
 
@@ -97,33 +106,12 @@ abuscarbu.setHint("Hola "+ nombre+ ", busca un producto...");
                 }
             }
         });
-        Realm pedido = Realm.getDefaultInstance();
-        RealmResults<Detallepedidorealm> results =
-                pedido.where(Detallepedidorealm.class)
-                        .findAll();
-        int w = results.size();
-        fabi.setText(String.valueOf(w));
-        Double tt = 0.0;
-        for (int i = 0; i < w; i++) {
-            int gg = results.get(i).getCantidadrealm();
-            int popo = results.get(i).getIdpedido();
-            String lll = results.get(i).getNombreproductorealm();
-            Double jjj = Double.parseDouble(results.get(i).getSubtotal());
-            tt = tt + jjj;
-
-        }
         // tot.setText("S/. " + String.valueOf(tt));
 
-        fabi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                iraverpedidos();
-            }
-        });
 
 
-//        borrartodo();
+
+
     }
 
 
@@ -401,18 +389,7 @@ abuscarbu.setHint("Hola "+ nombre+ ", busca un producto...");
         }
 
     }
-    private void borrartodo() {
 
-
-        Realm pedido = Realm.getDefaultInstance();
-        pedido.beginTransaction();
-        pedido.deleteAll();
-        pedido.commitTransaction();
-
-
-
-
-    }
     private void iraverpedidos() {
         Intent i = new Intent(getApplication(), Verpedidodos.class);
         startActivity(i);

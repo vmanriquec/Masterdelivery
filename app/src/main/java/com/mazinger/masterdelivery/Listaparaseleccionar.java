@@ -206,11 +206,7 @@ popup.show();
         });
 
         Realm.init(getApplication());
-        RealmConfiguration realmConfig = new RealmConfiguration.Builder()
-                .name("pedido.realm")
-                .schemaVersion(0)
-                .build();
-        Realm.setDefaultConfiguration(realmConfig);
+
 
         prefs = getApplication().getSharedPreferences(FileName, Context.MODE_PRIVATE);
         String usuarior = prefs.getString("nombreusuariof", "");
