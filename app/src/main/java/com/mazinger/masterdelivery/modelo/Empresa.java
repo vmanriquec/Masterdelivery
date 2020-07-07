@@ -19,6 +19,7 @@ public class Empresa {
     String idrubroempresa;
     String nombrerubro;
     String costodelivery;
+    String idtipodeatencion;
 
 
     public int getIdempresa() {
@@ -164,11 +165,19 @@ public class Empresa {
         this.costodelivery = costodelivery;
     }
 
+    public String getIdtipodeatencion() {
+        return idtipodeatencion;
+    }
+
+    public void setIdtipodeatencion(String idtipodeatencion) {
+        this.idtipodeatencion = idtipodeatencion;
+    }
+
     public Empresa(int idempresa, String razonsocialempresa, String direccionempresa,
                    String telefonoempresa, String emailempresa, String paginawebempresa,
                    String estadoempresa, String sloganempresa, String nombreadministrador,
                    String telefonoadministrador, String logotipoempresa, String idrubroempresa,
-                   String montominimodeventa, String tiempodedemoraempresa, String nombrerubro, String costodelivery) {
+                   String montominimodeventa, String tiempodedemoraempresa, String nombrerubro, String costodelivery, String idtipodeatencion) {
         this.idempresa = idempresa;
         this.razonsocialempresa = razonsocialempresa;
         this.direccionempresa = direccionempresa;
@@ -185,6 +194,7 @@ public class Empresa {
         this.tiempodedemoraempresa = tiempodedemoraempresa;
         this.nombrerubro = nombrerubro;
         this.costodelivery = costodelivery;
+        this.idtipodeatencion=idtipodeatencion;
 
     }
 

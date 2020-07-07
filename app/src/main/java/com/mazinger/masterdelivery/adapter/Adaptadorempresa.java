@@ -121,12 +121,12 @@ public class Adaptadorempresa extends RecyclerView.Adapter<Adaptadorempresa.Adap
         viewHolder.idempresal.setText(String.valueOf(item.getIdempresa()));
 
         foto = item.getLogotipoempresa().toString();
-        Picasso.get().load(R.drawable.lettreroluminoso).transform(new CircleTransform()).resize(100, 100).into(viewHolder.logito);
 
         viewHolder.nombreempresa.setText(item.getRazonsocialempresa());
         viewHolder.nombrerubro.setText(String.valueOf(item.getNombrerubro()));
         viewHolder.montominimodeventa.setText("S/. " + String.valueOf(item.getMontominimodeventa()));
         viewHolder.costodelivery.setText("S/. " + String.valueOf(item.getCostodelivery()));
+
         foto = item.getLogotipoempresa().toString();
         Picasso.get().load(foto).transform(new CropSquareTransformation()).resize(400, 400)
                 .into(viewHolder.imagenempresa1);
@@ -139,6 +139,16 @@ public class Adaptadorempresa extends RecyclerView.Adapter<Adaptadorempresa.Adap
 
 
         String valorporcentaje1=prefs.getString("valorporcentaje","");
+        if (item.getIdtipodeatencion().equals("abierto")){
+
+            Picasso.get().load(R.drawable.abierto).transform(new CircleTransform()).resize(100, 100).into(viewHolder.logito);
+
+        }else{
+
+            Picasso.get().load(R.drawable.cerrado).transform(new CircleTransform()).resize(100, 100).into(viewHolder.logito);
+
+        }
+
 
       viewHolder.txtvaloracion.setText(valorporcentaje1);
 

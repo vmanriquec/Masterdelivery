@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: am.gaut.android.toolbarbutton:toolbarbutton:0.1.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e6d1f88331ec8c20a859abccef6bf1ca/jetified-toolbarbutton-0.1.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e6d1f88331ec8c20a859abccef6bf1ca/jetified-toolbarbutton-0.1.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b732a4eae8c445d05b00d6fd6ec7111d/jetified-toolbarbutton-0.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b732a4eae8c445d05b00d6fd6ec7111d/jetified-toolbarbutton-0.1.0/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/am.gaut.android.toolbarbutton/toolbarbutton/0.1.0/a81cd6173e0d52636acc7e214d5e89fe949099fe/toolbarbutton-0.1.0-javadoc.jar!/" />

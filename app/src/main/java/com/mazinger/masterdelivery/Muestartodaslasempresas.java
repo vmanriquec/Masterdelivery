@@ -229,7 +229,8 @@ abuscarbu.setHint("Hola "+ nombre+ ", busca un producto...");
                             json_data.getString("montominimodeventa"),
                             json_data.getString("tiempodedemoraempresa"),
                             json_data.getString("nombrerubro"),
-                            json_data.getString("costodelivery")
+                            json_data.getString("costodelivery"),
+                            json_data.getString("idtipodeatencion")
 
                     );
                     todaslasempresas.add(pedidofirebase);
@@ -366,7 +367,8 @@ abuscarbu.setHint("Hola "+ nombre+ ", busca un producto...");
                             json_data.getString("montominimodeventa"),
                             json_data.getString("tiempodedemoraempresa"),
                             json_data.getString("nombreadministrador"),
-                            json_data.getString("costodelivery")
+                            json_data.getString("costodelivery"),
+                            json_data.getString("idtipodeatencion")
 
                     );
                     todaslasempresas.add(pedidofirebase);
