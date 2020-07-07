@@ -151,6 +151,7 @@ public class Adaptadorempresa extends RecyclerView.Adapter<Adaptadorempresa.Adap
 
 
 
+
       viewHolder.txtvaloracion.setText(valorporcentaje1);
 
 
