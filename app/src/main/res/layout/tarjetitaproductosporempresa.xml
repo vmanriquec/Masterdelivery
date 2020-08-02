@@ -1,84 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="3dp"
-    android:layout_marginRight="3dp">
+    android:layout_marginRight="3dp"
+    android:layout_marginTop="15dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardpe"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
+        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
-        app:cardElevation="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.005">
+        app:cardElevation="10dp">
 
-        <LinearLayout
+        <RelativeLayout
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/idproductope"
                 android:layout_width="1dp"
                 android:layout_height="1dp"
+                android:layout_alignParentTop="true"
                 android:textColor="@color/trans" />
 
             <ImageView
                 android:id="@+id/imagenpe"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                android:scaleType="fitCenter"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:layout_width="102dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/divider4"
+                android:layout_below="@+id/idproductope"
+                android:layout_alignParentLeft="true"
 
-            <TextView
-                android:id="@+id/preciope"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="2dp"
-                android:layout_marginBottom="2dp"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="TextView"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:scaleType="fitCenter" />
 
             <TextView
                 android:id="@+id/nomnrepe"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_marginBottom="2dp"
-                android:gravity="center_horizontal|center_vertical"
+                android:layout_toRightOf="@id/imagenpe"
+                android:gravity="left|center_vertical"
                 android:text="TextView"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/descripcionpe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
+                android:layout_below="@+id/nomnrepe"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_marginBottom="2dp"
-                android:gravity="center_horizontal|center_vertical"
-                android:lines="2"
+                android:layout_toRightOf="@id/imagenpe"
+                android:gravity="left|center_vertical"
+                android:lines="3"
                 android:text="TextView"
                 android:textSize="14sp" />
-        </LinearLayout>
+
+            <TextView
+                android:id="@+id/preciope"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/descripcionpe"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_toRightOf="@+id/imagenpe"
+                android:gravity="left|center_vertical"
+                android:text="TextView"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/preciope"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorPrimary" />
+
+        </RelativeLayout>
+
     </androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

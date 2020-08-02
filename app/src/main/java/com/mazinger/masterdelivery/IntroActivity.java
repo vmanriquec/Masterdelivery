@@ -27,7 +27,7 @@ public class IntroActivity extends MaterialIntroActivity {
         addSlide(new SlideFragmentBuilder()
                         .backgroundColor(R.color.introuno)
                         .buttonsColor(R.color.colorAccent)
-                        .image(R.drawable.uno)
+                        .image(R.drawable.paraplay2)
                         .title("Reactiva tu Negocio")
                         .description("Vende on line YA!  registra tu negocio gratis y empieza  a crear tu calogo de productos y vende")
                         .build(),
@@ -36,7 +36,7 @@ public class IntroActivity extends MaterialIntroActivity {
                     public void onClick(View v) {
                         showMessage("Juntos venceremos esta enfermedad");
                     }
-                }, "afiliate gratis y si te gusta y te sirve, migra a nuestros planes de servicio"));
+                }, "afiliate gratis al 910260813"));
 
         addSlide(new SlideFragmentBuilder()
                         .backgroundColor(R.color.introdos)
@@ -48,7 +48,7 @@ public class IntroActivity extends MaterialIntroActivity {
                 new MessageButtonBehaviour(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        showMessage("Sodapop-Tecnology  Huaral-2020");
+                        showMessage("Perseosystem  Huaral-2020");
                     }
                 }, "Apoyemos nuestros negocios locales asi nos beneficiamos todos")
 

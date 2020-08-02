@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Masterdelivery</string>
+    <string name="app_name">Superdelivery</string>
     <string name="title_activity_miou">Map</string>
 
 
@@ -47,5 +47,10 @@
     <string name = "start"> GOT IT </string>
 
 
+
+    <string name="normal.channel.id">channel.id.notification.normal</string>
+    <string name="normal.channel.name">Oferta normal</string>
+    <string name="low.channel.id">channel.id.notification.low</string>
+    <string name="low.channel.name">Oferta baja</string>
 
 </resources>

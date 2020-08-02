@@ -330,7 +330,7 @@ public class Muestraproductosporempresa extends AppCompatActivity {
                     }
                     strArrDataproducto = dataListproducto.toArray(new String[dataListproducto.size()]);
                     adapterproducto = new Adaptadorproductoempresa(peopleproducto, getApplicationContext());
-                    recyclerproducto.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
+                    recyclerproducto.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1));
                     recyclerproducto.setAdapter(adapterproducto);
                     adapterproducto.notifyDataSetChanged();
                 } catch (JSONException e) {
@@ -793,7 +793,7 @@ public class Muestraproductosporempresa extends AppCompatActivity {
 
 
                     adapter = new Adaptadorproductoempresa(people, Muestraproductosporempresa.this.getApplicationContext());
-                    recycler.setLayoutManager(new GridLayoutManager(Muestraproductosporempresa.this.getApplicationContext(), 3));
+                    recycler.setLayoutManager(new GridLayoutManager(Muestraproductosporempresa.this.getApplicationContext(), 1));
 
                     recycler.setAdapter(adapter);
                     adapter.notifyDataSetChanged();

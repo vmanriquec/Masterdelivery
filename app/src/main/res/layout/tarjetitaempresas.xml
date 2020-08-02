@@ -35,7 +35,7 @@ android:layout_marginLeft="5dp"
             <ImageView
                 android:id="@+id/imagenempresa1"
                 android:layout_width="match_parent"
-                android:layout_height="154dp"
+                android:layout_height="195dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -45,13 +45,11 @@ android:layout_marginLeft="5dp"
             <ImageView
                 android:id="@+id/logito"
                 android:layout_width="81dp"
-
-
                 android:layout_height="79dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="121dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginTop="147dp"
+                android:layout_marginEnd="7dp"
                 app:srcCompat="@drawable/ic_buscarlupa" />
 
             <ImageView
@@ -127,13 +125,13 @@ android:layout_marginLeft="5dp"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="2dp"
                 android:layout_marginLeft="3dp"
-                android:layout_marginTop="156dp"
+                android:layout_marginTop="153dp"
                 android:layout_marginEnd="111dp"
                 android:layout_marginRight="3dp"
                 android:layout_weight="1"
                 android:gravity="left|center_vertical"
                 android:text="nombre empresa"
-                android:textColor="@color/coloruno"
+                android:textColor="@color/colortres"
                 android:textSize="14sp" />
 
             <TextView
@@ -141,14 +139,14 @@ android:layout_marginLeft="5dp"
                 android:layout_width="267dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                 android:layout_alignParentTop="true"
+                android:layout_alignParentTop="true"
                 android:layout_marginStart="5dp"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="177dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="171dp"
                 android:layout_marginRight="3dp"
                 android:gravity="left"
                 android:text="rubroempresa"
-                android:textColor="@color/coloruno" />
+                android:textColor="@color/colortres" />
 
             <TextView
                 android:id="@+id/montominimodeventa"

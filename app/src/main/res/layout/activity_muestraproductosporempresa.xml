@@ -49,14 +49,6 @@ android:layout_marginBottom="5dp"
             android:text="TextView"
             android:textSize="18sp" />
 
-        <Button
-            android:id="@+id/wasapep"
-            android:layout_width="1dp"
-            android:layout_height="1dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/wasap" />
-
         <TextView
             android:id="@+id/nombreep"
             android:layout_width="match_parent"
@@ -122,6 +114,18 @@ android:layout_marginBottom="5dp"
                android:background="@color/trans"
                 android:textColor="@color/primary"/>
 
+            <Button
+                android:id="@+id/wasapep"
+                android:layout_width="65dp"
+                android:layout_height="23dp"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="84dp"
+                android:layout_toRightOf="@+id/mispedidosep"
+
+
+                android:background="@drawable/wasap" />
+
 
         </RelativeLayout>
 
@@ -129,34 +133,33 @@ android:layout_marginBottom="5dp"
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/relabuscador"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/relabuscador"
         android:layout_below="@+id/relatidatosdeempresa"
 
-        >
+        android:layout_marginTop="1dp">
 
 
         <MultiAutoCompleteTextView
             android:id="@+id/multiAutoCompleteTextView1"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_toLeftOf="@id/todos1"
+            android:layout_alignParentLeft="true"
             android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@id/todos1"
             android:hint="Busca un producto "
             android:paddingLeft="10dp"
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/colorAccent"
-            android:textSize="14sp"
-            android:layout_alignParentLeft="true" />
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/todos1"
-android:layout_centerVertical="true"
-            android:layout_width="58dp"
-            android:layout_height="31dp"
+            android:layout_width="51dp"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
 
 
             android:background="@drawable/ic_lupa_negro" />

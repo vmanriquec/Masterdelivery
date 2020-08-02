@@ -586,15 +586,10 @@ else{
         if (horaderecojo.getText().toString().equals(""))
             {
                 typo="o";
-
             }else{
             typo="    ira a recojer a las "+horaderecojo.getText().toString();
-
         }
-
         pi.putExtra("horaaentregar",typo);
-
-
         startActivity(pi);
     }
     private void borrartodo() {

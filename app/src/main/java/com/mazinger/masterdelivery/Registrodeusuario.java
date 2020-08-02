@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.mazinger.masterdelivery.modelo.Almacen;
 import com.mazinger.masterdelivery.modelo.Usuariocompleto;
 
@@ -107,6 +108,7 @@ direccion.setText(direccione);
                             "sin imagen","sin idfacebook","sin nombre ",
                             idfirebase,telefonoguardado,contrasena.getText().toString(), correo.getText().toString(),direccione,1,Integer.valueOf(idalmacen),latitud,longitud,referencias);
                     FirebaseDatabase database =FirebaseDatabase.getInstance();
+                    FirebaseInstanceId.getInstance().getToken();
                     DatabaseReference reference=database.getReference(USUARIOf);
                     reference.child(idfirebase).setValue(nuevousuario);
 

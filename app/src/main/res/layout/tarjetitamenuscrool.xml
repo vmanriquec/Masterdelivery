@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/tajetascrool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="8dp"
+
+
+
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/idrobruscrool"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:textColor="@color/trans" />
+
+            <ImageView
+                android:id="@+id/imagendescrool"
+
+                android:layout_width="170dp"
+                android:layout_height="100dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY" />
+
+            <TextView
+
+                android:id="@+id/textoscrool"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imagendescrool"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="-23dp"
+                android:background="@color/trans"
+                android:gravity="center_horizontal"
+                android:text="TextView"
+                android:textColor="@color/colortres"
+                android:textSize="14dp" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -11,18 +11,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mazinger.masterdelivery.Realm.Detallepedidorealm;
 import com.mazinger.masterdelivery.adapter.Adaptadorempresa;
+import com.mazinger.masterdelivery.adapter.Adaptadorrubro;
 import com.mazinger.masterdelivery.modelo.Empresa;
+import com.mazinger.masterdelivery.modelo.Rubroempresa;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -93,13 +95,24 @@ abuscarbu.setHint("Hola "+ nombre+ ", busca un producto...");
         fechausu.setText(currentDateandTime);
 
         new mostrartodaslasempresas().execute("w");
-
+new cargarscroll().execute("w");
         abuscarbuboton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(abuscarbu.getText().toString().equals(""))
                 {
-                    Toast.makeText(Muestartodaslasempresas.this,"Debes ecribir algo a buscar",Toast.LENGTH_LONG).show();
+                    BottomSheetFragment bottomSheetDialog = BottomSheetFragment.newInstance();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("test", "Debes escribir algo a buscar");
+                    bundle.putString("nombreusuario", "");
+                    bundle.putString("imagen", "https://www.sodapop.pe/ii.gif");
+
+
+                    bottomSheetDialog.setArguments(bundle);
+                    bottomSheetDialog.show(getSupportFragmentManager(), "Bottom Sheet Dialog Fragment");
+
+
                 }else{
 
                     new mostratodaslaasempresasporbusqueda().execute(abuscarbu.getText().toString());
@@ -395,6 +408,131 @@ abuscarbu.setHint("Hola "+ nombre+ ", busca un producto...");
     private void iraverpedidos() {
         Intent i = new Intent(getApplication(), Verpedidodos.class);
         startActivity(i);
+    }
+
+
+    private class cargarscroll extends AsyncTask<String, String, String> {
+
+        private String[] strArrData = {"No Suggestions"};
+        ProgressDialog pdLoading = new ProgressDialog(Muestartodaslasempresas.this);
+        HttpURLConnection conn;
+        URL url = null;
+        ArrayList<Rubroempresa> listaalmacen = new ArrayList<Rubroempresa>();
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pdLoading.setMessage("\tCargando ...");
+            pdLoading.setCancelable(false);
+            pdLoading.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                url = new URL("https://www.sodapop.pe/sugest/apitraertodoslosrubros.php");
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return e.toString();
+            }
+            try {
+                conn = (HttpURLConnection) url.openConnection();
+                conn.setReadTimeout(READ_TIMEOUT);
+                conn.setConnectTimeout(CONNECTION_TIMEOUT);
+                conn.setRequestMethod("GET");
+                conn.setDoOutput(true);
+                conn.connect();
+
+                // Append parameters to URL
+                Uri.Builder builder = new Uri.Builder()
+
+                        .appendQueryParameter("idempresa", params[0]);
+                String query = builder.build().getEncodedQuery();
+                // Open connection for sending data
+                OutputStream os = conn.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(query);
+                writer.flush();
+                writer.close();
+                os.close();
+                conn.connect();
+
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+                return e1.toString();
+            }
+            try {
+                int response_code = conn.getResponseCode();
+
+                if (response_code == HttpURLConnection.HTTP_OK) {
+
+                    InputStream input = conn.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);
+                    }
+                    return (result.toString());
+                } else {
+                    return ("Connection error");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return e.toString();
+            } finally {
+                conn.disconnect();
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            pdLoading.dismiss();
+
+            ArrayList<Rubroempresa> todaslasempresas = new ArrayList<>();
+            todaslasempresas.clear();
+            pdLoading.dismiss();
+            try {
+
+
+                JSONArray jArray = new JSONArray(result);
+                for (int i = 0; i < jArray.length(); i++) {
+                    JSONObject json_data = jArray.getJSONObject(i);
+
+
+                    Rubroempresa pedidofirebase = new Rubroempresa(
+                            (
+                                    json_data.getInt("idrubroempresa")),
+                            json_data.getString("nombrerubro"),
+                            json_data.getString("estadorubro"),
+                            json_data.getString("imagenrubro")
+
+                    );
+                    todaslasempresas.add(pedidofirebase);
+
+
+                }
+
+                final RecyclerView pedidoseo = findViewById(R.id.merymenus);
+
+                pedidoseo.setLayoutManager((new LinearLayoutManager(Muestartodaslasempresas.this.getApplicationContext(), LinearLayoutManager.HORIZONTAL, true)));
+
+                Adaptadorrubro adaptadore = new Adaptadorrubro(todaslasempresas, Muestartodaslasempresas.this);
+                //pedidoseo.setLayoutManager(new GridLayoutManager(Muestartodaslasempresas.this.getApplicationContext(), 1));
+
+                pedidoseo.setAdapter(adaptadore);
+
+                adaptadore.notifyDataSetChanged();
+
+            } catch (JSONException e) {
+                Log.d("erororor", e.toString());
+            }
+        }
     }
 }
 

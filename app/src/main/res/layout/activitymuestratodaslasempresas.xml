@@ -15,53 +15,75 @@
         android:textSize="1dp" />
 
     <RelativeLayout
+        android:id="@+id/botones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/botones"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        >
+        android:layout_centerHorizontal="true">
 
         <EditText
             android:id="@+id/abuscarbu"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:layout_toLeftOf="@id/abuscarbuboton"
+            android:layout_alignParentLeft="true"
             android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toLeftOf="@id/abuscarbuboton"
+            android:background="@drawable/fondotarjeta"
             android:hint="Busca un producto o servicio"
             android:paddingLeft="10dp"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorAccent"
-            android:textSize="14sp"
-            android:layout_alignParentLeft="true"/>
+            android:textColor="@color/colortres"
+            android:textColorHint="@color/colortres"
+            android:textSize="14sp" />
 
 
         <Button
             android:id="@+id/abuscarbuboton"
-            android:layout_width="54dp"
-            android:layout_height="37dp"
+            android:layout_width="43dp"
+            android:layout_height="46dp"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/ic_lupa_negro"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/ic_buscarlupa"
 
             />
+
     </RelativeLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/botones"
+        android:layout_centerHorizontal="true"
+android:layout_marginTop="5dp"
+        android:id="@+id/scrool">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/merymenus"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+
+            android:orientation="horizontal"
+            />
+    </ScrollView>
+
     <LinearLayout
+
         android:id="@+id/recyempresita"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/botones"
+        android:layout_below="@id/scrool"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recydeempresasl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="9dp">
 
         </androidx.recyclerview.widget.RecyclerView>

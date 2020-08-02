@@ -57,14 +57,15 @@ public class Nuevologin extends AppCompatActivity {
         prefs = getApplication().getSharedPreferences(FileName, Context.MODE_PRIVATE);
         String nombre=prefs.getString("idfirebase","");
         Button logincelu=(Button) findViewById(R.id.logincelu);
-logincelu.setOnClickListener(new View.OnClickListener() {
+        YoYo.with(Techniques.SlideInLeft)
+                .duration(2000)
+                .repeat(1)
+                .playOn(findViewById(R.id.imageView7));
+
+        logincelu.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         if (nombre.equals("")){
-            YoYo.with(Techniques.SlideInLeft)
-                    .duration(1700)
-                    .repeat(2)
-                    .playOn(findViewById(R.id.imageView7));
             iraregistrarusuarionuevo();
         }
         else{

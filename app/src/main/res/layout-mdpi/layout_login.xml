@@ -12,11 +12,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="45dp"
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/imageView7"
             android:layout_width="139dp"
             android:layout_height="131dp"
 
@@ -26,15 +26,9 @@
 
             android:layout_marginRight="5dp"
             android:background="@drawable/buttonmesasquenoexistenbackground"
-            app:srcCompat="@drawable/chef" />
+            app:srcCompat="@drawable/logoimagen" />
 
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="48dp"
-            android:layout_height="27dp"
-            android:layout_gravity="center_horizontal"
 
-            app:srcCompat="@drawable/ic_bicycle" />
     </LinearLayout>
 
     <LinearLayout
@@ -64,24 +58,26 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_gravity="center_horizontal"
-                android:gravity="center_horizontal"
-                android:layout_marginLeft="50dp"
                 android:id="@+id/textView21"
                 android:layout_width="wrap_content"
-                android:layout_height="34dp"
-                android:text="MASTER"
-                android:textColor="@color/fbutton_color_belize_hole"
-                android:textSize="24sp" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="60dp"
+                android:gravity="center_horizontal"
+                android:text="Super"
+                android:textColor="@color/colorprincipal"
+                android:textSize="34sp"
+                android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/textView23"
-                android:gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DELIVERY "
-                android:textColor="@color/material_grey_300"
-                android:textSize="24sp" />
+                android:gravity="center_horizontal"
+                android:text="delivery "
+                android:textColor="@color/fondito"
+                android:textSize="34sp"
+                android:textStyle="italic" />
         </LinearLayout>
 
 
@@ -96,7 +92,7 @@
         android:layout_alignParentBottom="true"
 
         android:layout_centerInParent="true"
-        android:layout_marginTop="109dp"
+        android:layout_marginTop="99dp"
         android:orientation="vertical">
 
         <TextView
