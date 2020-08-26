@@ -2,6 +2,7 @@ package com.mazinger.masterdelivery;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -11,8 +12,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -88,7 +91,38 @@ public class Muestartodaslasempresas extends AppCompatActivity {
 
         TextView abuscarbu=(TextView) findViewById(R.id.abuscarbu);
         Button abuscarbuboton=(Button) findViewById(R.id.abuscarbuboton);
+Button cuentausuario=(Button)findViewById(R.id.cuentausuario);
+        cuentausuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog alertDialog = new AlertDialog.Builder(Muestartodaslasempresas.this)
+//set icon
+                        .setIcon(R.drawable.logoimagen)
+//set title
+                        .setTitle("Hola aqui veras tus datos")
 
+//set message
+                        .setMessage("aqui cambiaras tu informacion personal")
+//set positive button
+                        .setPositiveButton("si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //set what would happen when positive button is clicked
+                                finish();
+                            }
+                        })
+//set negative button
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //set what should happen when negative button is clicked
+                                Toast.makeText(getApplicationContext(),"no selecionado",Toast.LENGTH_LONG).show();
+                            }
+                        })
+                        .show();
+
+            }
+        });
 abuscarbu.setHint("Hola "+ nombre+ ", busca un producto...");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String currentDateandTime = sdf.format(new Date());

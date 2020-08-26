@@ -14,12 +14,34 @@
         android:textColor="@color/trans"
         android:textSize="1dp" />
 
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toRightOf="@+id/fechausu"
+        android:text="Superdelivery"
+        android:textColor="@color/colorPrimary"
+android:layout_marginLeft="15dp"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textSize="12sp"
+       android:layout_marginTop="5dp"
+        android:text="negocios cerca de ti" />
+
     <RelativeLayout
         android:id="@+id/botones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
+        android:layout_below="@id/textView17"
+        android:layout_centerHorizontal="true"
+        >
 
         <EditText
             android:id="@+id/abuscarbu"
@@ -91,32 +113,108 @@ android:layout_marginTop="5dp"
 
 
     <FrameLayout
-        android:layout_width="95dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="5dp"
-        >
+        android:background="@color/colortres">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="4dp"
-            >
+            android:layout_height="57dp"
+            android:layout_marginLeft="4dp">
 
+
+            <Button
+                android:id="@+id/cuentausuario"
+                android:layout_width="34dp"
+
+                android:layout_height="32dp"
+                android:background="@drawable/ic_about_unselected"
+
+                />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cuentausuario"
+                android:layout_alignParentLeft="true"
+                android:text="Cuenta"
+                android:textSize="12dp" />
+
+            <Button
+                android:id="@+id/promociones"
+                android:layout_width="35dp"
+
+                android:layout_height="33dp"
+                android:layout_marginLeft="50dp"
+                android:layout_toRightOf="@+id/cuentausuario"
+                android:background="@drawable/ic_promo_unselected" />
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/promociones"
+              android:layout_toRightOf="@+id/textView27"
+                android:layout_marginLeft="30dp"
+                android:text="Promociones"
+                android:textSize="12dp" />
+
+            <Button
+                android:id="@+id/historialcompras"
+                android:layout_width="35dp"
+
+                android:layout_height="33dp"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/ic_basket_unselected"
+               android:layout_toRightOf="@+id/promociones"
+
+                />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_below="@+id/historialcompras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@+id/textView28"
+                android:text="Mis compras"
+                android:textSize="12dp"/>
+
+            <Button
+                android:id="@+id/direccionesusuario"
+                android:layout_width="43dp"
+
+                android:layout_height="36dp"
+                android:layout_marginLeft="51dp"
+                android:layout_toRightOf="@+id/historialcompras"
+                android:background="@drawable/marker_comercio" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_below="@+id/direccionesusuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@+id/textView29"
+                android:text="Direcciones"
+                android:textSize="12dp"/>
 
             <TextView
                 android:id="@+id/fabi"
-                android:layout_width="61dp"
-                android:layout_height="74dp"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="8dp"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+
+
+
                 android:background="@color/trans"
                 android:elevation="7dp"
-                android:gravity="center_horizontal|center_vertical"
-                android:paddingLeft="45dp"
-                android:paddingBottom="20dp"
+                android:paddingBottom="28dp"
                 android:text="0"
                 android:textColor="@color/colortres"
                 android:textSize="18sp" />
@@ -125,10 +223,8 @@ android:layout_marginTop="5dp"
                 android:id="@+id/fab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
 
-
-
-                android:layout_centerInParent="true"
                 android:baselineAlignBottom="false"
                 android:src="@drawable/ic_proceso_b_on"
                 app:backgroundTint="@color/trans"

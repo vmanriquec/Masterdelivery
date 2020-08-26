@@ -147,6 +147,8 @@ dependencies {
     implementation 'com.github.sujithkanna:smileyrating:2.0.0'
 
     implementation 'io.github.dreierf:material-intro-screen:0.0.6'
+
+
 }
 
 

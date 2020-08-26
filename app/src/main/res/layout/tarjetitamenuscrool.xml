@@ -14,11 +14,12 @@
 
 
         app:cardCornerRadius="10dp"
-        app:cardElevation="8dp">
+      >
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/trans">
 
             <TextView
                 android:id="@+id/idrobruscrool"
@@ -29,8 +30,8 @@
             <ImageView
                 android:id="@+id/imagendescrool"
 
-                android:layout_width="170dp"
-                android:layout_height="100dp"
+                android:layout_width="70dp"
+                android:layout_height="60dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY" />
@@ -39,15 +40,14 @@
 
                 android:id="@+id/textoscrool"
                 android:layout_width="wrap_content"
+                android:layout_height="18dp"
 
-                android:layout_height="wrap_content"
                 android:layout_below="@+id/imagendescrool"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="-23dp"
+
+                android:layout_centerInParent="true"
                 android:background="@color/trans"
-                android:gravity="center_horizontal"
                 android:text="TextView"
-                android:textColor="@color/colortres"
+                android:textColor="@color/colorPrimary"
                 android:textSize="14dp" />
         </RelativeLayout>
 

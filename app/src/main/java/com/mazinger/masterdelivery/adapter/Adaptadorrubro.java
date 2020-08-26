@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
-import jp.wasabeef.picasso.transformations.CropSquareTransformation;
+import jp.wasabeef.picasso.transformations.CropCircleTransformation;
 
 public class Adaptadorrubro extends RecyclerView.Adapter<Adaptadorrubro.AdaptadorViewHolder> {
     private Context mainContext;
@@ -92,7 +92,7 @@ public class Adaptadorrubro extends RecyclerView.Adapter<Adaptadorrubro.Adaptado
 
 
         foto = item.getImagenrubro().toString();
-        Picasso.get().load(foto).transform(new CropSquareTransformation()).resize(400, 400)
+        Picasso.get().load(foto).transform(new CropCircleTransformation()).resize(60, 60)
                 .into(viewHolder.imagendescrool);
 
 
