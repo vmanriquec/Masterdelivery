@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Registrodeusuario">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout7a"
+                android:layout_width="411dp"
+                android:layout_height="658dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/semiTransparentWhite"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/usera"
+                            android:layout_width="28dp"
+                            android:layout_height="39dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/usercomanda" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@color/semiTransparentWhite"
+                        android:orientation="vertical"></LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/correoa"
+                            android:layout_width="42dp"
+                            android:layout_height="35dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/fui_ic_mail_white_24dp"
+                            app:srcCompat="@drawable/verpedido" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@color/semiTransparentWhite"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView6a"
+                            android:layout_width="34dp"
+                            android:layout_height="37dp"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:layout_marginTop="3dp"
+                            app:srcCompat="@android:drawable/stat_sys_phone_call_on_hold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/mia"
+                            android:layout_width="39dp"
+                            android:layout_height="36dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/passwordfinal" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@color/semiTransparentWhite"
+                        android:orientation="vertical"></LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageView5a"
+                            android:layout_width="33dp"
+                            android:layout_height="37dp"
+                            app:srcCompat="@drawable/mapa" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/white_rightcorner_bkg"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dp"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/nombrecompletoa"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:gravity="center_horizontal|left|center_vertical"
+                            android:hint="Nombres completos"
+                            android:paddingLeft="10dp"
+                            android:textColorHint="@color/accent"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dp"
+                        android:background="@color/semiTransparentWhite"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/apellidosa"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:gravity="center_horizontal|left|center_vertical"
+                            android:hint="Apellidos"
+                            android:paddingLeft="10dp"
+                            android:textColorHint="@color/accent"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dp"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/correoelectronicoa"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:hint="Correo Electronico"
+                            android:inputType="textEmailAddress"
+                            android:paddingLeft="10dp"
+                            android:textColorHint="@color/accent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@color/semiTransparentWhite"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/telefonoa"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:gravity="center_horizontal|left|center_vertical"
+                            android:hint="Telefono "
+                            android:paddingLeft="10dp"
+                            android:textColorHint="@color/accent"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="61dp"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/contraa"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:hint="Contraseña"
+
+                            android:paddingLeft="10dp"
+                            android:textColorHint="@color/accent" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/o"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/recontraa"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ems="10"
+                            android:hint="Reescribe tu Contraseña"
+
+                            android:paddingLeft="10dp"
+                            android:textColorHint="@color/accent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/textView35"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:text="direcciones que registraste"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_centerHorizontal="true"
+                                  />
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:layout_below="@id/textView35"
+                                    android:id="@+id/recydirecto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="230dp"
+                                    android:layout_centerHorizontal="true"
+                                   />
+
+                                <Button
+                                    android:id="@+id/button3"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_below="@+id/recydirecto"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_alignParentBottom="true"
+
+                                    android:background="@drawable/ic_mas"
+                                    />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/registrusuarioa"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_weight="1"
+                android:background="@drawable/fondotarjeta"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Listo"
+                android:textColor="@color/colortres"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

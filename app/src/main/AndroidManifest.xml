@@ -72,7 +72,7 @@
 
         </activity>
         <activity
-            android:name=".miou"/>
+            android:name=".Activitycuentausuario"/>
 
 
         <activity

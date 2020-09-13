@@ -98,7 +98,7 @@ Button cuentausuario=(Button)findViewById(R.id.cuentausuario);
                 AlertDialog alertDialog = new AlertDialog.Builder(Muestartodaslasempresas.this)
 //set icon
                         .setIcon(R.drawable.logoimagen)
-//set title
+//set titlef
                         .setTitle("Hola aqui veras tus datos")
 
 //set message
@@ -108,6 +108,8 @@ Button cuentausuario=(Button)findViewById(R.id.cuentausuario);
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 //set what would happen when positive button is clicked
+                                Intent ip = new Intent(getApplication(), Activitycuentausuario.class);
+                                startActivity(ip);
                                 finish();
                             }
                         })
