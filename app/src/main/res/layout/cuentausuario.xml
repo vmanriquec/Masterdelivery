@@ -84,7 +84,7 @@
                             android:layout_height="37dp"
                             android:layout_gravity="center_horizontal|center_vertical"
                             android:layout_marginTop="3dp"
-                            app:srcCompat="@android:drawable/stat_sys_phone_call_on_hold" />
+                            app:srcCompat="@android:drawable/stat_sys_vp_phone_call_on_hold" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -139,7 +139,7 @@
                         <EditText
                             android:id="@+id/nombrecompletoa"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
                             android:gravity="center_horizontal|left|center_vertical"
                             android:hint="Nombres completos"
@@ -157,7 +157,7 @@
                         <EditText
                             android:id="@+id/apellidosa"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
                             android:gravity="center_horizontal|left|center_vertical"
                             android:hint="Apellidos"
@@ -241,41 +241,38 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="wrap_content">
 
                                 <TextView
                                     android:id="@+id/textView35"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
 
-                                    android:text="direcciones que registraste"
-                                    android:layout_marginBottom="5dp"
                                     android:layout_centerHorizontal="true"
-                                  />
+                                    android:layout_marginBottom="5dp"
+                                    android:text="direcciones que registraste" />
 
                                 <androidx.recyclerview.widget.RecyclerView
-                                    android:layout_below="@id/textView35"
                                     android:id="@+id/recydirecto"
                                     android:layout_width="match_parent"
-                                    android:layout_height="230dp"
-                                    android:layout_centerHorizontal="true"
-                                   />
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/textView35"
+                                    android:layout_centerHorizontal="true" />
 
                                 <Button
                                     android:id="@+id/button3"
-                                    android:layout_width="50dp"
-                                    android:layout_height="50dp"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
                                     android:layout_below="@+id/recydirecto"
                                     android:layout_alignParentEnd="true"
-                                    android:layout_alignParentBottom="true"
+android:layout_marginTop="10dp"
 
-                                    android:background="@drawable/ic_mas"
-                                    />
+                                    android:background="@drawable/ic_mas" />
 
                             </RelativeLayout>
 

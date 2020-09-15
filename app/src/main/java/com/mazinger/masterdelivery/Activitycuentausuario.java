@@ -10,9 +10,13 @@ import android.util.Log;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.mazinger.masterdelivery.adapter.Adaptadorcuensausuario;
 import com.mazinger.masterdelivery.modelo.Usuariocompleto;
+import com.mazinger.masterdelivery.modelo.Usuariodirecciones;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,6 +55,8 @@ public class Activitycuentausuario extends AppCompatActivity {
       recontraa=(TextView) findViewById(R.id.recontraa);
 
         new traerdatosdeusuario().execute(idfirebase);
+        new trertodaslasdirecciones().execute(idfirebase);
+
 
     }
     public class traerdatosdeusuario extends AsyncTask<String, String, String> {
@@ -197,5 +203,135 @@ public class Activitycuentausuario extends AppCompatActivity {
         }
 
     }
+
+
+
+
+    public class trertodaslasdirecciones extends AsyncTask<String, String, String> {
+
+        HttpURLConnection conne;
+        URL url = null;
+        ProgressDialog pdLoading = new ProgressDialog(Activitycuentausuario.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pdLoading.setMessage("\tTrayendo tus direcciones registradas");
+            pdLoading.setCancelable(false);
+            pdLoading.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            try {
+                //  url = new URL("https://sodapop.pe/sugest/apitraertodoslostiposdepago.php");
+                url = new URL("https://sodapop.pe/sugest/apitraertodaslasdirecconesporidfirebase.php");
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return e.toString();
+            }
+            try {
+                conne = (HttpURLConnection) url.openConnection();
+                conne.setReadTimeout(READ_TIMEOUT);
+                conne.setConnectTimeout(CONNECTION_TIMEOUT);
+                conne.setRequestMethod("POST");
+                conne.setDoInput(true);
+                conne.setDoOutput(true);
+                // Append parameters to URL
+                Uri.Builder builder = new Uri.Builder()
+                        .appendQueryParameter("idfirebase", params[0]);
+                String query = builder.build().getEncodedQuery();
+
+                // Open connection for sending data
+                OutputStream os = conne.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(query);
+                writer.flush();
+                writer.close();
+                os.close();
+                conne.connect();
+
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+                Log.d("wiwo", e1.toString());
+                return e1.toString();
+            }
+            try {
+                int response_code = conne.getResponseCode();
+
+                if (response_code == HttpURLConnection.HTTP_OK) {
+
+                    InputStream input = conne.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);
+
+                    }
+                    Log.d("waaaaaaa", result.toString());
+                    return (result.toString());
+
+                } else {
+
+                    return ("Connection error");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return e.toString();
+            } finally {
+                conne.disconnect();
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            ArrayList<Usuariodirecciones> todaslasempresas = new ArrayList<>();
+            todaslasempresas.clear();
+            pdLoading.dismiss();
+            try {
+
+
+
+                JSONArray jArray = new JSONArray(result);
+                for (int i = 0; i < jArray.length(); i++) {
+                    JSONObject json_data = jArray.getJSONObject(i);
+
+                    Usuariodirecciones pedidofirebase = new Usuariodirecciones(
+
+                                    json_data.getInt("idusuariodireccione"),
+                                    json_data.getString("idfirebase"),
+                                    json_data.getString("direccion"),
+                                    json_data.getString("longitud"),
+                                    json_data.getString("latitud"),
+                                    json_data.getString("referencia")
+
+                            );
+                    todaslasempresas.add(pedidofirebase);
+
+
+                }
+
+
+                 final RecyclerView recydirecto = findViewById(R.id.recydirecto);
+
+                Adaptadorcuensausuario adaptadore = new Adaptadorcuensausuario(todaslasempresas, Activitycuentausuario.this);
+                recydirecto.setLayoutManager(new GridLayoutManager(Activitycuentausuario.this.getApplicationContext(), 1));
+                recydirecto.setAdapter(adaptadore);
+                adaptadore.notifyDataSetChanged();
+
+            } catch (JSONException e) {
+                Log.d("erororor", e.toString());
+            }
+        }
+
+    }
+
 
 }

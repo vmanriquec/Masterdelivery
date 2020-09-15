@@ -32,6 +32,7 @@ public class Adaptadorcuensausuario extends RecyclerView.Adapter<Adaptadorcuensa
     }
     static class AdaptadorViewHolder extends RecyclerView.ViewHolder{
         protected TextView latitudrecy;
+        protected TextView idususriodireccion;
         protected TextView longitudrecy;
         protected TextView direccioncuenta;
         protected Button eliminadireccion;
@@ -41,6 +42,7 @@ public class Adaptadorcuensausuario extends RecyclerView.Adapter<Adaptadorcuensa
         public AdaptadorViewHolder(View v){
             super(v);
             this.latitudrecy=(TextView) v.findViewById(R.id.latitudrecy);
+            this.idususriodireccion=(TextView) v.findViewById(R.id.idususriodireccion);
             this.longitudrecy=(TextView) v.findViewById(R.id.longitudrecy);
             this.direccioncuenta=(TextView) v.findViewById(R.id.direccioncuenta);
             this.eliminadireccion=(Button) v.findViewById(R.id.eliminadireccion);
@@ -60,7 +62,7 @@ public class Adaptadorcuensausuario extends RecyclerView.Adapter<Adaptadorcuensa
         final Usuariodirecciones item = items.get(position);
         viewHolder.itemView.setTag(item);
 
-
+        viewHolder.idususriodireccion.setText(String.valueOf(item.getIdusuariodireccione()));
         viewHolder.latitudrecy.setText(String.valueOf(item.getLatitud()));
         viewHolder.longitudrecy.setText(item.getLongitud());
         viewHolder.direccioncuenta.setText(String.valueOf(item.getDireccion()));
