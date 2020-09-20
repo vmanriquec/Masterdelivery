@@ -15,32 +15,11 @@
         android:textSize="1dp" />
 
 
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_toRightOf="@+id/fechausu"
-        android:text="Superdelivery"
-        android:textColor="@color/colorPrimary"
-android:layout_marginLeft="15dp"
-        android:textSize="22sp" />
-
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:textSize="12sp"
-       android:layout_marginTop="5dp"
-        android:text="negocios cerca de ti" />
-
     <RelativeLayout
         android:id="@+id/botones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView17"
-        android:layout_centerHorizontal="true"
+         android:layout_centerHorizontal="true"
         >
 
         <EditText

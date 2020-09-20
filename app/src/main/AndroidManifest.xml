@@ -54,6 +54,7 @@
 
         </service>
         <activity android:name=".Enviarpedido" />
+        <activity android:name=".Mapacitonulo" />
         <activity android:name=".IntroActivity"
             android:theme="@style/Theme.Intro" >
 

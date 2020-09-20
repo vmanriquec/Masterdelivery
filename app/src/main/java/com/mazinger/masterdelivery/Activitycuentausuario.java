@@ -2,11 +2,14 @@ package com.mazinger.masterdelivery;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,6 +41,7 @@ public class Activitycuentausuario extends AppCompatActivity {
     String FileName = "myfile";
     SharedPreferences prefs;
     TextView nombrecompletoa,apellidosa,correoelectronicoa,telefonoa,contraa,recontraa;
+    Button adidionardireccion,registrusuarioa;
     private GoogleMap mMap;
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;
@@ -48,6 +52,8 @@ public class Activitycuentausuario extends AppCompatActivity {
         prefs = getApplication().getSharedPreferences(FileName, Context.MODE_PRIVATE);
         String idfirebase=prefs.getString("idfirebase","");
       nombrecompletoa=(TextView) findViewById(R.id.nombrecompletoa);
+        adidionardireccion=(Button) findViewById(R.id.adidionardireccion);
+        registrusuarioa=(Button) findViewById(R.id.registrusuarioa);
       apellidosa=(TextView) findViewById(R.id.apellidosa);
       correoelectronicoa=(TextView) findViewById(R.id.correoelectronicoa);
       telefonoa=(TextView) findViewById(R.id.telefonoa);
@@ -58,7 +64,30 @@ public class Activitycuentausuario extends AppCompatActivity {
         new trertodaslasdirecciones().execute(idfirebase);
 
 
+        registrusuarioa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Muestartodaslasempresas.class);
+
+                startActivity(intent);
+
+            }
+        });
+        adidionardireccion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Mapacitonulo.class);
+
+                startActivity(intent);
+
+
+
+            }
+        });
     }
+
+
+
     public class traerdatosdeusuario extends AsyncTask<String, String, String> {
 
         HttpURLConnection conne;

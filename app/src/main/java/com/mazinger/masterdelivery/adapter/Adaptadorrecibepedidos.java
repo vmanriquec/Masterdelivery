@@ -1,34 +1,24 @@
 package com.mazinger.masterdelivery.adapter;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mazinger.masterdelivery.Listaparaseleccionar;
 import com.mazinger.masterdelivery.R;
-import com.mazinger.masterdelivery.Realm.DetallepedidoRealmFirebase;
-import com.mazinger.masterdelivery.Realm.Detallepedidorealm;
 import com.mazinger.masterdelivery.Realm.PedidoRealmFirebase;
-import com.mazinger.masterdelivery.modelo.Adicional;
-import com.mazinger.masterdelivery.modelo.Detallepedido;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,9 +36,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.mazinger.masterdelivery.Login.CONNECTION_TIMEOUT;
-import static com.mazinger.masterdelivery.Login.READ_TIMEOUT;
 
 public class Adaptadorrecibepedidos extends RecyclerView.Adapter<Adaptadorrecibepedidos.AdaptadorViewHolder>  {
     private Context mainContext;
@@ -114,15 +101,6 @@ viewHolder.muestrapedido.setOnClickListener(new View.OnClickListener() {
 
 
         new traertosddetalles().execute(String.valueOf(item.getIdpedido()));
-
-
-
-
-
-
-
-
-
     }
 });
 
