@@ -11,8 +11,7 @@
         android:layout_height="150dp"
 
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-android:layout_marginBottom="5dp"
+          android:layout_marginBottom="5dp"
         android:scaleType="fitXY" />
 
     <RelativeLayout
@@ -72,6 +71,7 @@ android:layout_marginBottom="5dp"
                 android:id="@+id/imageView14"
                 android:layout_width="23dp"
                 android:layout_height="18dp"
+                android:layout_marginLeft="5dp"
                 android:layout_alignParentLeft="true"
                 app:srcCompat="@drawable/src_files_cash" />
 
@@ -116,12 +116,10 @@ android:layout_marginBottom="5dp"
 
             <Button
                 android:id="@+id/wasapep"
-                android:layout_width="65dp"
+                android:layout_width="40dp"
                 android:layout_height="23dp"
-                android:layout_marginRight="15dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="84dp"
-                android:layout_toRightOf="@+id/mispedidosep"
+                android:layout_marginRight="10dp"
+               android:layout_alignParentRight="true"
 
 
                 android:background="@drawable/wasap" />
@@ -156,11 +154,11 @@ android:layout_marginBottom="5dp"
 
         <Button
             android:id="@+id/todos1"
-            android:layout_width="51dp"
+            android:layout_width="41dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-
+android:layout_marginRight="10dp"
 
             android:background="@drawable/ic_lupa_negro" />
     </RelativeLayout>

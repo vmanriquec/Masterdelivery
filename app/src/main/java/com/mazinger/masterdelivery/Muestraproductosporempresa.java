@@ -165,7 +165,10 @@ public class Muestraproductosporempresa extends AppCompatActivity {
 
                 TextView uno = (TextView) findViewById(R.id.nomusu1);
                 String rer = uno.getText().toString();
-                new traertodoslospedidosporclienteporempresa().execute(rer, idempresa);
+                String idfirebaseoi=prefs.getString("idfirebase","");
+
+
+                new traertodoslospedidosporclienteporempresa().execute(idfirebaseoi, idempresa);
             }
         });
 
@@ -403,7 +406,7 @@ public class Muestraproductosporempresa extends AppCompatActivity {
                 conne.setDoOutput(true);
                 // Append parameters to URL
                 Uri.Builder builder = new Uri.Builder()
-                        .appendQueryParameter("nombreusuario", params[0])
+                        .appendQueryParameter("idfirebase", params[0])
                         .appendQueryParameter("idempresa", params[1]);
                 String query = builder.build().getEncodedQuery();
 
@@ -470,7 +473,7 @@ public class Muestraproductosporempresa extends AppCompatActivity {
                                     , json_data.getString("idfirebase"), json_data.getString("monbredescuento"), json_data.getString("montodescuento")
                                     , json_data.getString("nombrecosto"), json_data.getString("montocosto"), json_data.getString("longitud"),
                                     json_data.getString("latitud"), json_data.getString("pagocliente"), json_data.getString("vuelto"),
-                                    json_data.getString("telefono"), json_data.getString("refrencias"), json_data.getString("nombreusuariof")
+                                    json_data.getString("telefono"), json_data.getString("refrencias"), ""
                                     , json_data.getString("idempresa"));
                     todoslospedidos.add(pedidofirebase);
 

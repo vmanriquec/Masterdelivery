@@ -493,7 +493,7 @@ public class G extends AppCompatActivity {
 
 
 
-                    texto.setText("    Elije El acompañante    ");
+                    texto.setText("    Elije tu Guarnicion   ");
                     // texto.setBackgroundDrawable(getApplication().getResources().getDrawable(R.drawable.blue_leftcorner_bkg));
                     texto.setGravity(Gravity.CENTER);
 

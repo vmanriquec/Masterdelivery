@@ -61,7 +61,7 @@ public class Enviarpedido extends AppCompatActivity {
 Button limpiar,wasap;
 RecyclerView lista;
 TextView nombre,direccion,referencia,total,cunatopaga,vueltoc,idrecojera;
-    String idempresa,horaaentregar;
+    String idempresa,horaaentregar,direccionseleccionada,longitudd,latitudd;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +86,10 @@ nombre=(TextView) findViewById(R.id.usuario);
         Intent intent = this.getIntent();
         Bundle extra = intent.getExtras();
 
-      horaaentregar= extra.getString("horaaentregar");
-idrecojera.setText(horaaentregar);
+
+
+
+        idrecojera.setText(horaaentregar);
 
 limpiar.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -107,6 +109,10 @@ limpiar.setOnClickListener(new View.OnClickListener() {
         prefs = getApplication().getSharedPreferences(FileName, Context.MODE_PRIVATE);
         String nombreusuarioff = prefs.getString("nombreusuariof", "");
         String estadipedido = prefs.getString("estadopedido", "");
+        horaaentregar= extra.getString("horaaentregar");
+        direccionseleccionada= extra.getString("direccionseleccionada");
+        longitudd= extra.getString("longitudd");
+        latitudd= extra.getString("latitudd");
 
         escribiren(1);
         mostrartodo();
@@ -177,10 +183,10 @@ limpiar.setOnClickListener(new View.OnClickListener() {
         prefs = getApplication().getSharedPreferences(FileName, Context.MODE_PRIVATE);
         String telefonoguardado = prefs.getString("telefono", "");
         String idfirebase = prefs.getString("idfirebase", "mi fire");
-        String direccione = prefs.getString("direccion", "");
+        String direccione = direccionseleccionada;
         String referencias = prefs.getString("referencia", "");
-        String latitudp = prefs.getString("latitud", "");
-        String longitudp = prefs.getString("longitud", "");
+        String latitudp = latitudd;
+        String longitudp = longitudd;
         String nombredescuento = prefs.getString("nombredescuento", "");
         String montodescuento = prefs.getString("montodescuento", "");
         String nombrecosto = prefs.getString("nombrecosto", "");
@@ -248,7 +254,7 @@ limpiar.setOnClickListener(new View.OnClickListener() {
 
             new grabarpedido().execute(prf);
 
-            direccion.setText(prf.getDireccionallevar().toString());
+            direccion.setText(direccionseleccionada);
             referencia.setText(prf.getReferencias().toString());
             total.setText(prf.getTotalpedido().toString());
             cunatopaga.setText(prf.getCuantopagaecliente().toString());

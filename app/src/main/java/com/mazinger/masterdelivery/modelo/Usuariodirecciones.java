@@ -61,4 +61,7 @@ public class Usuariodirecciones {
     }
 
     private String idfirebase,direccion,longitud,latitud,referencia;
+    @Override
+    public String toString(){return String.valueOf(idusuariodireccione)+" - "+ String.valueOf(direccion);
+    }
 }

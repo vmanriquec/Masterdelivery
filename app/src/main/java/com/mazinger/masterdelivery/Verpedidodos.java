@@ -27,6 +27,7 @@ import com.mazinger.masterdelivery.adapter.Adaptadordialogo;
 import com.mazinger.masterdelivery.modelo.Datostarjetadialogo;
 import com.mazinger.masterdelivery.modelo.Tiposdepago;
 import com.mazinger.masterdelivery.modelo.Tiposdeservicio;
+import com.mazinger.masterdelivery.modelo.Usuariodirecciones;
 import com.mazinger.masterdelivery.modelo.Valedescuento;
 
 import org.json.JSONArray;
@@ -54,6 +55,8 @@ public class Verpedidodos extends AppCompatActivity  {
     RecyclerView gggg;
     Context context;
     TextView  frito;
+    Intent pi;
+
     TextView tio;
     String FileName = "myfile";
     SharedPreferences prefs;
@@ -62,6 +65,8 @@ public class Verpedidodos extends AppCompatActivity  {
     Valedescuento vale;;
     TextView descuento;
     TextView deliverycosto;
+    TextView latidudd;
+    TextView longitudd;
     TextView nombredescuento,totalpedidoapedir,mivion,horaderecojo;
     Button pidelo;
     Spinner tipodepago,tipodeservicio;
@@ -74,16 +79,19 @@ public class Verpedidodos extends AppCompatActivity  {
      frito =(TextView) findViewById(R.id.num);
         tio=(TextView) findViewById(R.id.miavion);
 pidelo=(Button) findViewById(R.id.irafirebase);
+
 horaderecojo=(EditText)findViewById(R.id.horaderecojo);
 Button cancelartodo=(Button)findViewById(R.id.cancelarpe);
         totalpedidoapedir=(TextView) findViewById(R.id.totalpedidoapedir);
          deliverycosto=(TextView) findViewById(R.id.montodelvery);
+
          descuento=(TextView) findViewById(R.id.montodescuento);
          nombredescuento=(TextView) findViewById(R.id.nombredescuento);
          mivion=(TextView)findViewById(R.id.miavion);
          tipodepago=(Spinner) findViewById(R.id.spinnertipodepago);
 tipodeservicio=(Spinner) findViewById(R.id.spinnertiposdeservicio);
 
+        pi = new Intent(this,Enviarpedido.class);
 
 
 
@@ -91,10 +99,19 @@ tipodeservicio=(Spinner) findViewById(R.id.spinnertiposdeservicio);
         Realm.init(getApplication());
 
         prefs = getApplication().getSharedPreferences(FileName, Context.MODE_PRIVATE);
+
+
+
         String di = prefs.getString("direccion", "");
+
+
+
+
+
+
         String idfirebase = prefs.getString("idfirebase", "");
 
-        TextView yy=(TextView) findViewById(R.id.txtdireccion);
+
         Switch pago=(Switch)findViewById(R.id.dinero);
 
 cancelartodo.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +126,10 @@ cancelartodo.setOnClickListener(new View.OnClickListener() {
 
 
 
-        yy.setText(di);
+     
+
+        new manejardirecciones().execute(idfirebase);
+
        String  idempresa = prefs.getString("idempresa", "");
 
         new manejartiposdepago().execute(idempresa);
@@ -580,17 +600,19 @@ else{
     }
 
     private void enviarfirebase() {
-        Intent pi;
-        pi = new Intent(this,Enviarpedido.class);
-        String typo;
-        if (horaderecojo.getText().toString().equals(""))
-            {
-                typo="o";
-            }else{
-            typo="    ira a recojer a las "+horaderecojo.getText().toString();
-        }
-        pi.putExtra("horaaentregar",typo);
-        startActivity(pi);
+        Spinner s=(Spinner)findViewById(R.id.spinnerdirecciones);
+        String al =s.getItemAtPosition(s.getSelectedItemPosition()).toString();
+        String mesei=al;
+        int g= mesei.length();
+        String mesi = mesei.substring(0,2);
+
+        String  idalmacenactivosf=mesi.trim();
+
+        String mesio = mesei.substring(3,g);
+        String almacenactivosf=mesio.trim();
+
+        new traerlatylong().execute(almacenactivosf);
+
     }
     private void borrartodo() {
 
@@ -822,6 +844,274 @@ else{
 
                 ArrayAdapter<Tiposdeservicio> adaptadorl= new ArrayAdapter<Tiposdeservicio>(Verpedidodos.this, android.R.layout.simple_spinner_item,todoslotiposdeservicio );
                 tipodeservicio.setAdapter(adaptadorl);
+
+
+            } catch (JSONException e) {
+                Log.d("erororor", e.toString());
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+
+    public class manejardirecciones extends AsyncTask<String, String, String> {
+
+        HttpURLConnection conne;
+        URL url = null;
+        ProgressDialog pdLoading = new ProgressDialog(Verpedidodos.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pdLoading.setMessage("\tcargando tus direcciones registradas");
+            pdLoading.setCancelable(false);
+            pdLoading.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            try {
+                //  url = new URL("https://sodapop.pe/sugest/apitraertodoslostiposdepago.php");
+                url = new URL("https://sodapop.pe/sugest/traerdireccionesporusuario.php");
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return e.toString();
+            }
+            try {
+                conne = (HttpURLConnection) url.openConnection();
+                conne.setReadTimeout(READ_TIMEOUT);
+                conne.setConnectTimeout(CONNECTION_TIMEOUT);
+                conne.setRequestMethod("POST");
+                conne.setDoInput(true);
+                conne.setDoOutput(true);
+                // Append parameters to URL
+                Uri.Builder builder = new Uri.Builder()
+                        .appendQueryParameter("idfirebase", params[0]);
+                String query = builder.build().getEncodedQuery();
+
+                // Open connection for sending data
+                OutputStream os = conne.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(query);
+                writer.flush();
+                writer.close();
+                os.close();
+                conne.connect();
+
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+                Log.d("wiwo", e1.toString());
+                return e1.toString();
+            }
+            try {
+                int response_code = conne.getResponseCode();
+
+                if (response_code == HttpURLConnection.HTTP_OK) {
+
+                    InputStream input = conne.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);
+
+                    }
+                    Log.d("waaaaaaa", result.toString());
+                    return (result.toString());
+
+                } else {
+
+                    return ("Connection error");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return e.toString();
+            } finally {
+                conne.disconnect();
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            ArrayList<Usuariodirecciones> DIR = new ArrayList<>();
+           Spinner spinnerdirecciones=(Spinner)findViewById(R.id.spinnerdirecciones);
+            DIR.clear();
+            pdLoading.dismiss();
+            try {
+                JSONArray jArray = new JSONArray(result);
+                for (int i = 0; i < jArray.length(); i++) {
+                    JSONObject json_data = jArray.getJSONObject(i);
+                    Usuariodirecciones pedidofirebaseO = new Usuariodirecciones(
+                            (json_data.getInt("idusuariodireccione")), json_data.getString("idfirebase"),
+                            json_data.getString("direccion"),
+                            json_data.getString("longitud"),
+                            json_data.getString("latitud"),
+                            json_data.getString("referencia"));
+                    DIR.add(pedidofirebaseO);
+
+
+                }
+
+                ArrayAdapter<Usuariodirecciones> adaptadorlL= new ArrayAdapter<Usuariodirecciones>(Verpedidodos.this, android.R.layout.simple_spinner_item,DIR );
+                spinnerdirecciones.setAdapter(adaptadorlL);
+
+
+            } catch (JSONException e) {
+                Log.d("erororor", e.toString());
+            }
+        }
+
+    }
+
+
+
+
+    public class traerlatylong extends AsyncTask<String, String, String> {
+
+        HttpURLConnection conne;
+        URL url = null;
+        ProgressDialog pdLoading = new ProgressDialog(Verpedidodos.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pdLoading.setMessage("\tcargando");
+            pdLoading.setCancelable(false);
+            pdLoading.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            try {
+                //  url = new URL("https://sodapop.pe/sugest/apitraertodoslostiposdepago.php");
+                url = new URL("https://sodapop.pe/sugest/traerlatlongpordire.php");
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return e.toString();
+            }
+            try {
+                conne = (HttpURLConnection) url.openConnection();
+                conne.setReadTimeout(READ_TIMEOUT);
+                conne.setConnectTimeout(CONNECTION_TIMEOUT);
+                conne.setRequestMethod("POST");
+                conne.setDoInput(true);
+                conne.setDoOutput(true);
+                // Append parameters to URL
+                Uri.Builder builder = new Uri.Builder()
+                        .appendQueryParameter("direccion", params[0]);
+                String query = builder.build().getEncodedQuery();
+
+                // Open connection for sending data
+                OutputStream os = conne.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(query);
+                writer.flush();
+                writer.close();
+                os.close();
+                conne.connect();
+
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+                Log.d("wiwo", e1.toString());
+                return e1.toString();
+            }
+            try {
+                int response_code = conne.getResponseCode();
+
+                if (response_code == HttpURLConnection.HTTP_OK) {
+
+                    InputStream input = conne.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);
+
+                    }
+                    Log.d("waaaaaaa", result.toString());
+                    return (result.toString());
+
+                } else {
+
+                    return ("Connection error");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                return e.toString();
+            } finally {
+                conne.disconnect();
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            ArrayList<Usuariodirecciones> DIR = new ArrayList<>();
+            DIR.clear();
+            pdLoading.dismiss();
+            try {
+                JSONArray jArray = new JSONArray(result);
+                for (int i = 0; i < jArray.length(); i++) {
+                    JSONObject json_data = jArray.getJSONObject(i);
+                    Usuariodirecciones pedidofirebaseO = new Usuariodirecciones(
+                            (json_data.getInt("idusuariodireccione")), json_data.getString("idfirebase"),
+                            json_data.getString("direccion"),
+                            json_data.getString("longitud"),
+                            json_data.getString("latitud"),
+                            json_data.getString("referencia"));
+                    DIR.add(pedidofirebaseO);
+
+
+                }
+
+String fff=DIR.get(0).getLatitud().toString();
+                String vvv=DIR.get(0).getLongitud().toString();
+
+
+                Spinner s=(Spinner)findViewById(R.id.spinnerdirecciones);
+                String al =s.getItemAtPosition(s.getSelectedItemPosition()).toString();
+                String mesei=al;
+                int g= mesei.length();
+                String mesi = mesei.substring(0,2);
+
+                String  idalmacenactivosf=mesi.trim();
+
+                String mesio = mesei.substring(3,g);
+                String almacenactivosf=mesio.trim();
+
+
+
+                String typo;
+
+                if (horaderecojo.getText().toString().equals(""))
+                {
+                    typo="o";
+                }else{
+                    typo="    ira a recojer a las "+horaderecojo.getText().toString();
+                }
+                pi.putExtra("horaaentregar",typo);
+                pi.putExtra("direccionseleccionada",almacenactivosf);
+                 pi.putExtra("latitudd",fff);
+                pi.putExtra("longitudd",vvv);
+
+                startActivity(pi);
 
 
             } catch (JSONException e) {

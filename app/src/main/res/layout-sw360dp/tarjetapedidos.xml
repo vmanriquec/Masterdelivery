@@ -70,7 +70,7 @@
                         android:layout_width="6dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/burger" />
+                        android:background="@drawable/verpedido" />
 
                 </LinearLayout>
 
@@ -133,10 +133,10 @@
 
                     <TextView
                         android:id="@+id/textView19"
-                        android:layout_width="6dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
+
+
                         android:text="S/."
                         android:textSize="18sp" />
 
@@ -144,16 +144,16 @@
                         android:id="@+id/totalapagar1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+
                         android:text="0000"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtd"
-                        android:layout_width="23dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+
                         android:gravity="left|center_vertical"
                         android:paddingLeft="3dp"
                         android:text="Paga: "
@@ -164,16 +164,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
+
                         android:gravity="left|center_vertical"
                         android:text="0000"
                         android:textColor="@color/coloruno" />
 
                     <TextView
                         android:id="@+id/textView14"
-                        android:layout_width="20dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+
                         android:gravity="right|center_vertical"
                         android:text="vuelto"
                         android:textSize="12sp" />
@@ -183,7 +183,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
+
                         android:gravity="left|center_vertical"
                         android:text="0000"
                         android:textColor="@color/coloruno" />

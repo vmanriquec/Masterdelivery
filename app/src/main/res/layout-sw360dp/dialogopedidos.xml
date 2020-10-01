@@ -18,15 +18,16 @@
             android:id="@+id/nombredialog"
             android:layout_width="match_parent"
             android:layout_height="42dp"
-            android:background="@drawable/ic_bg_topheader"
+            android:background="@drawable/fondotarjeta"
             android:gravity="center_horizontal"
             android:text="lista de pedidos"
+            android:textColor="@color/colortres"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listadepedidos"
-            android:layout_width="306dp"
+            android:layout_width="match_parent"
             android:layout_height="246dp"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
@@ -39,7 +40,10 @@
         <TextView
             android:id="@+id/textView9"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
+            android:textColor="@color/colortres"
+            android:background="@drawable/fondotarjeta"
+            android:gravity="center_horizontal"
             android:text="Califica la empresa tu aporte es importante" />
 
         <com.hsalf.smileyrating.SmileyRating

@@ -67,9 +67,18 @@ public class Activitycuentausuario extends AppCompatActivity {
         registrusuarioa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Muestartodaslasempresas.class);
 
-                startActivity(intent);
+                String idfirebaseoi=prefs.getString("idfirebase","");
+
+                Usuariocompleto nuevousuario = new Usuariocompleto(nombrecompletoa.getText().toString() ,
+                        apellidosa.getText().toString(),contraa.getText().toString(),
+                        "sin imagen","sin idfacebook","sin nombre ",
+                        prefs.getString("idfirebase",""),idfirebaseoi,contraa.getText().toString(), correoelectronicoa.getText().toString(),"",1,1,"latitud","longitud","referencias");
+
+
+                new actualizarusuario().execute(nuevousuario);
+
+
 
             }
         });
@@ -362,5 +371,123 @@ public class Activitycuentausuario extends AppCompatActivity {
 
     }
 
+    private class actualizarusuario extends AsyncTask<Usuariocompleto, Void, String> {
+        String resultado;
+        HttpURLConnection conne;
+        URL url = null;
+        Usuariocompleto ped;
+        ProgressDialog pdLoading = new ProgressDialog(Activitycuentausuario.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pdLoading.setMessage("\tActualizando datos");
+            pdLoading.setCancelable(false);
+            pdLoading.show();
+
+
+        }
+
+        @Override
+        protected String doInBackground(Usuariocompleto... params) {
+            ped=params[0];
+            try {
+                url = new URL("https://sodapop.pe/sugest/apiactualizarusuario.php");
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return null;
+            }
+            try {
+                conne = (HttpURLConnection) url.openConnection();
+                conne.setReadTimeout(READ_TIMEOUT);
+                conne.setConnectTimeout(CONNECTION_TIMEOUT);
+                conne.setRequestMethod("POST");
+                conne.setDoInput(true);
+                conne.setDoOutput(true);
+
+                // Append parameters to URL
+
+
+                Log.d("valor",String.valueOf(ped.getLongitud()));
+                Uri.Builder builder = new Uri.Builder()
+                        .appendQueryParameter("nombreusuario",String.valueOf(ped.getNombreusuario()))
+                        .appendQueryParameter("apellidos",String.valueOf(ped.getApellidos()))
+                        .appendQueryParameter("claveusuario",String.valueOf(ped.getContrasena()))
+                        .appendQueryParameter("imagen", String.valueOf(ped.getIdalmacen()))
+                        .appendQueryParameter("idfirebase", String.valueOf(ped.getIdfirebase()))
+                        .appendQueryParameter("idalmacen", String.valueOf(ped.getIdalmacen()))
+                        .appendQueryParameter("contrasena", String.valueOf(ped.getContrasena()))
+                        .appendQueryParameter("correo", String.valueOf(ped.getCorreo()))
+                        .appendQueryParameter("direccion", String.valueOf(ped.getDireccion()))
+                        .appendQueryParameter("telefono", String.valueOf(ped.getTelefono()))
+                        .appendQueryParameter("latitud", String.valueOf(ped.getLatitud()))
+                        .appendQueryParameter("longitud", String.valueOf(ped.getLongitud()))
+                        .appendQueryParameter("referencia", String.valueOf(ped.getReferencia()))
+
+                        ;
+
+
+
+                String query = builder.build().getEncodedQuery();
+
+                // Open connection for sending data
+                OutputStream os = conne.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(query);
+                writer.flush();
+                writer.close();
+                os.close();
+                conne.connect();
+
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+                return null;
+            }
+            try {
+                int response_code = conne.getResponseCode();
+                if (response_code == HttpURLConnection.HTTP_OK) {
+                    InputStream input = conne.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder result = new StringBuilder();
+                    String line;
+
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);
+
+                    }
+                    resultado=result.toString();
+                    Log.d("paso",resultado.toString());
+                    return resultado;
+
+                } else {
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace()                ;
+                Log.d("valorito",e.toString());
+                return null;
+            } finally {
+                conne.disconnect();
+            }
+            return resultado;
+        }
+        @Override
+        protected void onPostExecute(String resultado) {
+
+            super.onPostExecute(resultado);
+            pdLoading.dismiss();
+            Intent intent = new Intent(getApplicationContext(), Muestartodaslasempresas.class);
+
+            startActivity(intent);
+
+
+
+
+
+        }
+    }
 
 }
